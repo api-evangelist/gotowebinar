@@ -1,0 +1,80 @@
+extends:
+  - spectral:oas
+documentationUrl: https://developer.goto.com/GoToWebinarV2
+description: Spectral ruleset for GoToWebinar OpenAPI specifications. Enforces conventions observed in the V2 REST and Webhooks APIs published at developer.goto.com.
+rules:
+  gotowebinar-base-url:
+    description: Server URL must use the documented GoToWebinar V2 base URL.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://api\\.getgo\\.com/G2W/rest/v2$"
+
+  gotowebinar-oauth-token-url:
+    description: OAuth flows must point at the new GoTo authentication service (post-2025-09-30 migration).
+    severity: error
+    given: "$.components.securitySchemes[?(@.type == 'oauth2')].flows..tokenUrl"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://authentication\\.logmeininc\\.com/oauth/token$"
+
+  gotowebinar-oauth-authorize-url:
+    description: OAuth authorize URL must use the new authentication service.
+    severity: error
+    given: "$.components.securitySchemes[?(@.type == 'oauth2')].flows..authorizationUrl"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://authentication\\.logmeininc\\.com/oauth/authorize$"
+
+  gotowebinar-operation-summary-title-case:
+    description: Operation summaries should be Title Case.
+    severity: warn
+    given: "$.paths.*.*.summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z0-9]*)(\\s+[A-Za-z0-9-]+)*$"
+
+  gotowebinar-tag-title-case:
+    description: Tag names must be Title Case (e.g. Webinars, Co-Organizers).
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9-]*(\\s+[A-Z][A-Za-z0-9-]*)*$"
+
+  gotowebinar-operation-id-camel-case:
+    description: operationId should be camelCase (e.g. createWebinar, listSessionAttendees).
+    severity: warn
+    given: "$.paths.*.*.operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  gotowebinar-organizer-path-prefix:
+    description: REST resources are scoped under /organizers/{organizerKey}/...
+    severity: info
+    given: "$.paths[?(@property != '/webhooks' && @property != '/webhooks/secretkey' && @property != '/userSubscriptions' && !@property.startsWith('/webhooks/') && !@property.startsWith('/userSubscriptions/'))]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/organizers/\\{organizerKey\\}"
+
+  gotowebinar-webhook-event-names:
+    description: Webhook eventName enums must use the four documented event types.
+    severity: error
+    given: "$.components.schemas..[?(@.eventName)].eventName.enum"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          items:
+            type: string
+            enum: [registrant.added, registrant.joined, webinar.created, webinar.changed]

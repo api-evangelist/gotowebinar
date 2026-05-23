@@ -1,0 +1,14 @@
+{
+  "subject": "Quarterly Product Update",
+  "description": "Q2 2026 product roadmap and demo for existing customers.",
+  "times": [
+    {
+      "startTime": "2026-06-15T17:00:00Z",
+      "endTime": "2026-06-15T18:00:00Z"
+    }
+  ],
+  "timeZone": "America/Los_Angeles",
+  "type": "single_session",
+  "experienceType": "CLASSIC",
+  "isPasswordProtected": false
+}

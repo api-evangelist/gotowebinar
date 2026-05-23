@@ -1,0 +1,51 @@
+finOpsFramework: '2024'
+focusVersion: '1.0'
+name: GoToWebinar FinOps Profile
+provider:
+  name: GoTo
+  url: https://www.goto.com/webinar
+description: Cost-allocation profile for GoToWebinar as a SaaS line item. GoToWebinar bills on a per-organizer seat license tiered by maximum attendees per webinar; API usage is included with the seat license and is not separately metered.
+sources:
+  - https://www.goto.com/pricing/webinar
+  - https://developer.goto.com/
+captured: '2026-05-23'
+billingModel:
+  type: seat-based
+  unit: organizer
+  meter: tier-by-attendees-per-event
+  tiers: [250, 500, 1000, 3000]
+  billingCycles: [monthly, annual]
+  freeTier: false
+  trial: true
+  apiSurcharge: false
+costDrivers:
+  - driver: Organizer seats
+    description: Each named organizer requires an active GoToWebinar seat. Adding organizers is the primary cost lever.
+  - driver: Plan tier (max attendees per webinar)
+    description: Moving from Lite (250) to Standard (500), Pro (1,000), or Enterprise (3,000) increases per-seat price.
+  - driver: Recording storage
+    description: Recordings stored within GoToWebinar are bundled into the seat license; long-form retention may push customers toward higher tiers.
+focusMapping:
+  ServiceCategory: Communications
+  ServiceName: GoToWebinar
+  ChargeCategory: Usage
+  ChargeClass: Subscription
+  PricingUnit: organizer-seat-per-month
+  ListUnitPrice:
+    Lite: 59
+    Standard: 129
+    Pro: 249
+    Enterprise: 499
+  Region: global
+allocation:
+  recommendedTags:
+    - department
+    - marketing-program
+    - event-id
+    - organizer-email
+  notes:
+    - Tag webinars at creation with marketing-program / event-id in the description or custom registrant questions, then export attendees via the API for cost-per-lead reporting.
+optimization:
+  - Right-size to Lite or Standard for teams that rarely exceed 250-500 attendees instead of defaulting to Pro.
+  - Convert lightly used organizer seats to shared event accounts where the use-case allows.
+  - Prefer annual billing for ~17-20 percent monthly-equivalent savings across all tiers.

@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GoToWebinar REST API — Registrants
+  description: GoToWebinar REST API — Registrants. 4 operations covering list, create, get, and delete of webinar registrants.
+  tags:
+    - GoToWebinar
+    - Registrants
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      GOTO_ACCESS_TOKEN: GOTO_ACCESS_TOKEN
+      GOTO_ORGANIZER_KEY: GOTO_ORGANIZER_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: gotowebinar-registrants
+      baseUri: https://api.getgo.com/G2W/rest/v2
+      auth:
+        type: bearer
+        token: $env.GOTO_ACCESS_TOKEN
+      resources:
+        - name: list-registrants
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
+          operations:
+            - name: listRegistrants
+              method: GET
+              description: List all registrants for a webinar.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+        - name: create-registrant
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
+          operations:
+            - name: createRegistrant
+              method: POST
+              description: Register a person for a webinar and return their joinUrl.
+              outputRawFormat: json
+              outputParameters:
+                - name: registrantKey
+                  type: string
+                  value: $.registrantKey
+                - name: joinUrl
+                  type: string
+                  value: $.joinUrl
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: resendConfirmation
+                  in: query
+                  type: boolean
+                  required: false
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+        - name: get-registrant
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
+          operations:
+            - name: getRegistrant
+              method: GET
+              description: Get a single registrant by key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: registrantKey
+                  in: path
+                  type: string
+                  required: true
+        - name: delete-registrant
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
+          operations:
+            - name: deleteRegistrant
+              method: DELETE
+              description: Remove a registrant from a webinar.
+              outputRawFormat: json
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: registrantKey
+                  in: path
+                  type: string
+                  required: true

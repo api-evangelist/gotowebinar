@@ -1,0 +1,69 @@
+apiCommonsPlans: '0.1'
+name: GoToWebinar Plans And Pricing
+provider:
+  name: GoTo
+  url: https://www.goto.com/webinar
+description: GoToWebinar's published seat-based plans, scaled by per-event attendee capacity. Pricing snapshot captured 2026-05-23 from third-party reviews; live pricing at https://www.goto.com/pricing/webinar.
+currency: USD
+billing:
+  unit: per organizer
+  cycles: [monthly, annual]
+sources:
+  - https://www.goto.com/pricing/webinar
+  - https://www.itqlick.com/gotowebinar/pricing
+  - https://getwebinarkit.com/blog/gotowebinar-pricing
+  - https://todaytesting.com/gotowebinar-pricing/
+captured: '2026-05-23'
+plans:
+  - id: lite
+    name: Lite
+    monthlyPrice: 59
+    annualPriceMonthly: 49
+    attendeesPerEvent: 250
+    target: Small teams running periodic webinars.
+    features:
+      - Up to 250 attendees per webinar
+      - Browser-based viewing
+      - Recording
+      - Basic registration and reminder emails
+  - id: standard
+    name: Standard
+    monthlyPrice: 129
+    annualPriceMonthly: 99
+    attendeesPerEvent: 500
+    target: Marketing teams running lead-gen webinars.
+    features:
+      - Up to 500 attendees
+      - Polls and surveys
+      - Custom branding
+      - Reporting and analytics
+      - Integrations (Salesforce, Marketo, HubSpot)
+  - id: pro
+    name: Pro
+    monthlyPrice: 249
+    annualPriceMonthly: 199
+    attendeesPerEvent: 1000
+    target: Mid-market events teams.
+    features:
+      - Up to 1,000 attendees
+      - Source tracking
+      - Certificates
+      - Channel pages
+      - Video sharing
+      - Transcripts
+  - id: enterprise
+    name: Enterprise
+    monthlyPrice: 499
+    annualPriceMonthly: 399
+    attendeesPerEvent: 3000
+    target: Large-scale virtual events.
+    features:
+      - Up to 3,000 attendees
+      - Dedicated onboarding
+      - Custom contracts and SLAs
+      - SSO
+      - Volume discounts on multiple organizers
+notes:
+  - All plans include API access to the GoToWebinar V2 REST API and webhook subscriptions.
+  - Pricing escalates with the number of organizers on the account.
+  - The GoTo Developer Center does not charge separately for API usage above the seat license.

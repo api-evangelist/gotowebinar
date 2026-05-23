@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/json-schema/gotowebinar-webhook-schema.json",
+  "title": "GoToWebinar Webhook",
+  "type": "object",
+  "required": ["webhookKey", "product", "eventName", "eventVersion", "callbackUrl", "webhookState"],
+  "properties": {
+    "webhookKey": { "type": "string" },
+    "product": { "type": "string", "enum": ["g2w"] },
+    "eventName": {
+      "type": "string",
+      "enum": ["registrant.added", "registrant.joined", "webinar.created", "webinar.changed"]
+    },
+    "eventVersion": { "type": "string", "example": "1.0.0" },
+    "callbackUrl": { "type": "string", "format": "uri" },
+    "webhookState": { "type": "string", "enum": ["ACTIVE", "INACTIVE"] },
+    "secretKey": { "type": "string", "description": "Secret used to compute the X-Webhook-Signature." },
+    "createTime": { "type": "string", "format": "date-time" }
+  }
+}

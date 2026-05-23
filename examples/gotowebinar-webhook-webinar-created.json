@@ -1,0 +1,22 @@
+{
+  "eventName": "webinar.created",
+  "eventVersion": "1.0.0",
+  "product": "g2w",
+  "eventKey": "5d4b9bb3-8af8-4a23-9e6f-c0c64d77b03e",
+  "accountKey": "1234567890123456789",
+  "organizerKey": "9876543210987654321",
+  "webinarKey": "5620084814059709442",
+  "webinarTitle": "Quarterly Product Update",
+  "description": "Q2 2026 product roadmap and demo for existing customers.",
+  "experienceType": "CLASSIC",
+  "recurrenceType": "single_session",
+  "webinarCreationDate": "2026-05-23T13:20:00Z",
+  "status": "NEW",
+  "times": [
+    {
+      "startTime": "2026-06-15T17:00:00Z",
+      "endTime": "2026-06-15T18:00:00Z"
+    }
+  ],
+  "timeZone": "America/Los_Angeles"
+}

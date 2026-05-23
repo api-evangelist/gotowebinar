@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/json-schema/gotowebinar-attendee-schema.json",
+  "title": "GoToWebinar Attendee",
+  "type": "object",
+  "required": ["registrantKey", "sessionKey", "email"],
+  "properties": {
+    "registrantKey": { "type": "string" },
+    "sessionKey": { "type": "string" },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "attendanceTimeInSeconds": { "type": "integer", "minimum": 0 },
+    "joinTime": { "type": "string", "format": "date-time" },
+    "leaveTime": { "type": "string", "format": "date-time" }
+  }
+}

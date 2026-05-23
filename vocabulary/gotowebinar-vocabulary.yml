@@ -1,0 +1,59 @@
+name: GoToWebinar Vocabulary
+description: Operational and capability vocabulary used by the GoToWebinar REST and Webhooks APIs, mapped against API Evangelist operational dimensions.
+created: '2026-05-23'
+modified: '2026-05-23'
+sources:
+  - https://developer.goto.com/GoToWebinarV2
+  - https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+  - https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+terms:
+  - term: Organizer
+    definition: An authenticated GoTo account user who can create and host webinars. Identified by an organizerKey path parameter.
+  - term: Webinar
+    definition: A scheduled virtual event in GoToWebinar. Has a webinarKey, subject, one or more start/end times, a timeZone, an experienceType, and a recurrenceType.
+  - term: Session
+    definition: One past or live occurrence of a webinar. Identified by sessionKey. Sessions own attendees, polls, questions, and surveys.
+  - term: Registrant
+    definition: A person who has signed up for a webinar via the registration form. Receives a unique joinUrl bound to their registrantKey.
+  - term: Attendee
+    definition: A registrant who actually joined a webinar session, with joinTime, leaveTime, and attendanceTimeInSeconds metrics.
+  - term: Co-Organizer
+    definition: A secondary host (internal or external) attached to a webinar with full or limited organizer privileges.
+  - term: Panelist
+    definition: A presenter or expert invited to speak on a webinar. Receives a panelist-specific join URL.
+  - term: Experience Type
+    definition: Webinar mode. CLASSIC is standard interactive, BROADCAST is one-way broadcast, SIMULIVE replays a recording as a live event.
+  - term: Recurrence Type
+    definition: How a webinar repeats. single_session, sequence (set occurrences), or series (open-ended).
+  - term: deleteAll
+    definition: Query flag (added 2025-03-25) that, when true on DELETE webinar, removes all past sessions of a recurring webinar.
+  - term: Webhook
+    definition: A registered HTTP callback that GoToWebinar's webhook infrastructure POSTs event payloads to. Has webhookState ACTIVE/INACTIVE.
+  - term: User Subscription
+    definition: Per-user binding of a webhook to a specific organizer's events. Both webhookState and userSubscriptionState must be ACTIVE to deliver events.
+  - term: X-Webhook-Signature
+    definition: HTTP request header carrying the HMAC signature of a webhook payload, computed with the webhook secretKey, used by receivers to validate authenticity.
+  - term: registrant.added
+    definition: Webhook event fired when someone registers for a webinar.
+  - term: registrant.joined
+    definition: Webhook event fired when a registrant joins a live webinar session.
+  - term: webinar.created
+    definition: Webhook event fired when an organizer creates a new webinar.
+  - term: webinar.changed
+    definition: Webhook event fired when an organizer updates or deletes a webinar.
+  - term: OAuth 2.0 (GoTo)
+    definition: Authentication flow against https://authentication.logmeininc.com/oauth/authorize and /oauth/token, migrated from the legacy api.getgo.com host (deadline 2025-09-30).
+  - term: Breakout
+    definition: Sub-session within a webinar. Breakout support for webinar creation added 2025-01-21.
+operationalDimensions:
+  - dimension: Identity
+    terms: [Organizer, OAuth 2.0 (GoTo), User Subscription]
+  - dimension: Resource
+    terms: [Webinar, Session, Registrant, Attendee, Co-Organizer, Panelist]
+  - dimension: Engagement
+    terms: [Polls, Questions, Surveys, Recordings]
+  - dimension: Events
+    terms: [registrant.added, registrant.joined, webinar.created, webinar.changed, Webhook, X-Webhook-Signature]
+  - dimension: Lifecycle
+    terms: [Recurrence Type, Experience Type, Breakout, deleteAll]

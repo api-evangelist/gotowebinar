@@ -1,0 +1,54 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "gtw": "https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/json-ld/gotowebinar-context.jsonld#",
+
+    "Webinar": "schema:Event",
+    "Session": "schema:Event",
+    "Registrant": "schema:Person",
+    "Attendee": "schema:Person",
+    "Organizer": "schema:Person",
+    "Coorganizer": "schema:Person",
+    "Panelist": "schema:Person",
+    "Recording": "schema:VideoObject",
+
+    "webinarKey": "schema:identifier",
+    "sessionKey": "schema:identifier",
+    "registrantKey": "schema:identifier",
+    "organizerKey": "schema:identifier",
+    "subject": "schema:name",
+    "description": "schema:description",
+    "startTime": { "@id": "schema:startDate", "@type": "schema:DateTime" },
+    "endTime": { "@id": "schema:endDate", "@type": "schema:DateTime" },
+    "timeZone": "schema:timezone",
+    "registrationUrl": { "@id": "schema:url", "@type": "@id" },
+    "joinUrl": { "@id": "schema:url", "@type": "@id" },
+
+    "firstName": "schema:givenName",
+    "lastName": "schema:familyName",
+    "email": "schema:email",
+    "phone": "schema:telephone",
+    "organization": "schema:worksFor",
+    "jobTitle": "schema:jobTitle",
+    "industry": "schema:industry",
+
+    "attendanceTimeInSeconds": "gtw:attendanceTimeInSeconds",
+    "joinTime": { "@id": "gtw:joinTime", "@type": "schema:DateTime" },
+    "leaveTime": { "@id": "gtw:leaveTime", "@type": "schema:DateTime" },
+
+    "experienceType": "gtw:experienceType",
+    "recurrenceType": "schema:eventSchedule",
+    "status": "schema:eventStatus",
+
+    "eventName": "gtw:eventName",
+    "eventKey": "schema:identifier",
+    "eventVersion": "schema:version",
+    "product": "gtw:product",
+    "callbackUrl": { "@id": "gtw:callbackUrl", "@type": "@id" },
+    "webhookKey": "schema:identifier",
+    "webhookState": "gtw:webhookState",
+    "userSubscriptionState": "gtw:userSubscriptionState",
+    "secretKey": "gtw:secretKey"
+  }
+}

@@ -1,0 +1,27 @@
+apiCommonsRateLimits: '0.1'
+name: GoToWebinar Rate Limits
+provider:
+  name: GoTo
+  url: https://developer.goto.com/
+description: GoTo Developer rate-limit policy as referenced by GoToWebinar V2. GoTo does not publish a numeric default in its public quickstart; developers are directed to the central Rate Limits reference and to email developer-support@goto.com for increases.
+sources:
+  - https://developer.goto.com/guides/References/Ref-Get-Support/
+  - https://developer.goto.com/support
+captured: '2026-05-23'
+policies:
+  - name: Default Per-Client Limit
+    scope: OAuth client
+    documented: false
+    notes: GoTo does not publish a public default request-per-second number for the GoToWebinar V2 API. Developers consult the Rate Limits reference guide on developer.goto.com for current numeric limits.
+  - name: Rate-Limit Increase Process
+    scope: OAuth client
+    procedure: Email developer-support@goto.com with the OAuth clientId, expected request volume, and use-case justification.
+  - name: Webhook Delivery
+    scope: per webhook
+    notes: GoToWebinar webhook infrastructure delivers events as HTTP POSTs to the registered callbackUrl. Receivers should respond 2xx quickly; persistent failures may pause delivery.
+headers:
+  - name: Retry-After
+    description: Standard HTTP header that GoTo APIs may emit when throttling.
+escalation:
+  email: developer-support@goto.com
+  url: https://developer.goto.com/support

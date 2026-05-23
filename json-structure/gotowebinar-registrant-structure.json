@@ -1,0 +1,31 @@
+{
+  "name": "GoToWebinar Registrant Structure",
+  "description": "Structure of a GoToWebinar registrant, including custom-question responses returned in webhook payloads and REST responses.",
+  "entity": "Registrant",
+  "primaryKey": "registrantKey",
+  "fields": [
+    { "name": "registrantKey", "type": "string", "required": true },
+    { "name": "firstName", "type": "string", "required": true },
+    { "name": "lastName", "type": "string", "required": true },
+    { "name": "email", "type": "email", "required": true },
+    { "name": "phone", "type": "string", "required": false },
+    { "name": "organization", "type": "string", "required": false },
+    { "name": "jobTitle", "type": "string", "required": false },
+    { "name": "industry", "type": "string", "required": false },
+    { "name": "registrationDate", "type": "date-time", "required": false },
+    { "name": "status", "type": "enum", "values": ["APPROVED", "DENIED", "WAITING"] },
+    { "name": "joinUrl", "type": "uri", "required": false },
+    {
+      "name": "responses",
+      "type": "array<object>",
+      "subfields": [
+        { "name": "question", "type": "string" },
+        { "name": "answer", "type": "string" }
+      ]
+    }
+  ],
+  "relationships": [
+    { "from": "Registrant.webinarKey", "to": "Webinar.webinarKey", "type": "many-to-one" },
+    { "from": "Registrant.registrantKey", "to": "Attendee.registrantKey", "type": "one-to-many" }
+  ]
+}

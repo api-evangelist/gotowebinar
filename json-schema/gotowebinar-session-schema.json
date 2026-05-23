@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/json-schema/gotowebinar-session-schema.json",
+  "title": "GoToWebinar Session",
+  "type": "object",
+  "required": ["sessionKey", "webinarKey", "startTime", "endTime"],
+  "properties": {
+    "sessionKey": { "type": "string" },
+    "webinarKey": { "type": "string" },
+    "webinarID": { "type": "string" },
+    "subject": { "type": "string" },
+    "startTime": { "type": "string", "format": "date-time" },
+    "endTime": { "type": "string", "format": "date-time" },
+    "registrantsAttended": { "type": "integer", "minimum": 0 }
+  }
+}

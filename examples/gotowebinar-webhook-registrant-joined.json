@@ -1,0 +1,15 @@
+{
+  "eventName": "registrant.joined",
+  "eventVersion": "1.0.0",
+  "product": "g2w",
+  "eventKey": "74d38461-9db8-4e41-8f59-d99f00b82411",
+  "sessionKey": 15887209,
+  "webinarKey": 5620084814059709442,
+  "firstName": "Abhinav",
+  "lastName": "Gandhi",
+  "email": "a@g.com",
+  "timestamp": "2026-04-04T05:47:04.517Z",
+  "webinarTitle": "Quarterly Product Update",
+  "registrantKey": 8325357307900339981,
+  "joinTime": 1554356793898
+}

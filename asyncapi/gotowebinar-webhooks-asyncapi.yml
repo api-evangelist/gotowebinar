@@ -1,0 +1,185 @@
+asyncapi: 2.6.0
+info:
+  title: GoToWebinar Webhook Events
+  version: '1.0.0'
+  description: |
+    Outbound webhook events delivered by the GoToWebinar webhook infrastructure
+    to a developer-supplied callback URL. All events are HTTP POSTs signed via
+    the `X-Webhook-Signature` header so receivers can validate that the event
+    was sent by LogMeIn webhook infrastructure and not a third party.
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+servers:
+  callback:
+    url: https://your-domain.example.com/gotowebinar/callback
+    protocol: https
+    description: Developer-supplied callback URL registered on the webhook.
+defaultContentType: application/json
+channels:
+  registrant.added:
+    description: Triggered when a user registers for a webinar.
+    subscribe:
+      operationId: onRegistrantAdded
+      summary: Receive a registrant.added event.
+      message:
+        $ref: '#/components/messages/RegistrantAdded'
+  registrant.joined:
+    description: Triggered when a registrant joins a webinar session.
+    subscribe:
+      operationId: onRegistrantJoined
+      summary: Receive a registrant.joined event.
+      message:
+        $ref: '#/components/messages/RegistrantJoined'
+  webinar.created:
+    description: Triggered when an organizer creates a new webinar.
+    subscribe:
+      operationId: onWebinarCreated
+      summary: Receive a webinar.created event.
+      message:
+        $ref: '#/components/messages/WebinarCreated'
+  webinar.changed:
+    description: Triggered when an organizer updates or deletes an existing webinar.
+    subscribe:
+      operationId: onWebinarChanged
+      summary: Receive a webinar.changed event.
+      message:
+        $ref: '#/components/messages/WebinarChanged'
+components:
+  messageTraits:
+    SignedWebhook:
+      headers:
+        type: object
+        properties:
+          X-Webhook-Signature:
+            type: string
+            description: HMAC signature for the payload, computed with the webhook secretKey.
+          Content-Type:
+            type: string
+            enum: [application/json]
+  messages:
+    RegistrantAdded:
+      name: registrant.added
+      title: Registrant Added
+      traits:
+        - $ref: '#/components/messageTraits/SignedWebhook'
+      payload:
+        type: object
+        required: [eventName, eventVersion, product, eventKey, webinarKey, registrantKey, email]
+        properties:
+          eventName: { type: string, enum: [registrant.added] }
+          eventVersion: { type: string, example: '1.0.0' }
+          product: { type: string, enum: [g2w] }
+          eventKey: { type: string }
+          firstName: { type: string }
+          lastName: { type: string }
+          email: { type: string, format: email }
+          phone: { type: string }
+          organization: { type: string }
+          jobTitle: { type: string }
+          industry: { type: string }
+          comments: { type: string }
+          registrationDate: { type: string, format: date-time }
+          status: { type: string }
+          webinarKey: { type: string }
+          webinarTitle: { type: string }
+          experienceType: { type: string }
+          recurrenceType: { type: string }
+          webinarCreatorKey: { type: string }
+          registrationSource: { type: string }
+          joinUrl: { type: string, format: uri }
+          registrantKey: { type: string }
+          timestamp: { type: string, format: date-time }
+          responses:
+            type: array
+            items:
+              type: object
+              properties:
+                question: { type: string }
+                answer: { type: string }
+    RegistrantJoined:
+      name: registrant.joined
+      title: Registrant Joined
+      traits:
+        - $ref: '#/components/messageTraits/SignedWebhook'
+      payload:
+        type: object
+        required: [eventName, eventVersion, product, eventKey, webinarKey, sessionKey, registrantKey]
+        properties:
+          eventName: { type: string, enum: [registrant.joined] }
+          eventVersion: { type: string, example: '1.0.0' }
+          product: { type: string, enum: [g2w] }
+          eventKey: { type: string }
+          firstName: { type: string }
+          lastName: { type: string }
+          email: { type: string, format: email }
+          webinarKey: { type: string }
+          sessionKey: { type: string }
+          webinarTitle: { type: string }
+          experienceType: { type: string }
+          recurrenceType: { type: string }
+          registrantKey: { type: string }
+          webinarCreatorKey: { type: string }
+          joinTime: { type: integer, description: Unix millisecond timestamp. }
+          timestamp: { type: string, format: date-time }
+    WebinarCreated:
+      name: webinar.created
+      title: Webinar Created
+      traits:
+        - $ref: '#/components/messageTraits/SignedWebhook'
+      payload:
+        type: object
+        required: [eventName, eventVersion, product, eventKey, webinarKey]
+        properties:
+          eventName: { type: string, enum: [webinar.created] }
+          eventVersion: { type: string, example: '1.0.0' }
+          accountKey: { type: string }
+          organizerKey: { type: string }
+          product: { type: string, enum: [g2w] }
+          eventKey: { type: string }
+          webinarKey: { type: string }
+          webinarTitle: { type: string }
+          description: { type: string }
+          experienceType: { type: string }
+          recurrenceType: { type: string }
+          recurrenceKey: { type: string }
+          webinarCreationDate: { type: string, format: date-time }
+          status: { type: string, enum: [NEW] }
+          times:
+            type: array
+            items:
+              type: object
+              properties:
+                startTime: { type: string, format: date-time }
+                endTime: { type: string, format: date-time }
+          timeZone: { type: string }
+    WebinarChanged:
+      name: webinar.changed
+      title: Webinar Changed
+      traits:
+        - $ref: '#/components/messageTraits/SignedWebhook'
+      payload:
+        type: object
+        required: [eventName, eventVersion, product, eventKey, webinarKey]
+        properties:
+          eventName: { type: string, enum: [webinar.changed] }
+          eventVersion: { type: string, example: '1.0.0' }
+          accountKey: { type: string }
+          organizerKey: { type: string }
+          product: { type: string, enum: [g2w] }
+          eventKey: { type: string }
+          webinarKey: { type: string }
+          webinarTitle: { type: string }
+          description: { type: string }
+          experienceType: { type: string }
+          recurrenceType: { type: string }
+          status: { type: string, enum: [UPDATED, DELETED] }
+          times:
+            type: array
+            items:
+              type: object
+              properties:
+                startTime: { type: string, format: date-time }
+                endTime: { type: string, format: date-time }
+          timeZone: { type: string }

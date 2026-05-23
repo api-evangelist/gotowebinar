@@ -1,0 +1,98 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GoToWebinar REST API — Attendees
+  description: GoToWebinar REST API — Attendees. 3 operations covering listing all attendees, listing per-session attendees, and fetching a single attendee record.
+  tags:
+    - GoToWebinar
+    - Attendees
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      GOTO_ACCESS_TOKEN: GOTO_ACCESS_TOKEN
+      GOTO_ORGANIZER_KEY: GOTO_ORGANIZER_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: gotowebinar-attendees
+      baseUri: https://api.getgo.com/G2W/rest/v2
+      auth:
+        type: bearer
+        token: $env.GOTO_ACCESS_TOKEN
+      resources:
+        - name: list-all-attendees
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/attendees
+          operations:
+            - name: listAllAttendees
+              method: GET
+              description: List attendees across every session of a webinar.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+        - name: list-session-attendees
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees
+          operations:
+            - name: listSessionAttendees
+              method: GET
+              description: List attendees for one past session.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: sessionKey
+                  in: path
+                  type: string
+                  required: true
+        - name: get-session-attendee
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}
+          operations:
+            - name: getSessionAttendee
+              method: GET
+              description: Get a single attendee's record for one session.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: sessionKey
+                  in: path
+                  type: string
+                  required: true
+                - name: registrantKey
+                  in: path
+                  type: string
+                  required: true

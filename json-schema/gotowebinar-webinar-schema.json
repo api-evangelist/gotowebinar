@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/json-schema/gotowebinar-webinar-schema.json",
+  "title": "GoToWebinar Webinar",
+  "type": "object",
+  "required": ["webinarKey", "subject", "times", "timeZone"],
+  "properties": {
+    "webinarKey": { "type": "string", "description": "Unique key identifying the webinar." },
+    "subject": { "type": "string", "description": "Title of the webinar." },
+    "description": { "type": "string" },
+    "organizerKey": { "type": "string" },
+    "registrationUrl": { "type": "string", "format": "uri" },
+    "timeZone": { "type": "string", "example": "America/Los_Angeles" },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["startTime", "endTime"],
+        "properties": {
+          "startTime": { "type": "string", "format": "date-time" },
+          "endTime": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "experienceType": { "type": "string", "enum": ["CLASSIC", "BROADCAST", "SIMULIVE"] },
+    "recurrenceType": { "type": "string", "enum": ["single_session", "sequence", "series"] },
+    "isPasswordProtected": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["NEW", "UPDATED", "DELETED"] }
+  }
+}

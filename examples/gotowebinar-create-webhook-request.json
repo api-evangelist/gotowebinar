@@ -1,0 +1,7 @@
+{
+  "product": "g2w",
+  "eventName": "registrant.joined",
+  "eventVersion": "1.0.0",
+  "callbackUrl": "https://your-domain.example.com/gotowebinar/callback",
+  "secretKey": "your-precomputed-secret-key"
+}

@@ -1,0 +1,100 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GoToWebinar REST API — Polls, Questions, Surveys
+  description: GoToWebinar REST API — engagement readouts per session. Retrieve poll results, Q&A, and survey results for a single past webinar session.
+  tags:
+    - GoToWebinar
+    - Polls
+    - Questions
+    - Surveys
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      GOTO_ACCESS_TOKEN: GOTO_ACCESS_TOKEN
+      GOTO_ORGANIZER_KEY: GOTO_ORGANIZER_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: gotowebinar-engagement
+      baseUri: https://api.getgo.com/G2W/rest/v2
+      auth:
+        type: bearer
+        token: $env.GOTO_ACCESS_TOKEN
+      resources:
+        - name: session-polls
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/polls
+          operations:
+            - name: getSessionPolls
+              method: GET
+              description: Get poll results for a session.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: sessionKey
+                  in: path
+                  type: string
+                  required: true
+        - name: session-questions
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/questions
+          operations:
+            - name: getSessionQuestions
+              method: GET
+              description: Get Q&A for a session.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: sessionKey
+                  in: path
+                  type: string
+                  required: true
+        - name: session-surveys
+          path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/surveys
+          operations:
+            - name: getSessionSurveys
+              method: GET
+              description: Get survey results for a session.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: organizerKey
+                  in: path
+                  type: string
+                  required: true
+                  value: $env.GOTO_ORGANIZER_KEY
+                - name: webinarKey
+                  in: path
+                  type: string
+                  required: true
+                - name: sessionKey
+                  in: path
+                  type: string
+                  required: true

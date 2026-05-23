@@ -1,0 +1,33 @@
+{
+  "name": "GoToWebinar Webinar Structure",
+  "description": "Documented structure of a GoToWebinar webinar resource, including the per-occurrence times array and experience/recurrence enumerations used by the V2 REST API.",
+  "entity": "Webinar",
+  "primaryKey": "webinarKey",
+  "fields": [
+    { "name": "webinarKey", "type": "string", "required": true, "description": "Unique key for the webinar." },
+    { "name": "subject", "type": "string", "required": true, "description": "Webinar title." },
+    { "name": "description", "type": "string", "required": false },
+    { "name": "organizerKey", "type": "string", "required": true, "description": "Owning organizer's key." },
+    { "name": "registrationUrl", "type": "uri", "required": false },
+    { "name": "timeZone", "type": "string", "required": true, "description": "IANA timezone string." },
+    {
+      "name": "times",
+      "type": "array<object>",
+      "required": true,
+      "description": "Scheduled occurrences of the webinar.",
+      "subfields": [
+        { "name": "startTime", "type": "date-time" },
+        { "name": "endTime", "type": "date-time" }
+      ]
+    },
+    { "name": "experienceType", "type": "enum", "values": ["CLASSIC", "BROADCAST", "SIMULIVE"] },
+    { "name": "recurrenceType", "type": "enum", "values": ["single_session", "sequence", "series"] },
+    { "name": "isPasswordProtected", "type": "boolean", "required": false },
+    { "name": "status", "type": "enum", "values": ["NEW", "UPDATED", "DELETED"] }
+  ],
+  "relationships": [
+    { "from": "Webinar.webinarKey", "to": "Session.webinarKey", "type": "one-to-many" },
+    { "from": "Webinar.webinarKey", "to": "Registrant.webinarKey", "type": "one-to-many" },
+    { "from": "Webinar.organizerKey", "to": "Organizer.organizerKey", "type": "many-to-one" }
+  ]
+}
