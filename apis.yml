@@ -1,7 +1,10 @@
 aid: gotowebinar
 url: https://raw.githubusercontent.com/api-evangelist/gotowebinar/main/apis.yml
 name: GoToWebinar
-description: GoToWebinar is GoTo's (formerly LogMeIn) webinar and virtual event platform. The GoToWebinar REST API lets developers create and manage webinars, organizers, registrants, attendees, sessions, panelists, co-organizers, polls, surveys, and recordings, and subscribe to real-time webhook events for registrant and webinar lifecycle activity.
+description: >-
+  GoToWebinar is GoTo's (formerly LogMeIn) webinar and virtual event platform. The GoToWebinar REST API lets developers
+  create and manage webinars, organizers, registrants, attendees, sessions, panelists, co-organizers, polls, surveys,
+  and recordings, and subscribe to real-time webhook events for registrant and webinar lifecycle activity.
 image: https://www.goto.com/-/media/images/logos/goto-logo.svg
 tags:
   - Attendees
@@ -25,7 +28,10 @@ position: Consumer
 apis:
   - aid: gotowebinar:gotowebinar-rest-api
     name: GoToWebinar REST API
-    description: The GoToWebinar V2 REST API exposes webinars, organizers, registrants, attendees, sessions, co-organizers, panelists, polls, questions, and surveys for the GoToWebinar virtual event platform, with OAuth 2.0 authentication via the GoTo authentication service.
+    description: >-
+      The GoToWebinar V2 REST API exposes webinars, organizers, registrants, attendees, sessions, co-organizers,
+      panelists, polls, questions, and surveys for the GoToWebinar virtual event platform, with OAuth 2.0 authentication
+      via the GoTo authentication service.
     humanURL: https://developer.goto.com/GoToWebinarV2
     baseURL: https://api.getgo.com/G2W/rest/v2
     tags:
@@ -53,25 +59,12 @@ apis:
         url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
       - type: SpectralRules
         url: rules/gotowebinar-rules.yml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-webinars.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-registrants.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-attendees.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-sessions.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-co-organizers.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-panelists.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-polls-surveys.yaml
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-recordings.yaml
   - aid: gotowebinar:gotowebinar-webhooks-api
     name: GoToWebinar Webhooks API
-    description: The GoToWebinar Webhooks API lets developers create and manage webhook subscriptions and receive real-time HTTP callbacks for registrant.added, registrant.joined, webinar.created, and webinar.changed events, secured via the X-Webhook-Signature header.
+    description: >-
+      The GoToWebinar Webhooks API lets developers create and manage webhook subscriptions and receive real-time HTTP
+      callbacks for registrant.added, registrant.joined, webinar.created, and webinar.changed events, secured via the
+      X-Webhook-Signature header.
     humanURL: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
     baseURL: https://api.getgo.com/G2W/rest/v2
     tags:
@@ -89,8 +82,6 @@ apis:
         url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
       - type: APIReference
         url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
-      - type: NaftikoCapability
-        url: capabilities/gotowebinar-webhooks.yaml
 common:
   - type: Portal
     url: https://developer.goto.com/
@@ -153,17 +144,27 @@ common:
   - type: UseCases
     data:
       - name: Lead Generation Webinars
-        description: Marketing teams capture qualified leads via registration forms and sync attendee data into their CRM through the GoToWebinar REST API.
+        description: >-
+          Marketing teams capture qualified leads via registration forms and sync attendee data into their CRM through
+          the GoToWebinar REST API.
       - name: Customer Education
-        description: Customer success teams deliver scheduled product training webinars and pull attendance and survey data for engagement reporting.
+        description: >-
+          Customer success teams deliver scheduled product training webinars and pull attendance and survey data for
+          engagement reporting.
       - name: Virtual Events at Scale
-        description: Event teams host multi-session webinars with co-organizers, panelists, and breakout rooms for up to 3,000 attendees per session.
+        description: >-
+          Event teams host multi-session webinars with co-organizers, panelists, and breakout rooms for up to 3,000
+          attendees per session.
       - name: Sales Enablement
-        description: Sales orgs run product demos as webinars and push registrant.joined webhook events into CRM workflows in real time.
+        description: >-
+          Sales orgs run product demos as webinars and push registrant.joined webhook events into CRM workflows in real
+          time.
       - name: Internal Town Halls
         description: HR and executive teams broadcast company-wide updates and use polls and surveys to capture employee feedback.
       - name: Continuing Education
-        description: Professional associations deliver accredited training webinars and export attendance data for CEU credit reporting.
+        description: >-
+          Professional associations deliver accredited training webinars and export attendance data for CEU credit
+          reporting.
   - type: Integrations
     data:
       - name: Salesforce
