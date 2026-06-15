@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar Webhooks Management API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create A Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgo.com/G2W/rest/v2/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create A Webhook"
+        },
+        {
+          "info": {
+            "name": "Activate Or Update Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getgo.com/G2W/rest/v2/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate Or Update Webhooks"
+        },
+        {
+          "info": {
+            "name": "Get Webhook Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/webhooks/:webhookKey",
+            "params": [
+              {
+                "name": "webhookKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Webhook Status"
+        },
+        {
+          "info": {
+            "name": "Create A Webhook Secret Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgo.com/G2W/rest/v2/webhooks/secretkey"
+          },
+          "docs": "Create A Webhook Secret Key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List User Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/userSubscriptions"
+          },
+          "docs": "List User Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Create A User Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgo.com/G2W/rest/v2/userSubscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create A User Subscription"
+        },
+        {
+          "info": {
+            "name": "Get A User Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/userSubscriptions/:subscriptionKey",
+            "params": [
+              {
+                "name": "subscriptionKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get A User Subscription"
+        },
+        {
+          "info": {
+            "name": "Update A User Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getgo.com/G2W/rest/v2/userSubscriptions/:subscriptionKey",
+            "params": [
+              {
+                "name": "subscriptionKey",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update A User Subscription"
+        },
+        {
+          "info": {
+            "name": "Delete A User Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgo.com/G2W/rest/v2/userSubscriptions/:subscriptionKey",
+            "params": [
+              {
+                "name": "subscriptionKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete A User Subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
