@@ -99,7 +99,7 @@ common:
     url: https://status.goto.com/
   - type: Support
     url: https://developer.goto.com/support
-  - type: SignUp
+  - type: Signup
     url: https://developer.goto.com/
   - type: Pricing
     url: https://www.goto.com/pricing/webinar
