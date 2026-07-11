@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gotowebinar-rest-openapi.yml, openapi/gotowebinar-webhooks-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+    tokenUrl: https://authentication.logmeininc.com/oauth/token
+    scopes: 2
+  description: OAuth 2.0 via the GoTo authentication service.
+  sources:
+  - openapi/gotowebinar-rest-openapi.yml
+  - openapi/gotowebinar-webhooks-openapi.yml
