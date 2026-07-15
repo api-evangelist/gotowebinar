@@ -83,6 +83,8 @@ apis:
       - type: APIReference
         url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
 common:
+  - type: AgenticAccess
+    url: agentic-access/gotowebinar-agentic-access.yml
   - type: DomainSecurity
     url: security/gotowebinar-domain-security.yml
   - type: Authentication
