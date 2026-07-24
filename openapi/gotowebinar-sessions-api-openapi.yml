@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees Sessions API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: Sessions
+  description: Inspect past and live webinar sessions.
+paths:
+  /organizers/{organizerKey}/webinars/{webinarKey}/sessions:
+    get:
+      tags:
+      - Sessions
+      summary: List Sessions For A Webinar
+      operationId: listSessions
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      responses:
+        '200':
+          description: Sessions for the webinar.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+components:
+  parameters:
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+  schemas:
+    Session:
+      type: object
+      properties:
+        sessionKey:
+          type: string
+        webinarKey:
+          type: string
+        webinarID:
+          type: string
+        subject:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        registrantsAttended:
+          type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).

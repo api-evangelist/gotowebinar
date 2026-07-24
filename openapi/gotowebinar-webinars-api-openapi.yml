@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees Webinars API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: Webinars
+  description: Create, read, update, and delete webinars.
+paths:
+  /organizers/{organizerKey}/webinars:
+    get:
+      tags:
+      - Webinars
+      summary: Get Webinars For An Organizer
+      operationId: getWebinars
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - name: fromTime
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: toTime
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of webinars in the time range.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webinar'
+    post:
+      tags:
+      - Webinars
+      summary: Create A Webinar
+      operationId: createWebinar
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebinarCreate'
+      responses:
+        '201':
+          description: Webinar created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebinarKeyResponse'
+  /organizers/{organizerKey}/webinars/{webinarKey}:
+    get:
+      tags:
+      - Webinars
+      summary: Get A Single Webinar
+      operationId: getWebinar
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      responses:
+        '200':
+          description: Webinar details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webinar'
+    put:
+      tags:
+      - Webinars
+      summary: Update A Webinar
+      operationId: updateWebinar
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebinarUpdate'
+      responses:
+        '204':
+          description: Webinar updated.
+    delete:
+      tags:
+      - Webinars
+      summary: Cancel A Webinar
+      operationId: cancelWebinar
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - name: deleteAll
+        in: query
+        description: When true, deletes all past sessions of a recurring webinar (added 2025-03-25).
+        schema:
+          type: boolean
+      responses:
+        '204':
+          description: Webinar canceled.
+components:
+  schemas:
+    WebinarKeyResponse:
+      type: object
+      properties:
+        webinarKey:
+          type: string
+    Webinar:
+      type: object
+      properties:
+        webinarKey:
+          type: string
+        subject:
+          type: string
+        description:
+          type: string
+        organizerKey:
+          type: string
+        times:
+          type: array
+          items:
+            type: object
+            properties:
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
+        timeZone:
+          type: string
+        registrationUrl:
+          type: string
+          format: uri
+        experienceType:
+          type: string
+          enum:
+          - CLASSIC
+          - BROADCAST
+          - SIMULIVE
+        recurrenceType:
+          type: string
+          enum:
+          - single_session
+          - sequence
+          - series
+        status:
+          type: string
+          enum:
+          - NEW
+          - UPDATED
+          - DELETED
+    WebinarUpdate:
+      type: object
+      properties:
+        subject:
+          type: string
+        description:
+          type: string
+        times:
+          type: array
+          items:
+            type: object
+            properties:
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
+        timeZone:
+          type: string
+    WebinarCreate:
+      type: object
+      required:
+      - subject
+      - times
+      - timeZone
+      properties:
+        subject:
+          type: string
+        description:
+          type: string
+        times:
+          type: array
+          items:
+            type: object
+            properties:
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
+        timeZone:
+          type: string
+        type:
+          type: string
+          enum:
+          - single_session
+          - sequence
+          - series
+        experienceType:
+          type: string
+          enum:
+          - CLASSIC
+          - BROADCAST
+          - SIMULIVE
+        isPasswordProtected:
+          type: boolean
+  parameters:
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).

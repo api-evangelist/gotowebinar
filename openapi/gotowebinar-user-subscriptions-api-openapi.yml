@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees User Subscriptions API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: User Subscriptions
+  description: Manage per-user subscriptions to a webhook.
+paths:
+  /userSubscriptions:
+    get:
+      tags:
+      - User Subscriptions
+      summary: List User Subscriptions
+      operationId: listUserSubscriptions
+      responses:
+        '200':
+          description: User subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserSubscription'
+    post:
+      tags:
+      - User Subscriptions
+      summary: Create A User Subscription
+      operationId: createUserSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSubscriptionCreate'
+      responses:
+        '201':
+          description: User subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSubscription'
+  /userSubscriptions/{subscriptionKey}:
+    get:
+      tags:
+      - User Subscriptions
+      summary: Get A User Subscription
+      operationId: getUserSubscription
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionKey'
+      responses:
+        '200':
+          description: User subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSubscription'
+    put:
+      tags:
+      - User Subscriptions
+      summary: Update A User Subscription
+      operationId: updateUserSubscription
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSubscriptionUpdate'
+      responses:
+        '204':
+          description: Updated.
+    delete:
+      tags:
+      - User Subscriptions
+      summary: Delete A User Subscription
+      operationId: deleteUserSubscription
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionKey'
+      responses:
+        '204':
+          description: Deleted.
+components:
+  parameters:
+    SubscriptionKey:
+      name: subscriptionKey
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    UserSubscriptionUpdate:
+      type: object
+      properties:
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    UserSubscription:
+      type: object
+      properties:
+        subscriptionKey:
+          type: string
+        userKey:
+          type: string
+        webhookKey:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    UserSubscriptionCreate:
+      type: object
+      required:
+      - webhookKey
+      - callbackUrl
+      properties:
+        webhookKey:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          default: ACTIVE
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).

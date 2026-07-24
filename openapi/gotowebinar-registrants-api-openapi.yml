@@ -1,0 +1,219 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees Registrants API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: Registrants
+  description: Manage registrants for upcoming webinars.
+paths:
+  /organizers/{organizerKey}/webinars/{webinarKey}/registrants:
+    get:
+      tags:
+      - Registrants
+      summary: List Registrants
+      operationId: listRegistrants
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      responses:
+        '200':
+          description: Registrants.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Registrant'
+    post:
+      tags:
+      - Registrants
+      summary: Create A Registrant
+      operationId: createRegistrant
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - name: resendConfirmation
+        in: query
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrantCreate'
+      responses:
+        '201':
+          description: Registrant created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrantCreated'
+  /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}:
+    get:
+      tags:
+      - Registrants
+      summary: Get A Single Registrant
+      operationId: getRegistrant
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/RegistrantKey'
+      responses:
+        '200':
+          description: Registrant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Registrant'
+    delete:
+      tags:
+      - Registrants
+      summary: Delete A Registrant
+      operationId: deleteRegistrant
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/RegistrantKey'
+      responses:
+        '204':
+          description: Registrant deleted.
+components:
+  schemas:
+    RegistrantCreated:
+      type: object
+      properties:
+        registrantKey:
+          type: string
+        joinUrl:
+          type: string
+          format: uri
+        status:
+          type: string
+    RegistrantCreate:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        organization:
+          type: string
+        jobTitle:
+          type: string
+        industry:
+          type: string
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              questionKey:
+                type: string
+              responseText:
+                type: string
+    Registrant:
+      type: object
+      properties:
+        registrantKey:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        organization:
+          type: string
+        jobTitle:
+          type: string
+        registrationDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - APPROVED
+          - DENIED
+          - WAITING
+        joinUrl:
+          type: string
+          format: uri
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              question:
+                type: string
+              answer:
+                type: string
+  parameters:
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).

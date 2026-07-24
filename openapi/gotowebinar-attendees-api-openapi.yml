@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: Attendees
+  description: Read attendees for past webinar sessions.
+paths:
+  /organizers/{organizerKey}/webinars/{webinarKey}/attendees:
+    get:
+      tags:
+      - Attendees
+      summary: List All Attendees For A Webinar
+      operationId: listAllAttendees
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      responses:
+        '200':
+          description: Attendees across all sessions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Attendee'
+  /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees:
+    get:
+      tags:
+      - Attendees
+      summary: List Session Attendees
+      operationId: listSessionAttendees
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/SessionKey'
+      responses:
+        '200':
+          description: Attendees for the session.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Attendee'
+  /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}:
+    get:
+      tags:
+      - Attendees
+      summary: Get A Session Attendee
+      operationId: getSessionAttendee
+      parameters:
+      - $ref: '#/components/parameters/OrganizerKey'
+      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/SessionKey'
+      - $ref: '#/components/parameters/RegistrantKey'
+      responses:
+        '200':
+          description: Attendee.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attendee'
+components:
+  parameters:
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
+    SessionKey:
+      name: sessionKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a past session.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+  schemas:
+    Attendee:
+      type: object
+      properties:
+        registrantKey:
+          type: string
+        sessionKey:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        attendanceTimeInSeconds:
+          type: integer
+        joinTime:
+          type: string
+          format: date-time
+        leaveTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).

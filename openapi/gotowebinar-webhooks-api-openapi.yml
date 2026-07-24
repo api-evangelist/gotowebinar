@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: GoToWebinar REST Attendees Webhooks API
+  version: '2.0'
+  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+
+    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+
+    panelists, polls, questions, surveys, and recordings.
+
+
+    Source documentation: https://developer.goto.com/GoToWebinarV2
+
+    '
+  contact:
+    name: GoTo Developer Support
+    email: developer-support@goto.com
+    url: https://developer.goto.com/support
+  license:
+    name: GoTo Developer Terms
+    url: https://www.goto.com/company/legal
+servers:
+- url: https://api.getgo.com/G2W/rest/v2
+  description: GoToWebinar V2 production base URL
+security:
+- oauth2: []
+tags:
+- name: Webhooks
+  description: Manage webhook definitions and secret keys.
+paths:
+  /webhooks:
+    post:
+      tags:
+      - Webhooks
+      summary: Create A Webhook
+      operationId: createWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreate'
+      responses:
+        '201':
+          description: Webhook created in INACTIVE state.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    put:
+      tags:
+      - Webhooks
+      summary: Activate Or Update Webhooks
+      operationId: updateWebhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WebhookUpdate'
+      responses:
+        '204':
+          description: Webhooks updated.
+  /webhooks/{webhookKey}:
+    get:
+      tags:
+      - Webhooks
+      summary: Get Webhook Status
+      operationId: getWebhook
+      parameters:
+      - $ref: '#/components/parameters/WebhookKey'
+      responses:
+        '200':
+          description: Webhook record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/secretkey:
+    post:
+      tags:
+      - Webhooks
+      summary: Create A Webhook Secret Key
+      operationId: createWebhookSecretKey
+      responses:
+        '201':
+          description: Secret key created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  secretKey:
+                    type: string
+components:
+  schemas:
+    WebhookCreate:
+      type: object
+      required:
+      - product
+      - eventName
+      - eventVersion
+      - callbackUrl
+      properties:
+        product:
+          type: string
+          enum:
+          - g2w
+        eventName:
+          type: string
+          enum:
+          - registrant.added
+          - registrant.joined
+          - webinar.created
+          - webinar.changed
+        eventVersion:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+        secretKey:
+          type: string
+    WebhookUpdate:
+      type: object
+      required:
+      - webhookKey
+      - webhookState
+      properties:
+        webhookKey:
+          type: string
+        webhookState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    Webhook:
+      type: object
+      properties:
+        webhookKey:
+          type: string
+        product:
+          type: string
+          enum:
+          - g2w
+        eventName:
+          type: string
+          enum:
+          - registrant.added
+          - registrant.joined
+          - webinar.created
+          - webinar.changed
+        eventVersion:
+          type: string
+          example: 1.0.0
+        callbackUrl:
+          type: string
+          format: uri
+        webhookState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        createTime:
+          type: string
+          format: date-time
+        secretKey:
+          type: string
+  parameters:
+    WebhookKey:
+      name: webhookKey
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 via the GoTo authentication service.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+          scopes:
+            collab: Collaboration / GoToWebinar scope.
+            identity:scim.me: Read the authenticated user's identity (SCIM /me).
