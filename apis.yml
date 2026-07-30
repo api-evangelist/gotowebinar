@@ -5,6 +5,19 @@ description: >-
   GoToWebinar is GoTo's (formerly LogMeIn) webinar and virtual event platform. The GoToWebinar REST API lets developers
   create and manage webinars, organizers, registrants, attendees, sessions, panelists, co-organizers, polls, surveys,
   and recordings, and subscribe to real-time webhook events for registrant and webinar lifecycle activity.
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.goto.com/-/media/images/logos/goto-logo.svg
 tags:
   - Attendees
@@ -26,62 +39,318 @@ type: Index
 access: 3rd-Party
 position: Consumer
 apis:
-  - aid: gotowebinar:gotowebinar-rest-api
-    name: GoToWebinar REST API
-    description: >-
-      The GoToWebinar V2 REST API exposes webinars, organizers, registrants, attendees, sessions, co-organizers,
-      panelists, polls, questions, and surveys for the GoToWebinar virtual event platform, with OAuth 2.0 authentication
-      via the GoTo authentication service.
-    humanURL: https://developer.goto.com/GoToWebinarV2
-    baseURL: https://api.getgo.com/G2W/rest/v2
-    tags:
-      - Attendees
-      - Co-Organizers
-      - Organizers
-      - Panelists
-      - Polls
-      - Questions
-      - Recordings
-      - Registrants
-      - Sessions
-      - Surveys
-      - Webinars
-    properties:
-      - type: OpenAPI
-        url: openapi/gotowebinar-rest-openapi.yml
-      - type: Documentation
-        url: https://developer.goto.com/GoToWebinarV2
-      - type: APIReference
-        url: https://developer.goto.com/GoToWebinarV2
-      - type: GettingStarted
-        url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
-      - type: Authentication
-        url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
-      - type: SpectralRules
-        url: rules/gotowebinar-rules.yml
-  - aid: gotowebinar:gotowebinar-webhooks-api
-    name: GoToWebinar Webhooks API
-    description: >-
-      The GoToWebinar Webhooks API lets developers create and manage webhook subscriptions and receive real-time HTTP
-      callbacks for registrant.added, registrant.joined, webinar.created, and webinar.changed events, secured via the
-      X-Webhook-Signature header.
-    humanURL: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
-    baseURL: https://api.getgo.com/G2W/rest/v2
-    tags:
-      - Callbacks
-      - Events
-      - Real-Time
-      - Subscriptions
-      - Webhooks
-    properties:
-      - type: OpenAPI
-        url: openapi/gotowebinar-webhooks-openapi.yml
-      - type: AsyncAPI
-        url: asyncapi/gotowebinar-webhooks-asyncapi.yml
-      - type: Documentation
-        url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
-      - type: APIReference
-        url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-attendees-api
+  name: GoToWebinar Attendees API
+  description: Read attendees for past webinar sessions.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Attendees
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-attendees-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-co-organizers-api
+  name: GoToWebinar Co-Organizers API
+  description: Manage co-organizers on a webinar.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Co-Organizers
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-co-organizers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-panelists-api
+  name: GoToWebinar Panelists API
+  description: Manage panelists on a webinar.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Panelists
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-panelists-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-polls-api
+  name: GoToWebinar Polls API
+  description: Retrieve poll results from past sessions.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Polls
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-polls-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-questions-api
+  name: GoToWebinar Questions API
+  description: Retrieve Q&A from past sessions.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Questions
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-questions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-recordings-api
+  name: GoToWebinar Recordings API
+  description: Retrieve webinar recording assets.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Recordings
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-recordings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-registrants-api
+  name: GoToWebinar Registrants API
+  description: Manage registrants for upcoming webinars.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Registrants
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-registrants-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-sessions-api
+  name: GoToWebinar Sessions API
+  description: Inspect past and live webinar sessions.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-surveys-api
+  name: GoToWebinar Surveys API
+  description: Retrieve survey results from past sessions.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Surveys
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-surveys-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-user-subscriptions-api
+  name: GoToWebinar User Subscriptions API
+  description: Manage per-user subscriptions to a webhook.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - User Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-user-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-webhooks-api
+  name: GoToWebinar Webhooks API
+  description: Manage webhook definitions and secret keys.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-webinars-api
+  name: GoToWebinar Webinars API
+  description: Create, read, update, and delete webinars.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - Webinars
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-webinars-api-openapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GettingStarted
+    url: https://developer.goto.com/guides/Get%20Started/00_Quickstart_GettingStarted/
+  - type: Authentication
+    url: https://developer.goto.com/guides/Authentication/New_Token_Retrieval_Migration_Guide/
+  - type: SpectralRules
+    url: rules/gotowebinar-rules.yml
+  - type: AsyncAPI
+    url: asyncapi/gotowebinar-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
+  - type: APIReference
+    url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
 common:
   - type: AgenticAccess
     url: agentic-access/gotowebinar-agentic-access.yml
