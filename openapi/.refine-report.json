@@ -1,0 +1,36 @@
+{
+  "provider": "gotowebinar",
+  "sources": [
+    "gotowebinar-attendees-api-openapi.yml",
+    "gotowebinar-co-organizers-api-openapi.yml",
+    "gotowebinar-panelists-api-openapi.yml",
+    "gotowebinar-polls-api-openapi.yml",
+    "gotowebinar-questions-api-openapi.yml",
+    "gotowebinar-recordings-api-openapi.yml",
+    "gotowebinar-registrants-api-openapi.yml",
+    "gotowebinar-sessions-api-openapi.yml",
+    "gotowebinar-surveys-api-openapi.yml",
+    "gotowebinar-user-subscriptions-api-openapi.yml",
+    "gotowebinar-webhooks-api-openapi.yml",
+    "gotowebinar-webinars-api-openapi.yml"
+  ],
+  "outputs": [
+    "gotowebinar-attendees-api-openapi.yml",
+    "gotowebinar-co-organizers-api-openapi.yml",
+    "gotowebinar-panelists-api-openapi.yml",
+    "gotowebinar-polls-api-openapi.yml",
+    "gotowebinar-questions-api-openapi.yml",
+    "gotowebinar-recordings-api-openapi.yml",
+    "gotowebinar-registrants-api-openapi.yml",
+    "gotowebinar-sessions-api-openapi.yml",
+    "gotowebinar-surveys-api-openapi.yml",
+    "gotowebinar-user-subscriptions-api-openapi.yml",
+    "gotowebinar-webhooks-api-openapi.yml",
+    "gotowebinar-webinars-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
