@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "c1302a9a-c335-4a62-b7d6-1c67229fa611",
+      "name": "User Subscriptions",
+      "description": {
+        "content": "Manage per-user subscriptions to a webhook.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8de13ef7-c7c6-43e9-ae25-08191b2a92e7",
+          "name": "List User Subscriptions",
+          "request": {
+            "name": "List User Subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "userSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7fe7825-f129-4e94-b463-da920ab6cd22",
+              "name": "User subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"subscriptionKey\": \"string\",\n    \"userKey\": \"string\",\n    \"webhookKey\": \"string\",\n    \"callbackUrl\": \"http://bPVHzrWlCPO.idpxZWDwu+TSkDIZm,mfqBYTmxY.MM0fPx3ZHEKyNThTbG4,WeZ\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  },\n  {\n    \"subscriptionKey\": \"string\",\n    \"userKey\": \"string\",\n    \"webhookKey\": \"string\",\n    \"callbackUrl\": \"https://ut.sjmCKanO3+gHLDokTVRC\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68c82d31-c250-453e-b457-58c763917231",
+          "name": "Create A User Subscription",
+          "request": {
+            "name": "Create A User Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "userSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhookKey\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"userSubscriptionState\": \"ACTIVE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89292c98-47be-4d22-8542-34e067c6486b",
+              "name": "User subscription created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookKey\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"userSubscriptionState\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptionKey\": \"string\",\n  \"userKey\": \"string\",\n  \"webhookKey\": \"string\",\n  \"callbackUrl\": \"https://cqklvp.mcreVSAGPQN,8UY3Ytpca\",\n  \"userSubscriptionState\": \"INACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae1d0620-0f27-4ccd-9337-442a9d7697e3",
+          "name": "Get A User Subscription",
+          "request": {
+            "name": "Get A User Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "userSubscriptions",
+                ":subscriptionKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7124de49-f24d-416f-81e9-2dd0d2a67d57",
+              "name": "User subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSubscriptions",
+                    ":subscriptionKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptionKey\": \"string\",\n  \"userKey\": \"string\",\n  \"webhookKey\": \"string\",\n  \"callbackUrl\": \"https://cqklvp.mcreVSAGPQN,8UY3Ytpca\",\n  \"userSubscriptionState\": \"INACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f67ae9b-82bb-4dee-bb70-a9d683dffd53",
+          "name": "Update A User Subscription",
+          "request": {
+            "name": "Update A User Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "userSubscriptions",
+                ":subscriptionKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callbackUrl\": \"<uri>\",\n  \"userSubscriptionState\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9dc35d0-e372-428e-a036-9a4d6dc9f40a",
+              "name": "Updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSubscriptions",
+                    ":subscriptionKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callbackUrl\": \"<uri>\",\n  \"userSubscriptionState\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25bc96e8-9c4e-4111-abc1-2ad1039acd0a",
+          "name": "Delete A User Subscription",
+          "request": {
+            "name": "Delete A User Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "userSubscriptions",
+                ":subscriptionKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd7de8a8-5167-4be5-9c2b-f99ded822451",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "userSubscriptions",
+                    ":subscriptionKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgo.com/G2W/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "collab identity:scim.me"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://authentication.logmeininc.com/oauth/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://authentication.logmeininc.com/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://authentication.logmeininc.com/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69b8e317-72ce-4d74-ad69-495def5e84a2",
+    "name": "GoToWebinar REST Attendees User Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
+      "type": "text/plain"
+    }
+  }
+}

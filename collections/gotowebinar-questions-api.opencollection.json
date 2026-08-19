@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar REST Attendees Questions API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Questions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Questions And Answers For A Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/questions",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "sessionKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a past session."
+              }
+            ]
+          },
+          "docs": "Get Questions And Answers For A Session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

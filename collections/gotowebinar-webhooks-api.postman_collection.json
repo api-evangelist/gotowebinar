@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "ef4b78ae-00de-4d42-87ec-93ea1e12cd5f",
+      "name": "Webhooks",
+      "description": {
+        "content": "Manage webhook definitions and secret keys.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb838f32-17b2-46b4-8bb5-d68d5cd540f0",
+          "name": "Create A Webhook",
+          "request": {
+            "name": "Create A Webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"secretKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9d50945-86b6-4ca7-b381-42bb9e3c9488",
+              "name": "Webhook created in INACTIVE state.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"secretKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookKey\": \"string\",\n  \"product\": \"g2w\",\n  \"eventName\": \"registrant.added\",\n  \"eventVersion\": \"1.0.0\",\n  \"callbackUrl\": \"http://ImaUDbysGcwrUMJTkopXTcwBgy.pavZIBX-GaSNSQPhSN2\",\n  \"webhookState\": \"ACTIVE\",\n  \"createTime\": \"2001-03-02T03:34:42.396Z\",\n  \"secretKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0b94ae8-e9f5-471c-871b-c0c85e4ea183",
+          "name": "Activate Or Update Webhooks",
+          "request": {
+            "name": "Activate Or Update Webhooks",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88fa11ee-65f3-4b88-8b2b-c41dbc4b63b6",
+              "name": "Webhooks updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad4208a3-ae91-42fa-8191-74ea21367b1e",
+          "name": "Get Webhook Status",
+          "request": {
+            "name": "Get Webhook Status",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de29ce5b-fa35-4b8b-932d-ef1925b6dd12",
+              "name": "Webhook record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookKey\": \"string\",\n  \"product\": \"g2w\",\n  \"eventName\": \"registrant.added\",\n  \"eventVersion\": \"1.0.0\",\n  \"callbackUrl\": \"http://ImaUDbysGcwrUMJTkopXTcwBgy.pavZIBX-GaSNSQPhSN2\",\n  \"webhookState\": \"ACTIVE\",\n  \"createTime\": \"2001-03-02T03:34:42.396Z\",\n  \"secretKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f644262b-c2f0-4113-9e0e-144b9b343286",
+          "name": "Create A Webhook Secret Key",
+          "request": {
+            "name": "Create A Webhook Secret Key",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "secretkey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c5e6092-ac0a-42af-bd67-e76a6d75a02c",
+              "name": "Secret key created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "secretkey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"secretKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.getgo.com/G2W/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "collab identity:scim.me"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://authentication.logmeininc.com/oauth/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://authentication.logmeininc.com/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://authentication.logmeininc.com/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6143f391-d662-45a0-9771-64472b5460dc",
+    "name": "GoToWebinar REST Attendees Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
+      "type": "text/plain"
+    }
+  }
+}

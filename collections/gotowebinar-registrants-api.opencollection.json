@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar REST Attendees Registrants API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registrants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registrants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/registrants",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              }
+            ]
+          },
+          "docs": "List Registrants"
+        },
+        {
+          "info": {
+            "name": "Create A Registrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/registrants",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "resendConfirmation",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create A Registrant"
+        },
+        {
+          "info": {
+            "name": "Get A Single Registrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "registrantKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a registrant."
+              }
+            ]
+          },
+          "docs": "Get A Single Registrant"
+        },
+        {
+          "info": {
+            "name": "Delete A Registrant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "registrantKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a registrant."
+              }
+            ]
+          },
+          "docs": "Delete A Registrant"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

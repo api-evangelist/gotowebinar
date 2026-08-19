@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar REST Attendees Recordings API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recordings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Recording Assets For An Organizer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/recordingassets",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "fromTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toTime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Recording Assets For An Organizer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

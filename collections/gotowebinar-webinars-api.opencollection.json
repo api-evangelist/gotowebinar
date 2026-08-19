@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar REST Attendees Webinars API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webinars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Webinars For An Organizer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "fromTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "toTime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Webinars For An Organizer"
+        },
+        {
+          "info": {
+            "name": "Create A Webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create A Webinar"
+        },
+        {
+          "info": {
+            "name": "Get A Single Webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              }
+            ]
+          },
+          "docs": "Get A Single Webinar"
+        },
+        {
+          "info": {
+            "name": "Update A Webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update A Webinar"
+        },
+        {
+          "info": {
+            "name": "Cancel A Webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "deleteAll",
+                "value": "",
+                "type": "query",
+                "description": "When true, deletes all past sessions of a recurring webinar (added 2025-03-25)."
+              }
+            ]
+          },
+          "docs": "Cancel A Webinar"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

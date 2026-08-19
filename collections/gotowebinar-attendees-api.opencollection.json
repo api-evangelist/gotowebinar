@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GoToWebinar REST Attendees API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://authentication.logmeininc.com/oauth/authorize",
+      "accessTokenUrl": "https://authentication.logmeininc.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attendees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Attendees For A Webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/attendees",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              }
+            ]
+          },
+          "docs": "List All Attendees For A Webinar"
+        },
+        {
+          "info": {
+            "name": "List Session Attendees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "sessionKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a past session."
+              }
+            ]
+          },
+          "docs": "List Session Attendees"
+        },
+        {
+          "info": {
+            "name": "Get A Session Attendee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.getgo.com/G2W/rest/v2/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+            "params": [
+              {
+                "name": "organizerKey",
+                "value": "",
+                "type": "path",
+                "description": "Authenticated organizer's key."
+              },
+              {
+                "name": "webinarKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a webinar."
+              },
+              {
+                "name": "sessionKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a past session."
+              },
+              {
+                "name": "registrantKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique key identifying a registrant."
+              }
+            ]
+          },
+          "docs": "Get A Session Attendee"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
