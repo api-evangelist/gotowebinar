@@ -23,6 +23,19 @@ tags:
   - Attendees
   - Collaboration
   - Communications
+  - Event
+  - Meetings
+  - Registrants
+  - Sessions
+  - Surveys
+  - Video Conferencing
+  - Virtual Events
+  - Webhook
+  - Webinars
+tags_raw:
+  - Attendees
+  - Collaboration
+  - Communications
   - Events
   - Meetings
   - Registrants
@@ -305,6 +318,8 @@ apis:
   humanURL: https://developer.goto.com/GoToWebinarV2
   baseURL: https://api.getgo.com/G2W/rest/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
