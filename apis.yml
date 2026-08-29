@@ -5,6 +5,18 @@ description: >-
   GoToWebinar is GoTo's (formerly LogMeIn) webinar and virtual event platform. The GoToWebinar REST API lets developers
   create and manage webinars, organizers, registrants, attendees, sessions, panelists, co-organizers, polls, surveys,
   and recordings, and subscribe to real-time webhook events for registrant and webinar lifecycle activity.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
