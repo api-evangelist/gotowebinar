@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: GoToWebinar REST Attendees API
   version: '2.0'
@@ -85,13 +85,6 @@ paths:
                 $ref: '#/components/schemas/Attendee'
 components:
   parameters:
-    RegistrantKey:
-      name: registrantKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a registrant.
     SessionKey:
       name: sessionKey
       in: path
@@ -99,13 +92,6 @@ components:
       schema:
         type: string
       description: Unique key identifying a past session.
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
     OrganizerKey:
       name: organizerKey
       in: path
@@ -113,6 +99,20 @@ components:
       schema:
         type: string
       description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
   schemas:
     Attendee:
       type: object

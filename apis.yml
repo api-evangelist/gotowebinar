@@ -379,6 +379,60 @@ apis:
   - type: APIReference
     url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
 common:
+  - type: OpenAPI
+    url: openapi/_original/gotowebinar-openapi.yml
+  - type: Packages
+    url: packages/gotowebinar-packages.yml
+  - type: SDKs
+    url: packages/gotowebinar-packages.yml
+  - type: WellKnown
+    url: well-known/gotowebinar-well-known.yml
+  - type: X-MCPServerCandidate
+    url: mcp/gotowebinar-mcp.yml
+  - type: LLMsTxt
+    url: llms/gotowebinar-llms.txt
+  - type: Overlay
+    url: overlays/gotowebinar-openapi-overlay.yaml
+  - type: Conformance
+    url: conformance/gotowebinar-conformance.yml
+  - type: Compliance
+    url: https://www.goto.com/company/trust/compliance
+  - type: TrustCenter
+    url: security/gotowebinar-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/gotowebinar-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.goto.com/company/trust/security-measures
+  - type: ErrorCatalog
+    url: errors/gotowebinar-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/gotowebinar-lifecycle.yml
+  - type: Conventions
+    url: conventions/gotowebinar-conventions.yml
+  - type: DataModel
+    url: data-model/gotowebinar-data-model.yml
+  - type: Webhooks
+    url: asyncapi/gotowebinar-webhooks.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Postman
+    url: collections/gotowebinar-v2-provider.postman_collection.json
+  - type: Website
+    url: https://www.goto.com/webinar
+  - type: APIReference
+    url: https://developer.goto.com/GoToWebinarV2
+  - type: GitHubOrganization
+    url: https://github.com/GoTo-Developers
+  - type: Blog
+    url: https://www.goto.com/blog
+  - type: SignUp
+    url: https://developer.goto.com/signup
+  - type: TermsOfService
+    url: https://www.goto.com/company/legal/api-terms
+  - type: PrivacyPolicy
+    url: https://www.goto.com/company/legal/privacy
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/goto
   - type: AgenticAccess
     url: agentic-access/gotowebinar-agentic-access.yml
   - type: DomainSecurity

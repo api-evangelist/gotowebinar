@@ -31,6 +31,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "gotowebinar-attendees-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-co-organizers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-panelists-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-polls-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-questions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-recordings-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-registrants-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-sessions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-surveys-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-user-subscriptions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-webhooks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-webinars-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

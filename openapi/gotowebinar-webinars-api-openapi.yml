@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: GoToWebinar REST Attendees Webinars API
   version: '2.0'
@@ -128,11 +128,6 @@ paths:
           description: Webinar canceled.
 components:
   schemas:
-    WebinarKeyResponse:
-      type: object
-      properties:
-        webinarKey:
-          type: string
     Webinar:
       type: object
       properties:
@@ -236,14 +231,12 @@ components:
           - SIMULIVE
         isPasswordProtected:
           type: boolean
+    WebinarKeyResponse:
+      type: object
+      properties:
+        webinarKey:
+          type: string
   parameters:
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
     OrganizerKey:
       name: organizerKey
       in: path
@@ -251,6 +244,13 @@ components:
       schema:
         type: string
       description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
   securitySchemes:
     oauth2:
       type: oauth2

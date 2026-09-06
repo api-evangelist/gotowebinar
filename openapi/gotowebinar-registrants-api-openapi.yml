@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: GoToWebinar REST Attendees Registrants API
   version: '2.0'
@@ -103,16 +103,6 @@ paths:
           description: Registrant deleted.
 components:
   schemas:
-    RegistrantCreated:
-      type: object
-      properties:
-        registrantKey:
-          type: string
-        joinUrl:
-          type: string
-          format: uri
-        status:
-          type: string
     RegistrantCreate:
       type: object
       required:
@@ -183,21 +173,17 @@ components:
                 type: string
               answer:
                 type: string
+    RegistrantCreated:
+      type: object
+      properties:
+        registrantKey:
+          type: string
+        joinUrl:
+          type: string
+          format: uri
+        status:
+          type: string
   parameters:
-    RegistrantKey:
-      name: registrantKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a registrant.
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
     OrganizerKey:
       name: organizerKey
       in: path
@@ -205,6 +191,20 @@ components:
       schema:
         type: string
       description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
   securitySchemes:
     oauth2:
       type: oauth2
