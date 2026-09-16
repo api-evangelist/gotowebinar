@@ -378,6 +378,16 @@ apis:
     url: https://developer.goto.com/guides/GoToWebinar/07_HOW_WebHooksOverview/
   - type: APIReference
     url: https://developer.goto.com/guides/GoToWebinar/08_HOW_webhooks/
+- aid: gotowebinar:gotowebinar-recordingassets-api
+  name: GoToWebinar Recording Assets API
+  description: Operations available for assets of a given organizer.
+  humanURL: https://developer.goto.com/GoToWebinarV2
+  baseURL: https://api.getgo.com/G2W/rest/v2
+  tags:
+  - RecordingAssets
+  properties:
+  - type: OpenAPI
+    url: openapi/gotowebinar-recordingassets-api-openapi.yml
 common:
   - type: OpenAPI
     url: openapi/_original/gotowebinar-openapi.yml
