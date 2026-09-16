@@ -1,22 +1,29 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/gotowebinar-rest-openapi.yml, openapi/gotowebinar-webhooks-openapi.yml
+source: openapi/gotowebinar-attendees-api-openapi.yml, openapi/gotowebinar-co-organizers-api-openapi.yml,
+  openapi/gotowebinar-panelists-api-openapi.yml, openapi/gotowebinar-polls-api-openapi.yml,
+  openapi/gotowebinar-questions-api-openapi.yml, openapi/gotowebinar-recording-assets-api-openapi.yml,
+  openapi/gotowebinar-recordings-api-openapi.yml, openapi/gotowebinar-registrants-api-openapi.yml,
+  openapi/gotowebinar-sessions-api-openapi.yml, openapi/gotowebinar-surveys-api-openapi.yml,
+  openapi/gotowebinar-user-subscriptions-api-openapi.yml, openapi/gotowebinar-webhooks-api-openapi.yml,
+  openapi/gotowebinar-webinars-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 30
+  operations: 63
   by_action_class:
-    connected: 17
-    acting: 13
+    connected: 38
+    acting: 25
   by_consequence:
-    read: 17
-    write: 13
+    read: 38
+    write: 23
+    physical: 2
   human_in_the_loop_required: 0
 operations:
-- path: /organizers/{organizerKey}/webinars
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees
   method: get
-  operationId: getWebinars
+  operationId: getAttendees
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -24,25 +31,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizers/{organizerKey}/webinars
-  method: post
-  operationId: createWebinar
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /organizers/{organizerKey}/webinars/{webinarKey}
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}
   method: get
-  operationId: getWebinar
+  operationId: getAttendee
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -50,41 +41,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}
-  method: put
-  operationId: updateWebinar
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /organizers/{organizerKey}/webinars/{webinarKey}
-  method: delete
-  operationId: cancelWebinar
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/polls
   method: get
-  operationId: listRegistrants
+  operationId: getAttendeePollAnswers
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -92,25 +51,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
-  method: post
-  operationId: createRegistrant
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/questions
   method: get
-  operationId: getRegistrant
+  operationId: getAttendeeQuestions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -118,22 +61,16 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
-  method: delete
-  operationId: deleteRegistrant
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/surveys
+  method: get
+  operationId: getAttendeeSurveyAnswers
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /organizers/{organizerKey}/webinars/{webinarKey}/attendees
   method: get
   operationId: listAllAttendees
@@ -144,69 +81,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions
-  method: get
-  operationId: listSessions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees
-  method: get
-  operationId: listSessionAttendees
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}
-  method: get
-  operationId: getSessionAttendee
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/polls
-  method: get
-  operationId: getSessionPolls
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/questions
-  method: get
-  operationId: getSessionQuestions
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/surveys
-  method: get
-  operationId: getSessionSurveys
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /organizers/{organizerKey}/webinars/{webinarKey}/coorganizers
   method: get
-  operationId: listCoorganizers
+  operationId: getCoorganizers
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -230,9 +107,43 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/coorganizers/{coorganizerKey}
+  method: delete
+  operationId: deleteCoorganizer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/coorganizers/{coorganizerKey}/resendInvitation
+  method: post
+  operationId: resendCoorganizerInvitation
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /organizers/{organizerKey}/webinars/{webinarKey}/panelists
   method: get
-  operationId: listPanelists
+  operationId: getPanelists
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -256,6 +167,92 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}/resendInvitation
+  method: post
+  operationId: resendPanelistInvitation
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}
+  method: delete
+  operationId: deleteWebinarPanelist
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/polls
+  method: get
+  operationId: getSessionPolls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/questions
+  method: get
+  operationId: getSessionQuestions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recordingassets/search
+  method: post
+  operationId: searchAssets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /accounts/{accountKey}/recordingassets/search
+  method: post
+  operationId: searchAssetsForAdmin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /organizers/{organizerKey}/recordingassets
   method: get
   operationId: listRecordingAssets
@@ -266,9 +263,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /webhooks
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
   method: post
-  operationId: createWebhook
+  operationId: createRegistrant
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -282,25 +279,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /webhooks
-  method: put
-  operationId: updateWebhooks
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /webhooks/{webhookKey}
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants
   method: get
-  operationId: getWebhook
+  operationId: getAllRegistrantsForWebinar
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -308,9 +289,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /webhooks/secretkey
-  method: post
-  operationId: createWebhookSecretKey
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
+  method: delete
+  operationId: deleteRegistrant
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -324,6 +305,106 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}
+  method: get
+  operationId: getRegistrant
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/registrants/fields
+  method: get
+  operationId: getRegistrationFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/sessions
+  method: get
+  operationId: getOrganizerSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions
+  method: get
+  operationId: getAllSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}
+  method: get
+  operationId: getWebinarSession
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/performance
+  method: get
+  operationId: getPerformance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/polls
+  method: get
+  operationId: getPolls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/questions
+  method: get
+  operationId: getQuestions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/surveys
+  method: get
+  operationId: getSurveys
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/surveys
+  method: get
+  operationId: getSessionSurveys
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /userSubscriptions
   method: get
   operationId: listUserSubscriptions
@@ -392,3 +473,335 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /webhooks/secretkey
+  method: post
+  operationId: createSecretKey
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /webhooks
+  method: post
+  operationId: createWebhooks
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /webhooks
+  method: put
+  operationId: updateWebhooks
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /webhooks
+  method: get
+  operationId: getWebhooks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /webhooks
+  method: delete
+  operationId: deleteWebhooks
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /webhooks/{webhookKey}
+  method: get
+  operationId: getWebhook
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userSubscriptions
+  method: post
+  operationId: createUserSubscriptions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /userSubscriptions
+  method: put
+  operationId: updateUserSubscriptions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /userSubscriptions
+  method: get
+  operationId: getUserSubscriptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /userSubscriptions
+  method: delete
+  operationId: deleteUserSubscriptions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /userSubscriptions/{userSubscriptionsKey}
+  method: get
+  operationId: getUserSubscription
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /accounts/{accountKey}/webinars
+  method: get
+  operationId: getAllAccountWebinars
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars
+  method: get
+  operationId: getWebinars
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars
+  method: post
+  operationId: createWebinar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/insessionWebinars
+  method: get
+  operationId: getInSessionWebinars
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}
+  method: get
+  operationId: getWebinar
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}
+  method: put
+  operationId: updateWebinar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}
+  method: delete
+  operationId: cancelWebinar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/attendees
+  method: get
+  operationId: getAttendeesForAllWebinarSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/meetingtimes
+  method: get
+  operationId: getWebinarMeetingTimes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/audio
+  method: get
+  operationId: getAudioInformation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/audio
+  method: post
+  operationId: updateAudioInformation
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organizers/{organizerKey}/webinars/{webinarKey}/performance
+  method: get
+  operationId: getPerformanceForAllWebinarSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /webinars/{webinarKey}/startUrl
+  method: get
+  operationId: getStartUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /webinars/{webinarKey}/copy
+  method: put
+  operationId: copyWebinar
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /webinars/{webinarKey}/recordingAssets
+  method: get
+  operationId: getRecordingAssets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
