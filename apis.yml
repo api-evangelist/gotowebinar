@@ -200,6 +200,8 @@ apis:
   humanURL: https://developer.goto.com/GoToWebinarV2
   baseURL: https://api.getgo.com/G2W/rest/v2
   tags:
+  - Recording
+  tags_raw:
   - Recordings
   properties:
   - type: OpenAPI
