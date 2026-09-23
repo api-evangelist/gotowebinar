@@ -1,24 +1,23 @@
 openapi: 3.2.0
 info:
-  title: GoToWebinar REST Attendees User Subscriptions API
+  title: GoToWebinar Webhooks Management User Subscriptions API
   version: '2.0'
-  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
+  description: 'Webhook lifecycle and subscription management for GoToWebinar.
 
-    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
+    Webhooks deliver registrant.added, registrant.joined, webinar.created, and
 
-    panelists, polls, questions, surveys, and recordings.
+    webinar.changed events to a developer-supplied callback URL, signed via the
+
+    X-Webhook-Signature header.
 
 
-    Source documentation: https://developer.goto.com/GoToWebinarV2
+    Both `webhookState` and `userSubscriptionState` must be ACTIVE to enable
 
-    '
+    webhook events to be captured and sent.'
   contact:
     name: GoTo Developer Support
     email: developer-support@goto.com
     url: https://developer.goto.com/support
-  license:
-    name: GoTo Developer Terms
-    url: https://www.goto.com/company/legal
 servers:
 - url: https://api.getgo.com/G2W/rest/v2
   description: GoToWebinar V2 production base URL
@@ -159,12 +158,10 @@ components:
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 via the GoTo authentication service.
       flows:
         authorizationCode:
           authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
           tokenUrl: https://authentication.logmeininc.com/oauth/token
           refreshUrl: https://authentication.logmeininc.com/oauth/token
           scopes:
-            collab: Collaboration / GoToWebinar scope.
-            identity:scim.me: Read the authenticated user's identity (SCIM /me).
+            collab: GoToWebinar webhooks scope.

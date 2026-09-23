@@ -1,0 +1,26 @@
+# Front Door AI Index — gotowebinar — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: gotowebinar
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.goto.com
+  final_host: www.goto.com
+  ownership: own
+  owner: gotowebinar
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 6
+  host_score: 6
+  density: 16.17
+  words: 371
+  tiers:
+    agentic: 0
+    core: 6
+    model: 0
+  ambiguous: 1
+  top_terms:
+    AI: 6
+    smart: 1

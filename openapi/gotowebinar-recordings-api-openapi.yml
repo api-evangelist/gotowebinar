@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: GoToWebinar REST Attendees Recordings API
+  title: GoToWebinar REST Recordings API
   version: '2.0'
   description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
 
@@ -9,9 +9,7 @@ info:
     panelists, polls, questions, surveys, and recordings.
 
 
-    Source documentation: https://developer.goto.com/GoToWebinarV2
-
-    '
+    Source documentation: https://developer.goto.com/GoToWebinarV2'
   contact:
     name: GoTo Developer Support
     email: developer-support@goto.com

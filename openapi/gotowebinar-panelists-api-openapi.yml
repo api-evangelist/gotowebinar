@@ -1,78 +1,347 @@
 openapi: 3.2.0
 info:
-  title: GoToWebinar REST Attendees Panelists API
-  version: '2.0'
-  description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
-
-    Operations cover webinars, organizers, registrants, attendees, sessions, co-organizers,
-
-    panelists, polls, questions, surveys, and recordings.
-
-
-    Source documentation: https://developer.goto.com/GoToWebinarV2
-
-    '
-  contact:
-    name: GoTo Developer Support
-    email: developer-support@goto.com
-    url: https://developer.goto.com/support
-  license:
-    name: GoTo Developer Terms
-    url: https://www.goto.com/company/legal
+  title: Gotowebinar Panelists API
+  version: '1.0'
+  description: 'Operations tagged Panelists across 2 of this provider''s published API definitions: gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.getgo.com/G2W/rest/v2
-  description: GoToWebinar V2 production base URL
-security:
-- oauth2: []
 tags:
 - name: Panelists
-  description: Manage panelists on a webinar.
+  description: Operations available for panelists of a given webinar.
 paths:
   /organizers/{organizerKey}/webinars/{webinarKey}/panelists:
     get:
       tags:
       - Panelists
-      summary: List Panelists
-      operationId: listPanelists
+      operationId: getPanelists
+      summary: Get webinar panelists
+      description: Retrieves all the panelists for a specific webinar.
       parameters:
-      - $ref: '#/components/parameters/OrganizerKey'
-      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/organizerKey'
+      - $ref: '#/components/parameters/webinarKey'
       responses:
         '200':
-          description: Panelists for the webinar.
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Panelist'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-codeSamples:
+      - lang: Node + Axios
+        source: "var axios = require(\"axios\").default;\n\nvar options = {\n  method: 'GET',\n  url: 'https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists',\n  headers: {Authorization: 'Bearer REPLACE_BEARER_TOKEN'}\n};\n\naxios.request(options).then(function (response) {\n  console.log(response.data);\n}).catch(function (error) {\n  console.error(error);\n});"
+      - lang: Shell + Curl
+        source: "curl --request GET \\\n  --url https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists \\\n  --header 'Authorization: Bearer REPLACE_BEARER_TOKEN'"
+      - lang: Python + Python3
+        source: 'import http.client
+
+
+          conn = http.client.HTTPSConnection("api.getgo.com")
+
+
+          headers = { ''Authorization'': "Bearer REPLACE_BEARER_TOKEN" }
+
+
+          conn.request("GET", "/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists", headers=headers)
+
+
+          res = conn.getresponse()
+
+          data = res.read()
+
+
+          print(data.decode("utf-8"))'
+      - lang: Php + Http2
+        source: "<?php\n\n$client = new http\\Client;\n$request = new http\\Client\\Request;\n\n$request->setRequestUrl('https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists');\n$request->setRequestMethod('GET');\n$request->setHeaders([\n  'Authorization' => 'Bearer REPLACE_BEARER_TOKEN'\n]);\n\n$client->enqueue($request)->send();\n$response = $client->getResponse();\n\necho $response->getBody();"
+      - lang: Ruby + Native
+        source: 'require ''uri''
+
+          require ''net/http''
+
+          require ''openssl''
+
+
+          url = URI("https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists")
+
+
+          http = Net::HTTP.new(url.host, url.port)
+
+          http.use_ssl = true
+
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+          request = Net::HTTP::Get.new(url)
+
+          request["Authorization"] = ''Bearer REPLACE_BEARER_TOKEN''
+
+
+          response = http.request(request)
+
+          puts response.read_body'
+      security:
+      - OAuth2: []
     post:
       tags:
       - Panelists
-      summary: Create Panelists
       operationId: createPanelists
+      summary: Create Panelists
+      description: Create panelists for a specified webinar
       parameters:
-      - $ref: '#/components/parameters/OrganizerKey'
-      - $ref: '#/components/parameters/WebinarKey'
+      - $ref: '#/components/parameters/organizerKey'
+      - $ref: '#/components/parameters/webinarKey'
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/Panelist'
+                $ref: '#/components/schemas/PanelistReqCreate'
+        description: Array of panelists
+        required: true
       responses:
         '201':
-          description: Panelists added.
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreatedPanelist'
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-codeSamples:
+      - lang: Node + Axios
+        source: "var axios = require(\"axios\").default;\n\nvar options = {\n  method: 'POST',\n  url: 'https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists',\n  headers: {\n    Authorization: 'Bearer REPLACE_BEARER_TOKEN',\n  },\n  data: [{email: 'string', name: 'string'}]\n};\n\naxios.request(options).then(function (response) {\n  console.log(response.data);\n}).catch(function (error) {\n  console.error(error);\n});"
+      - lang: Shell + Curl
+        source: "curl --request POST \\\n  --url https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists \\\n  --header 'Authorization: Bearer REPLACE_BEARER_TOKEN' \\\n  --header 'content-type: application/json' \\\n  --data '[{\"email\":\"string\",\"name\":\"string\"}]'"
+      - lang: Python + Python3
+        source: "import http.client\n\nconn = http.client.HTTPSConnection(\"api.getgo.com\")\n\npayload = \"[{\\\"email\\\":\\\"string\\\",\\\"name\\\":\\\"string\\\"}]\"\n\nheaders = {\n    'Authorization': \"Bearer REPLACE_BEARER_TOKEN\",\n    'content-type': \"application/json\"\n    }\n\nconn.request(\"POST\", \"/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+      - lang: Php + Http2
+        source: "<?php\n\n$client = new http\\Client;\n$request = new http\\Client\\Request;\n\n$body = new http\\Message\\Body;\n$body->append('[{\"email\":\"string\",\"name\":\"string\"}]');\n\n$request->setRequestUrl('https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists');\n$request->setRequestMethod('POST');\n$request->setBody($body);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer REPLACE_BEARER_TOKEN',\n  'content-type' => 'application/json'\n]);\n\n$client->enqueue($request)->send();\n$response = $client->getResponse();\n\necho $response->getBody();"
+      - lang: Ruby + Native
+        source: 'require ''uri''
+
+          require ''net/http''
+
+          require ''openssl''
+
+
+          url = URI("https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists")
+
+
+          http = Net::HTTP.new(url.host, url.port)
+
+          http.use_ssl = true
+
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+          request = Net::HTTP::Post.new(url)
+
+          request["Authorization"] = ''Bearer REPLACE_BEARER_TOKEN''
+
+          request["content-type"] = ''application/json''
+
+          request.body = "[{\"email\":\"string\",\"name\":\"string\"}]"
+
+
+          response = http.request(request)
+
+          puts response.read_body'
+      security:
+      - OAuth2: []
+    servers:
+    - url: https://api.getgo.com/G2W/rest/v2
+  /organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}/resendInvitation:
+    post:
+      tags:
+      - Panelists
+      operationId: resendPanelistInvitation
+      summary: Resend panelist invitation
+      description: Resend the panelist invitation email.
+      parameters:
+      - $ref: '#/components/parameters/organizerKey'
+      - $ref: '#/components/parameters/webinarKey'
+      - $ref: '#/components/parameters/panelistKey'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-codeSamples:
+      - lang: Node + Axios
+        source: "var axios = require(\"axios\").default;\n\nvar options = {\n  method: 'POST',\n  url: 'https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D/resendInvitation',\n  headers: {Authorization: 'Bearer REPLACE_BEARER_TOKEN'}\n};\n\naxios.request(options).then(function (response) {\n  console.log(response.data);\n}).catch(function (error) {\n  console.error(error);\n});"
+      - lang: Shell + Curl
+        source: "curl --request POST \\\n  --url https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D/resendInvitation \\\n  --header 'Authorization: Bearer REPLACE_BEARER_TOKEN'"
+      - lang: Python + Python3
+        source: 'import http.client
+
+
+          conn = http.client.HTTPSConnection("api.getgo.com")
+
+
+          headers = { ''Authorization'': "Bearer REPLACE_BEARER_TOKEN" }
+
+
+          conn.request("POST", "/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D/resendInvitation", headers=headers)
+
+
+          res = conn.getresponse()
+
+          data = res.read()
+
+
+          print(data.decode("utf-8"))'
+      - lang: Php + Http2
+        source: "<?php\n\n$client = new http\\Client;\n$request = new http\\Client\\Request;\n\n$request->setRequestUrl('https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D/resendInvitation');\n$request->setRequestMethod('POST');\n$request->setHeaders([\n  'Authorization' => 'Bearer REPLACE_BEARER_TOKEN'\n]);\n\n$client->enqueue($request)->send();\n$response = $client->getResponse();\n\necho $response->getBody();"
+      - lang: Ruby + Native
+        source: 'require ''uri''
+
+          require ''net/http''
+
+          require ''openssl''
+
+
+          url = URI("https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D/resendInvitation")
+
+
+          http = Net::HTTP.new(url.host, url.port)
+
+          http.use_ssl = true
+
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+          request = Net::HTTP::Post.new(url)
+
+          request["Authorization"] = ''Bearer REPLACE_BEARER_TOKEN''
+
+
+          response = http.request(request)
+
+          puts response.read_body'
+      security:
+      - OAuth2: []
+    servers:
+    - url: https://api.getgo.com/G2W/rest/v2
+  /organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}:
+    delete:
+      tags:
+      - Panelists
+      operationId: deleteWebinarPanelist
+      summary: Delete webinar panelist
+      description: Removes a webinar panelist.
+      parameters:
+      - $ref: '#/components/parameters/organizerKey'
+      - $ref: '#/components/parameters/webinarKey'
+      - $ref: '#/components/parameters/panelistKey'
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-codeSamples:
+      - lang: Node + Axios
+        source: "var axios = require(\"axios\").default;\n\nvar options = {\n  method: 'DELETE',\n  url: 'https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D',\n  headers: {Authorization: 'Bearer REPLACE_BEARER_TOKEN'}\n};\n\naxios.request(options).then(function (response) {\n  console.log(response.data);\n}).catch(function (error) {\n  console.error(error);\n});"
+      - lang: Shell + Curl
+        source: "curl --request DELETE \\\n  --url https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D \\\n  --header 'Authorization: Bearer REPLACE_BEARER_TOKEN'"
+      - lang: Python + Python3
+        source: 'import http.client
+
+
+          conn = http.client.HTTPSConnection("api.getgo.com")
+
+
+          headers = { ''Authorization'': "Bearer REPLACE_BEARER_TOKEN" }
+
+
+          conn.request("DELETE", "/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D", headers=headers)
+
+
+          res = conn.getresponse()
+
+          data = res.read()
+
+
+          print(data.decode("utf-8"))'
+      - lang: Php + Http2
+        source: "<?php\n\n$client = new http\\Client;\n$request = new http\\Client\\Request;\n\n$request->setRequestUrl('https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D');\n$request->setRequestMethod('DELETE');\n$request->setHeaders([\n  'Authorization' => 'Bearer REPLACE_BEARER_TOKEN'\n]);\n\n$client->enqueue($request)->send();\n$response = $client->getResponse();\n\necho $response->getBody();"
+      - lang: Ruby + Native
+        source: 'require ''uri''
+
+          require ''net/http''
+
+          require ''openssl''
+
+
+          url = URI("https://api.getgo.com/G2W/rest/v2/organizers/%7BorganizerKey%7D/webinars/%7BwebinarKey%7D/panelists/%7BpanelistKey%7D")
+
+
+          http = Net::HTTP.new(url.host, url.port)
+
+          http.use_ssl = true
+
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+          request = Net::HTTP::Delete.new(url)
+
+          request["Authorization"] = ''Bearer REPLACE_BEARER_TOKEN''
+
+
+          response = http.request(request)
+
+          puts response.read_body'
+      security:
+      - OAuth2: []
+    servers:
+    - url: https://api.getgo.com/G2W/rest/v2
 components:
-  schemas:
-    Panelist:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
   parameters:
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
+      required: true
+      schema:
+        type: integer
+        format: int64
+    panelistKey:
+      name: panelistKey
+      in: path
+      description: The key of the webinar panelist
+      required: true
+      schema:
+        type: integer
+        format: int64
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
+      required: true
+      schema:
+        type: integer
+        format: int64
     OrganizerKey:
       name: organizerKey
       in: path
@@ -87,7 +356,98 @@ components:
       schema:
         type: string
       description: Unique key identifying a webinar.
+  schemas:
+    CreatedPanelist:
+      description: Describes a created panelist
+      required:
+      - name
+      - email
+      - joinLink
+      - panelistKey
+      properties:
+        name:
+          type: string
+          description: The panelist's name
+        email:
+          type: string
+          description: The panelist's email address
+        joinLink:
+          type: string
+          description: The panelist's join link
+        panelistKey:
+          type: string
+          description: The panelist's key
+    Panelist:
+      description: Describes a webinar session panelist
+      required:
+      - joinLink
+      - lastName
+      - email
+      - name
+      - panelistId
+      - firstName
+      properties:
+        joinLink:
+          type: string
+          description: The co-organizer's join link
+        lastName:
+          deprecated: true
+          type: string
+          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
+        email:
+          type: string
+          description: The panelist's email address
+        name:
+          type: string
+          description: The panelist's name
+        panelistId:
+          type: integer
+          format: int64
+          description: The panelist's ID
+        firstName:
+          deprecated: true
+          type: string
+          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
+    PanelistReqCreate:
+      description: Describes a single panelist
+      required:
+      - email
+      - name
+      properties:
+        email:
+          type: string
+          description: The panelist's email address
+        name:
+          type: string
+          description: The panelist's name
+    Panelist_2:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
   securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: 'To use this API, you _must_ provide an OAuth Token that has been requested from LogMeIn OAuth Authorization Server. See https://goto-developer.logmeininc.com/how-get-access-token-and-organizer-key for documentation about how to use LogMeIn’s OAuth.
+
+        '
+      in: header
+      name: Authorization
+      scheme: Bearer
+      flows:
+        password:
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
+        authorizationCode:
+          authorizationUrl: https://authentication.logmeininc.com/oauth/authorize
+          tokenUrl: https://authentication.logmeininc.com/oauth/token
+          refreshUrl: https://authentication.logmeininc.com/oauth/token
     oauth2:
       type: oauth2
       description: OAuth 2.0 via the GoTo authentication service.
@@ -99,3 +459,6 @@ components:
           scopes:
             collab: Collaboration / GoToWebinar scope.
             identity:scim.me: Read the authenticated user's identity (SCIM /me).
+x-refined-from:
+- gotowebinar-openapi.yml
+- gotowebinar-rest-openapi.yml

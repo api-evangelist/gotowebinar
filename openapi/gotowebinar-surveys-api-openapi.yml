@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: GoToWebinar REST Attendees Surveys API
+  title: GoToWebinar REST Surveys API
   version: '2.0'
   description: 'REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.
 
@@ -9,9 +9,7 @@ info:
     panelists, polls, questions, surveys, and recordings.
 
 
-    Source documentation: https://developer.goto.com/GoToWebinarV2
-
-    '
+    Source documentation: https://developer.goto.com/GoToWebinarV2'
   contact:
     name: GoTo Developer Support
     email: developer-support@goto.com
@@ -43,6 +41,13 @@ paths:
           description: Survey results.
 components:
   parameters:
+    SessionKey:
+      name: sessionKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a past session.
     OrganizerKey:
       name: organizerKey
       in: path
@@ -57,13 +62,6 @@ components:
       schema:
         type: string
       description: Unique key identifying a webinar.
-    SessionKey:
-      name: sessionKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a past session.
   securitySchemes:
     oauth2:
       type: oauth2

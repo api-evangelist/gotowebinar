@@ -1,50 +1,58 @@
 {
   "provider": "gotowebinar",
   "sources": [
-    "gotowebinar-attendees-api-openapi.yml",
-    "gotowebinar-co-organizers-api-openapi.yml",
-    "gotowebinar-panelists-api-openapi.yml",
-    "gotowebinar-polls-api-openapi.yml",
-    "gotowebinar-questions-api-openapi.yml",
-    "gotowebinar-recordings-api-openapi.yml",
-    "gotowebinar-registrants-api-openapi.yml",
-    "gotowebinar-sessions-api-openapi.yml",
-    "gotowebinar-surveys-api-openapi.yml",
-    "gotowebinar-user-subscriptions-api-openapi.yml",
-    "gotowebinar-webhooks-api-openapi.yml",
-    "gotowebinar-webinars-api-openapi.yml"
+    "_original/gotowebinar-openapi.yml",
+    "_original/gotowebinar-rest-openapi.yml",
+    "_original/gotowebinar-webhooks-openapi.yml"
   ],
   "outputs": [
     "gotowebinar-attendees-api-openapi.yml",
     "gotowebinar-co-organizers-api-openapi.yml",
     "gotowebinar-panelists-api-openapi.yml",
+    "gotowebinar-recordingassets-api-openapi.yml",
+    "gotowebinar-registrants-api-openapi.yml",
+    "gotowebinar-sessions-api-openapi.yml",
+    "gotowebinar-webhooks-api-openapi.yml",
+    "gotowebinar-webinars-api-openapi.yml",
     "gotowebinar-polls-api-openapi.yml",
     "gotowebinar-questions-api-openapi.yml",
     "gotowebinar-recordings-api-openapi.yml",
-    "gotowebinar-registrants-api-openapi.yml",
-    "gotowebinar-sessions-api-openapi.yml",
     "gotowebinar-surveys-api-openapi.yml",
-    "gotowebinar-user-subscriptions-api-openapi.yml",
-    "gotowebinar-webhooks-api-openapi.yml",
-    "gotowebinar-webinars-api-openapi.yml"
+    "gotowebinar-user-subscriptions-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "gotowebinar-attendees-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-co-organizers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-panelists-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-polls-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-questions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-recordings-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-registrants-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-sessions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-surveys-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-user-subscriptions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-webhooks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gotowebinar-webinars-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gotowebinar-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "gotowebinar-rest-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "gotowebinar-webhooks-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Attendees' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "tag 'Co-organizers' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "tag 'Panelists' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "tag 'Registrants' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "tag 'Sessions' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "tag 'Webhooks' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-webhooks-openapi.yml): per-path servers applied",
+    "tag 'Webinars' spans 2 source specs (gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml): per-path servers applied",
+    "superseded outputs removed: gotowebinar-recording-assets-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 13 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "gotowebinar-attendees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-co-organizers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-panelists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-polls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-questions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-recording-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-recordings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-registrants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-surveys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-user-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gotowebinar-webinars-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
