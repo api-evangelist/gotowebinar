@@ -334,10 +334,10 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
-    webinarKey:
-      name: webinarKey
+    organizerKey:
+      name: organizerKey
       in: path
-      description: The key of the webinar
+      description: The key of the organizer
       required: true
       schema:
         type: integer
@@ -350,21 +350,14 @@ components:
       schema:
         type: integer
         format: int64
-    organizerKey:
-      name: organizerKey
+    webinarKey:
+      name: webinarKey
       in: path
-      description: The key of the organizer
+      description: The key of the webinar
       required: true
       schema:
         type: integer
         format: int64
-    OrganizerKey:
-      name: organizerKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Authenticated organizer's key.
     WebinarKey:
       name: webinarKey
       in: path
@@ -372,24 +365,14 @@ components:
       schema:
         type: string
       description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
   schemas:
-    CoorganizerReqCreate:
-      description: 'Details used for creating a co-organizer for a webinar. '
-      required:
-      - external
-      properties:
-        external:
-          type: boolean
-          description: If the co-organizer has no GoTo Webinar account, this value has to be set to 'true'
-        organizerKey:
-          type: string
-          description: The co-organizer's organizer key. This parameter has to be passed only, if 'external' is set to 'false'
-        givenName:
-          type: string
-          description: The co-organizer's given name. This parameter has to be passed only, if 'external' is set to 'true'
-        email:
-          type: string
-          description: The co-organizer's email address. This parameter has to be passed only, if 'external' is set to 'true'
     Coorganizer:
       description: Describes a webinar co-organizer. A co-organizer without a GoToWebinar account is marked as external and is returned without a surname
       required:
@@ -418,6 +401,23 @@ components:
         givenName:
           type: string
           description: The co-organizer's given name
+    CoorganizerReqCreate:
+      description: 'Details used for creating a co-organizer for a webinar. '
+      required:
+      - external
+      properties:
+        external:
+          type: boolean
+          description: If the co-organizer has no GoTo Webinar account, this value has to be set to 'true'
+        organizerKey:
+          type: string
+          description: The co-organizer's organizer key. This parameter has to be passed only, if 'external' is set to 'false'
+        givenName:
+          type: string
+          description: The co-organizer's given name. This parameter has to be passed only, if 'external' is set to 'true'
+        email:
+          type: string
+          description: The co-organizer's email address. This parameter has to be passed only, if 'external' is set to 'true'
     Coorganizer_2:
       type: object
       required:

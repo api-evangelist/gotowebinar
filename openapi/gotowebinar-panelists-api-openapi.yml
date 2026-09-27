@@ -326,14 +326,6 @@ components:
       schema:
         type: integer
         format: int64
-    panelistKey:
-      name: panelistKey
-      in: path
-      description: The key of the webinar panelist
-      required: true
-      schema:
-        type: integer
-        format: int64
     organizerKey:
       name: organizerKey
       in: path
@@ -342,13 +334,14 @@ components:
       schema:
         type: integer
         format: int64
-    OrganizerKey:
-      name: organizerKey
+    panelistKey:
+      name: panelistKey
       in: path
+      description: The key of the webinar panelist
       required: true
       schema:
-        type: string
-      description: Authenticated organizer's key.
+        type: integer
+        format: int64
     WebinarKey:
       name: webinarKey
       in: path
@@ -356,27 +349,14 @@ components:
       schema:
         type: string
       description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
   schemas:
-    CreatedPanelist:
-      description: Describes a created panelist
-      required:
-      - name
-      - email
-      - joinLink
-      - panelistKey
-      properties:
-        name:
-          type: string
-          description: The panelist's name
-        email:
-          type: string
-          description: The panelist's email address
-        joinLink:
-          type: string
-          description: The panelist's join link
-        panelistKey:
-          type: string
-          description: The panelist's key
     Panelist:
       description: Describes a webinar session panelist
       required:
@@ -408,6 +388,26 @@ components:
           deprecated: true
           type: string
           description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
+    CreatedPanelist:
+      description: Describes a created panelist
+      required:
+      - name
+      - email
+      - joinLink
+      - panelistKey
+      properties:
+        name:
+          type: string
+          description: The panelist's name
+        email:
+          type: string
+          description: The panelist's email address
+        joinLink:
+          type: string
+          description: The panelist's join link
+        panelistKey:
+          type: string
+          description: The panelist's key
     PanelistReqCreate:
       description: Describes a single panelist
       required:

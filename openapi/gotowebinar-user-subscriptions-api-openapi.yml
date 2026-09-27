@@ -102,25 +102,7 @@ paths:
         '204':
           description: Deleted.
 components:
-  parameters:
-    SubscriptionKey:
-      name: subscriptionKey
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    UserSubscriptionUpdate:
-      type: object
-      properties:
-        callbackUrl:
-          type: string
-          format: uri
-        userSubscriptionState:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
     UserSubscription:
       type: object
       properties:
@@ -130,6 +112,17 @@ components:
           type: string
         webhookKey:
           type: string
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    UserSubscriptionUpdate:
+      type: object
+      properties:
         callbackUrl:
           type: string
           format: uri
@@ -155,6 +148,13 @@ components:
           - ACTIVE
           - INACTIVE
           default: ACTIVE
+  parameters:
+    SubscriptionKey:
+      name: subscriptionKey
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
