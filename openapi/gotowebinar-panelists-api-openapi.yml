@@ -318,14 +318,6 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
-    webinarKey:
-      name: webinarKey
-      in: path
-      description: The key of the webinar
-      required: true
-      schema:
-        type: integer
-        format: int64
     organizerKey:
       name: organizerKey
       in: path
@@ -338,6 +330,14 @@ components:
       name: panelistKey
       in: path
       description: The key of the webinar panelist
+      required: true
+      schema:
+        type: integer
+        format: int64
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
       required: true
       schema:
         type: integer

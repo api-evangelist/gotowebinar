@@ -579,238 +579,7 @@ paths:
     servers:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
-  parameters:
-    requiredFromTime:
-      name: fromTime
-      in: query
-      description: 'Start of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
-
-        '
-      required: true
-      example: '2020-03-13T10:00:00Z'
-      schema:
-        type: string
-        format: date-time
-    size:
-      name: size
-      in: query
-      required: false
-      description: The size of the page.
-      schema:
-        type: integer
-        format: int64
-        maximum: 200
-    sessionKey:
-      name: sessionKey
-      in: path
-      description: The key of the webinar session
-      required: true
-      schema:
-        type: integer
-        format: int64
-    webinarKey:
-      name: webinarKey
-      in: path
-      description: The key of the webinar
-      required: true
-      schema:
-        type: integer
-        format: int64
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
-    requiredToTime:
-      name: toTime
-      in: query
-      description: 'End of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
-
-        '
-      example: '2020-03-13T22:00:00Z'
-      required: true
-      schema:
-        type: string
-        format: date-time
-    page:
-      name: page
-      in: query
-      required: false
-      description: The page number to be displayed. The first page is 0.
-      schema:
-        type: integer
-        format: int64
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
-    OrganizerKey:
-      name: organizerKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Authenticated organizer's key.
   schemas:
-    AttendanceStatistics:
-      description: Describes attendance metrics for a webinar session.
-      required:
-      - registrantCount
-      - percentageAttendance
-      - averageInterestRating
-      - averageAttentiveness
-      - averageAttendanceTimeSeconds
-      properties:
-        registrantCount:
-          type: integer
-          format: int32
-          description: The number of registrations for the webinar
-        percentageAttendance:
-          type: number
-          format: float
-          description: The percentage of registrants that actually attended the webinar session
-        averageInterestRating:
-          type: number
-          format: float
-          description: Numerical value 1-100 (100 being most interested) indicating the average interest rating of the webinar attendees
-        averageAttentiveness:
-          type: number
-          format: float
-          description: Average based on the focus of the attendees Viewer during the webinar session
-        averageAttendanceTimeSeconds:
-          type: number
-          format: float
-          description: Average attendance time in seconds
-    ReportingSessions:
-      description: ''
-      required:
-      - sessionInfoResources
-      properties:
-        sessionInfoResources:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportingSession'
-    AnswerToAttendeeQuestion:
-      description: Describes an answer to a question asked by an attendee during a webinar session.
-      required:
-      - answer
-      - answeredBy
-      - answererRole
-      - answerTime
-      - answererEmail
-      properties:
-        answer:
-          type: string
-          description: An answer given to a question asked by an attendee during a webinar session
-        answeredBy:
-          type: string
-          description: The key of the organizer that answered the attendee's question
-        answererRole:
-          type: string
-          description: The role of the answerer
-        answerTime:
-          type: string
-          description: The key of the organizer that answered the attendee's question
-        answererEmail:
-          type: string
-          description: The answerer's email address
-    SessionInfoStatistics:
-      description: Describes session details for webinar session
-      required:
-      - webinarName
-      - webinarId
-      - sessionKey
-      - timeZone
-      - experienceType
-      - recurrencePeriod
-      - startTime
-      - endTime
-      - registrationEmailOpenedCount
-      - registrationLinkClickedCount
-      properties:
-        webinarName:
-          type: string
-          description: Name of the webinar
-        webinarId:
-          type: string
-          description: The 9-digit webinar ID
-        sessionKey:
-          type: string
-          description: The key of the webinar session
-        timeZone:
-          type: string
-          description: The time zone where the webinar will take place
-        experienceType:
-          description: Specifies the webinar experience type.
-          type: string
-          enum:
-          - CLASSIC
-          - BROADCAST
-          - SIMULIVE
-        recurrencePeriod:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-          description: The starting time of an interval, e.g. 2020-03-13T10:00:00Z
-        endTime:
-          type: string
-          format: date-time
-          description: The ending time of an interval, e.g. 2020-03-13T22:00:00Z
-        registrationEmailOpenedCount:
-          type: string
-          description: The count of opened registration emails
-        registrationLinkClickedCount:
-          type: string
-          description: The count of registration links clicked
-    page:
-      required:
-      - size
-      - totalElements
-      - totalPages
-      - number
-      properties:
-        size:
-          type: integer
-          format: int32
-          description: The page size
-        totalElements:
-          type: integer
-          format: int32
-          description: The total elements
-        totalPages:
-          type: integer
-          format: int32
-          description: The pages count
-        number:
-          type: integer
-          format: int32
-          description: The current page number. The first page is 0
-    Poll:
-      description: A poll or survey launched by an organizer during or after a webinar session; includes the responses given to it by the attendees.
-      required:
-      - responses
-      - question
-      - numberOfResponses
-      properties:
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/PollResponse'
-          description: The responses given by the attendees to the poll or survey
-        question:
-          type: string
-          description: The poll or survey question asked by the webinar organizer
-        numberOfResponses:
-          type: integer
-          format: int32
-          description: The total number of responses received for this poll or survey
     Attendee:
       description: Describes the attendee of a webinar
       required:
@@ -848,6 +617,21 @@ components:
           items:
             $ref: '#/components/schemas/Attendance'
           description: The list of times the attendee joined and left the webinar session
+    PollResponse:
+      description: One of the potential responses/options to a poll or survey launched by an organizer during a webinar session.
+      required:
+      - text
+      - percentage
+      properties:
+        text:
+          type: string
+          description: The text of the response/option to a poll or survey
+        percentage:
+          type: number
+          format: float
+          description: The percentage of responses that favored this particular option
+          maximum: 100
+          minimum: 0
     AttendeeQuestion:
       description: Describes the question asked by an attendee during a webinar session; includes the answers given to it.
       required:
@@ -875,50 +659,53 @@ components:
           type: string
           format: date-time
           description: The date on which the question was asked e.g. 2020-03-13T10:00:00Z
-    PollsAndSurveysStatistics:
-      description: Details on the polls and surveys for a webinar session.
+    page:
       required:
-      - pollCount
-      - surveyCount
-      - questionsAsked
-      - percentagePollsCompleted
-      - percentageSurveysCompleted
+      - size
+      - totalElements
+      - totalPages
+      - number
       properties:
-        pollCount:
+        size:
           type: integer
           format: int32
-          description: The number of polls launched at a webinar session
-        surveyCount:
-          type: number
-          format: float
-          description: The percentage of surveys launched at a webinar session
-        questionsAsked:
+          description: The page size
+        totalElements:
           type: integer
           format: int32
-          description: The number of questions asked at a webinar session
-        percentagePollsCompleted:
-          type: number
-          format: float
-          description: The percentage of polls completed by the attendees
-        percentageSurveysCompleted:
-          type: number
-          format: float
-          description: The percentage of surveys completed by the attendees
-    PollResponse:
-      description: One of the potential responses/options to a poll or survey launched by an organizer during a webinar session.
+          description: The total elements
+        totalPages:
+          type: integer
+          format: int32
+          description: The pages count
+        number:
+          type: integer
+          format: int32
+          description: The current page number. The first page is 0
+    AnswerToAttendeeQuestion:
+      description: Describes an answer to a question asked by an attendee during a webinar session.
       required:
-      - text
-      - percentage
+      - answer
+      - answeredBy
+      - answererRole
+      - answerTime
+      - answererEmail
       properties:
-        text:
+        answer:
           type: string
-          description: The text of the response/option to a poll or survey
-        percentage:
-          type: number
-          format: float
-          description: The percentage of responses that favored this particular option
-          maximum: 100
-          minimum: 0
+          description: An answer given to a question asked by an attendee during a webinar session
+        answeredBy:
+          type: string
+          description: The key of the organizer that answered the attendee's question
+        answererRole:
+          type: string
+          description: The role of the answerer
+        answerTime:
+          type: string
+          description: The key of the organizer that answered the attendee's question
+        answererEmail:
+          type: string
+          description: The answerer's email address
     ReportingSession:
       description: Describes a completed webinar session.
       required:
@@ -1010,6 +797,97 @@ components:
         followupEmailTriggered:
           type: boolean
           description: Indicates whether to trigger followup email is enabled or disabled
+    ReportingSessionsResponse:
+      description: Describes a list of webinar sessions
+      required:
+      - _embedded
+      - page
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ReportingSessions'
+        page:
+          $ref: '#/components/schemas/page'
+    Poll:
+      description: A poll or survey launched by an organizer during or after a webinar session; includes the responses given to it by the attendees.
+      required:
+      - responses
+      - question
+      - numberOfResponses
+      properties:
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/PollResponse'
+          description: The responses given by the attendees to the poll or survey
+        question:
+          type: string
+          description: The poll or survey question asked by the webinar organizer
+        numberOfResponses:
+          type: integer
+          format: int32
+          description: The total number of responses received for this poll or survey
+    SessionInfoStatistics:
+      description: Describes session details for webinar session
+      required:
+      - webinarName
+      - webinarId
+      - sessionKey
+      - timeZone
+      - experienceType
+      - recurrencePeriod
+      - startTime
+      - endTime
+      - registrationEmailOpenedCount
+      - registrationLinkClickedCount
+      properties:
+        webinarName:
+          type: string
+          description: Name of the webinar
+        webinarId:
+          type: string
+          description: The 9-digit webinar ID
+        sessionKey:
+          type: string
+          description: The key of the webinar session
+        timeZone:
+          type: string
+          description: The time zone where the webinar will take place
+        experienceType:
+          description: Specifies the webinar experience type.
+          type: string
+          enum:
+          - CLASSIC
+          - BROADCAST
+          - SIMULIVE
+        recurrencePeriod:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+          description: The starting time of an interval, e.g. 2020-03-13T10:00:00Z
+        endTime:
+          type: string
+          format: date-time
+          description: The ending time of an interval, e.g. 2020-03-13T22:00:00Z
+        registrationEmailOpenedCount:
+          type: string
+          description: The count of opened registration emails
+        registrationLinkClickedCount:
+          type: string
+          description: The count of registration links clicked
+    SessionPerformance:
+      description: Describes performance details for webinar sessions
+      required:
+      - sessionInfo
+      - attendance
+      - pollsAndSurveys
+      properties:
+        sessionInfo:
+          $ref: '#/components/schemas/SessionInfoStatistics'
+        attendance:
+          $ref: '#/components/schemas/AttendanceStatistics'
+        pollsAndSurveys:
+          $ref: '#/components/schemas/PollsAndSurveysStatistics'
     Attendance:
       description: Describes the times the attendee joined and left a webinar session.
       required:
@@ -1024,29 +902,73 @@ components:
           type: string
           format: date-time
           description: The time the attendee left a webinar session
-    SessionPerformance:
-      description: Describes performance details for webinar sessions
+    PollsAndSurveysStatistics:
+      description: Details on the polls and surveys for a webinar session.
       required:
-      - sessionInfo
-      - attendance
-      - pollsAndSurveys
+      - pollCount
+      - surveyCount
+      - questionsAsked
+      - percentagePollsCompleted
+      - percentageSurveysCompleted
       properties:
-        sessionInfo:
-          $ref: '#/components/schemas/SessionInfoStatistics'
-        attendance:
-          $ref: '#/components/schemas/AttendanceStatistics'
-        pollsAndSurveys:
-          $ref: '#/components/schemas/PollsAndSurveysStatistics'
-    ReportingSessionsResponse:
-      description: Describes a list of webinar sessions
+        pollCount:
+          type: integer
+          format: int32
+          description: The number of polls launched at a webinar session
+        surveyCount:
+          type: number
+          format: float
+          description: The percentage of surveys launched at a webinar session
+        questionsAsked:
+          type: integer
+          format: int32
+          description: The number of questions asked at a webinar session
+        percentagePollsCompleted:
+          type: number
+          format: float
+          description: The percentage of polls completed by the attendees
+        percentageSurveysCompleted:
+          type: number
+          format: float
+          description: The percentage of surveys completed by the attendees
+    ReportingSessions:
+      description: ''
       required:
-      - _embedded
-      - page
+      - sessionInfoResources
       properties:
-        _embedded:
-          $ref: '#/components/schemas/ReportingSessions'
-        page:
-          $ref: '#/components/schemas/page'
+        sessionInfoResources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportingSession'
+    AttendanceStatistics:
+      description: Describes attendance metrics for a webinar session.
+      required:
+      - registrantCount
+      - percentageAttendance
+      - averageInterestRating
+      - averageAttentiveness
+      - averageAttendanceTimeSeconds
+      properties:
+        registrantCount:
+          type: integer
+          format: int32
+          description: The number of registrations for the webinar
+        percentageAttendance:
+          type: number
+          format: float
+          description: The percentage of registrants that actually attended the webinar session
+        averageInterestRating:
+          type: number
+          format: float
+          description: Numerical value 1-100 (100 being most interested) indicating the average interest rating of the webinar attendees
+        averageAttentiveness:
+          type: number
+          format: float
+          description: Average based on the focus of the attendees Viewer during the webinar session
+        averageAttendanceTimeSeconds:
+          type: number
+          format: float
+          description: Average attendance time in seconds
     Session:
       type: object
       properties:
@@ -1066,6 +988,84 @@ components:
           format: date-time
         registrantsAttended:
           type: integer
+  parameters:
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
+      required: true
+      schema:
+        type: integer
+        format: int64
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
+      required: true
+      schema:
+        type: integer
+        format: int64
+    requiredFromTime:
+      name: fromTime
+      in: query
+      description: 'Start of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
+
+        '
+      required: true
+      example: '2020-03-13T10:00:00Z'
+      schema:
+        type: string
+        format: date-time
+    sessionKey:
+      name: sessionKey
+      in: path
+      description: The key of the webinar session
+      required: true
+      schema:
+        type: integer
+        format: int64
+    page:
+      name: page
+      in: query
+      required: false
+      description: The page number to be displayed. The first page is 0.
+      schema:
+        type: integer
+        format: int64
+    requiredToTime:
+      name: toTime
+      in: query
+      description: 'End of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
+
+        '
+      example: '2020-03-13T22:00:00Z'
+      required: true
+      schema:
+        type: string
+        format: date-time
+    size:
+      name: size
+      in: query
+      required: false
+      description: The size of the page.
+      schema:
+        type: integer
+        format: int64
+        maximum: 200
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -790,87 +790,80 @@ paths:
     servers:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
+  parameters:
+    userSubscriptionsKey:
+      name: userSubscriptionsKey
+      in: path
+      description: The unique identifier for a user subscription.
+      required: true
+      schema:
+        type: string
+    webhookKey:
+      name: webhookKey
+      in: path
+      description: The unique identifier for a webhook.
+      required: true
+      schema:
+        type: string
+    product:
+      name: product
+      in: query
+      description: Supported products
+      required: true
+      schema:
+        type: string
+        enum:
+        - g2w
+    WebhookKey:
+      name: webhookKey
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    WebhooksResponse:
-      description: List of webhooks
-      required:
-      - _embedded
+    SecretKeyRequest:
+      description: Representation of a secret key
       properties:
-        _embedded:
-          $ref: '#/components/schemas/Webhooks'
-    CreateWebhookRequest:
-      description: Representation of a single webhook
+        validFrom:
+          description: A date time in ISO8601 format, e.g. 2019-07-01T22:00:00Z. The secret key will be activated at the given date
+          type: string
+    UpdateWebhooksRequest:
+      description: Describes a single webhook update request
       required:
-      - callbackUrl
-      - eventName
-      - eventVersion
-      - product
+      - webhookKey
       properties:
         callbackUrl:
           type: string
           description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
-        eventName:
+        webhookKey:
           type: string
-          description: Type of event for the webhook. Supported eventNames are registrant.added, registrant.joined, webinar.created, webinar.changed, survey.submitted
-        eventVersion:
+          description: The unique identifier for the webhook
+        state:
+          $ref: '#/components/schemas/WebhookState'
+    SecretKeyResponse:
+      description: Representation of a secret key
+      properties:
+        id:
+          description: The unique identifier for the secret key
+          type: integer
+        value:
+          description: The value of the secret key. This is used for generating a signature of events posted to the callback url
           type: string
-          description: Version of event being subscribed for. Supported eventVersion is 1.0.0
-        product:
-          $ref: '#/components/schemas/Product'
-    Product:
-      type: string
-      description: Product of the events
-      enum:
-      - g2w
+        validFrom:
+          description: A date time in ISO8601 format, e.g. 2019-07-01T22:00:00Z. The secret key will be activated at the given date
+          type: string
     ActivationState:
       type: string
       description: Final state of user subscription. ActivationState will be ACTIVE if both webhook and user subscription states are ACTIVE, INACTIVE otherwise.
       enum:
       - INACTIVE
       - ACTIVE
-    UserSubscriptions:
-      description: ''
-      required:
-      - userSubscriptions
-      properties:
-        userSubscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserSubscription'
-    UserSubscriptionResponse:
-      description: Describes a list of user subscriptions
-      required:
-      - _embedded
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/UserSubscriptions'
-    Webhook:
-      description: Representation of a single webhook
-      required:
-      - callbackUrl
-      - eventName
-      - eventVersion
-      - product
-      properties:
-        callbackUrl:
-          type: string
-          description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
-        eventName:
-          type: string
-          description: Type of event for the webhook. Supported eventNames are registrant.added, registrant.joined, webinar.created, webinar.changed, survey.submitted
-        eventVersion:
-          type: string
-          description: Version of event being subscribed for. Supported eventVersion is 1.0.0
-        product:
-          $ref: '#/components/schemas/Product'
-        webhookKey:
-          type: string
-          description: The unique identifier for the webhook
-        state:
-          $ref: '#/components/schemas/WebhookState'
-        createTime:
-          type: string
-          description: The create time of the webhook
+    UserSubscriptionState:
+      type: string
+      description: State of the user subscription
+      enum:
+      - INACTIVE
+      - ACTIVE
     UserSubscription:
       description: Describes a single user subscription
       properties:
@@ -898,6 +891,81 @@ components:
         createTime:
           type: string
           description: The create time of the webhook
+    Webhooks:
+      description: ''
+      required:
+      - webhooks
+      properties:
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    WebhooksResponse:
+      description: List of webhooks
+      required:
+      - _embedded
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/Webhooks'
+    UserSubscriptionResponse:
+      description: Describes a list of user subscriptions
+      required:
+      - _embedded
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/UserSubscriptions'
+    UserSubscriptions:
+      description: ''
+      required:
+      - userSubscriptions
+      properties:
+        userSubscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserSubscription'
+    CreateWebhookRequest:
+      description: Representation of a single webhook
+      required:
+      - callbackUrl
+      - eventName
+      - eventVersion
+      - product
+      properties:
+        callbackUrl:
+          type: string
+          description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
+        eventName:
+          type: string
+          description: Type of event for the webhook. Supported eventNames are registrant.added, registrant.joined, webinar.created, webinar.changed, survey.submitted
+        eventVersion:
+          type: string
+          description: Version of event being subscribed for. Supported eventVersion is 1.0.0
+        product:
+          $ref: '#/components/schemas/Product'
+    WebhookState:
+      type: string
+      description: State of the webhook
+      enum:
+      - INACTIVE
+      - ACTIVE
+    CreateUserSubscriptionRequest:
+      description: Describes a single user subscription
+      required:
+      - webhookKey
+      properties:
+        callbackUrl:
+          type: string
+          description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
+        webhookKey:
+          type: string
+          description: The unique identifier for the webhook
+        userSubscriptionState:
+          $ref: '#/components/schemas/UserSubscriptionState'
+    Product:
+      type: string
+      description: Product of the events
+      enum:
+      - g2w
     UpdateUserSubscriptionsRequest:
       description: Describes a single user subscription update request
       required:
@@ -915,103 +983,33 @@ components:
           description: The unique identifier for the user subscription
         userSubscriptionState:
           $ref: '#/components/schemas/UserSubscriptionState'
-    UpdateWebhooksRequest:
-      description: Describes a single webhook update request
+    Webhook:
+      description: Representation of a single webhook
       required:
-      - webhookKey
+      - callbackUrl
+      - eventName
+      - eventVersion
+      - product
       properties:
         callbackUrl:
           type: string
           description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
+        eventName:
+          type: string
+          description: Type of event for the webhook. Supported eventNames are registrant.added, registrant.joined, webinar.created, webinar.changed, survey.submitted
+        eventVersion:
+          type: string
+          description: Version of event being subscribed for. Supported eventVersion is 1.0.0
+        product:
+          $ref: '#/components/schemas/Product'
         webhookKey:
           type: string
           description: The unique identifier for the webhook
         state:
           $ref: '#/components/schemas/WebhookState'
-    CreateUserSubscriptionRequest:
-      description: Describes a single user subscription
-      required:
-      - webhookKey
-      properties:
-        callbackUrl:
-          type: string
-          description: A HTTPs url that can accept posted events. It should return 200 OK for GET requests.
-        webhookKey:
-          type: string
-          description: The unique identifier for the webhook
-        userSubscriptionState:
-          $ref: '#/components/schemas/UserSubscriptionState'
-    UserSubscriptionState:
-      type: string
-      description: State of the user subscription
-      enum:
-      - INACTIVE
-      - ACTIVE
-    SecretKeyResponse:
-      description: Representation of a secret key
-      properties:
-        id:
-          description: The unique identifier for the secret key
-          type: integer
-        value:
-          description: The value of the secret key. This is used for generating a signature of events posted to the callback url
-          type: string
-        validFrom:
-          description: A date time in ISO8601 format, e.g. 2019-07-01T22:00:00Z. The secret key will be activated at the given date
-          type: string
-    SecretKeyRequest:
-      description: Representation of a secret key
-      properties:
-        validFrom:
-          description: A date time in ISO8601 format, e.g. 2019-07-01T22:00:00Z. The secret key will be activated at the given date
-          type: string
-    Webhooks:
-      description: ''
-      required:
-      - webhooks
-      properties:
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
-    WebhookState:
-      type: string
-      description: State of the webhook
-      enum:
-      - INACTIVE
-      - ACTIVE
-    Webhook_2:
-      type: object
-      properties:
-        webhookKey:
-          type: string
-        product:
-          type: string
-          enum:
-          - g2w
-        eventName:
-          type: string
-          enum:
-          - registrant.added
-          - registrant.joined
-          - webinar.created
-          - webinar.changed
-        eventVersion:
-          type: string
-          example: 1.0.0
-        callbackUrl:
-          type: string
-          format: uri
-        webhookState:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
         createTime:
           type: string
-          format: date-time
-        secretKey:
-          type: string
+          description: The create time of the webhook
     WebhookCreate:
       type: object
       required:
@@ -1051,36 +1049,38 @@ components:
           enum:
           - ACTIVE
           - INACTIVE
-  parameters:
-    product:
-      name: product
-      in: query
-      description: Supported products
-      required: true
-      schema:
-        type: string
-        enum:
-        - g2w
-    userSubscriptionsKey:
-      name: userSubscriptionsKey
-      in: path
-      description: The unique identifier for a user subscription.
-      required: true
-      schema:
-        type: string
-    webhookKey:
-      name: webhookKey
-      in: path
-      description: The unique identifier for a webhook.
-      required: true
-      schema:
-        type: string
-    WebhookKey:
-      name: webhookKey
-      in: path
-      required: true
-      schema:
-        type: string
+    Webhook_2:
+      type: object
+      properties:
+        webhookKey:
+          type: string
+        product:
+          type: string
+          enum:
+          - g2w
+        eventName:
+          type: string
+          enum:
+          - registrant.added
+          - registrant.joined
+          - webinar.created
+          - webinar.changed
+        eventVersion:
+          type: string
+          example: 1.0.0
+        callbackUrl:
+          type: string
+          format: uri
+        webhookState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        createTime:
+          type: string
+          format: date-time
+        secretKey:
+          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

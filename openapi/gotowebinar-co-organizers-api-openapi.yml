@@ -334,18 +334,18 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
     coorganizerKey:
       name: coorganizerKey
       in: path
       description: The key of the internal or external co-organizer (memberKey)
+      required: true
+      schema:
+        type: integer
+        format: int64
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
       required: true
       schema:
         type: integer

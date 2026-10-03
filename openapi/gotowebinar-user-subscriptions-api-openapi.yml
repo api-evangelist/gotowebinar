@@ -103,34 +103,6 @@ paths:
           description: Deleted.
 components:
   schemas:
-    UserSubscription:
-      type: object
-      properties:
-        subscriptionKey:
-          type: string
-        userKey:
-          type: string
-        webhookKey:
-          type: string
-        callbackUrl:
-          type: string
-          format: uri
-        userSubscriptionState:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-    UserSubscriptionUpdate:
-      type: object
-      properties:
-        callbackUrl:
-          type: string
-          format: uri
-        userSubscriptionState:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
     UserSubscriptionCreate:
       type: object
       required:
@@ -148,6 +120,34 @@ components:
           - ACTIVE
           - INACTIVE
           default: ACTIVE
+    UserSubscriptionUpdate:
+      type: object
+      properties:
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    UserSubscription:
+      type: object
+      properties:
+        subscriptionKey:
+          type: string
+        userKey:
+          type: string
+        webhookKey:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+        userSubscriptionState:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
   parameters:
     SubscriptionKey:
       name: subscriptionKey
