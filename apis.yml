@@ -31,6 +31,9 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://www.goto.com/-/media/images/logos/goto-logo.svg
+x-docs-platform: redoc
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
 tags:
   - Attendees
   - Collaboration
