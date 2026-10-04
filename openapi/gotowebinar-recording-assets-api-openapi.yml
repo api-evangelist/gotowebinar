@@ -280,40 +280,16 @@ paths:
           puts response.read_body'
 components:
   schemas:
-    AssetsSearchRequestForAdmin:
-      description: Describes the details used to search a completed recordingasset.
+    AssetsResponse:
+      description: Describes a list of completed assets
       required:
-      - organizerKey
+      - _embedded
+      - page
       properties:
-        organizerKey:
-          type: string
-          description: The key of the organizer
-        name:
-          type: string
-          description: The name of the recordingasset
-        sortField:
-          type: string
-          description: Sorts on the specified field. The default value is 'CREATETIME'. The possible values are 'CREATETIME' and 'NAME'.
-          default: CREATETIME
-        sortOrder:
-          description: Specifies the sort order type. The default value is 'DESC'. The possible values are 'DESC', 'ASC'.
-          type: string
-          default: DESC
-        fromTime:
-          description: Specifies the time from which the recordings should be included. Date should be in ISO format.
-          type: string
-        toTime:
-          description: Specifies the time till which the recordings should be included. Date should be in ISO format.
-          type: string
-    Assets:
-      description: ''
-      required:
-      - recordingAssets
-      properties:
-        recordingAssets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
+        _embedded:
+          $ref: '#/components/schemas/Assets'
+        page:
+          $ref: '#/components/schemas/page'
     page:
       required:
       - size
@@ -337,6 +313,15 @@ components:
           type: integer
           format: int32
           description: The current page number. The first page is 0
+    Assets:
+      description: ''
+      required:
+      - recordingAssets
+      properties:
+        recordingAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
     Asset:
       description: Describes a completed recordingasset.
       required:
@@ -384,16 +369,31 @@ components:
         webinarKey:
           type: string
           description: The webinarKey of parent webinar for which this online recordings was created, not available for uploaded recordings
-    AssetsResponse:
-      description: Describes a list of completed assets
+    AssetsSearchRequestForAdmin:
+      description: Describes the details used to search a completed recordingasset.
       required:
-      - _embedded
-      - page
+      - organizerKey
       properties:
-        _embedded:
-          $ref: '#/components/schemas/Assets'
-        page:
-          $ref: '#/components/schemas/page'
+        organizerKey:
+          type: string
+          description: The key of the organizer
+        name:
+          type: string
+          description: The name of the recordingasset
+        sortField:
+          type: string
+          description: Sorts on the specified field. The default value is 'CREATETIME'. The possible values are 'CREATETIME' and 'NAME'.
+          default: CREATETIME
+        sortOrder:
+          description: Specifies the sort order type. The default value is 'DESC'. The possible values are 'DESC', 'ASC'.
+          type: string
+          default: DESC
+        fromTime:
+          description: Specifies the time from which the recordings should be included. Date should be in ISO format.
+          type: string
+        toTime:
+          description: Specifies the time till which the recordings should be included. Date should be in ISO format.
+          type: string
     AssetsSearchReq:
       description: Describes the details used to search a completed recordingasset.
       required:
@@ -422,15 +422,6 @@ components:
       schema:
         type: integer
         format: int64
-    size:
-      name: size
-      in: query
-      required: false
-      description: The size of the page.
-      schema:
-        type: integer
-        format: int64
-        maximum: 200
     includes:
       name: includes
       in: query
@@ -444,6 +435,15 @@ components:
           enum:
           - recordingShareUrl
           - webinarKey
+    size:
+      name: size
+      in: query
+      required: false
+      description: The size of the page.
+      schema:
+        type: integer
+        format: int64
+        maximum: 200
     accountKey:
       name: accountKey
       in: path

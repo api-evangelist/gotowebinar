@@ -1385,253 +1385,28 @@ components:
         enabled:
           type: boolean
           description: Indicates whether email settings are enabled or disabled.
-    BrokerWebinar:
-      description: Describes a scheduled webinar
-      required:
-      - numberOfRegistrants
-      - times
-      - description
-      - subject
-      - inSession
-      - organizerKey
-      - webinarKey
-      - webinarID
-      - timeZone
-      - registrationUrl
-      - experienceType
-      - organizerEmail
-      - organizerName
-      - impromptu
-      - coorganizers
-      - isOndemand
-      properties:
-        numberOfRegistrants:
-          type: integer
-          format: int32
-          description: The number of registrants at the webinar
-        times:
-          type: array
-          items:
-            $ref: '#/components/schemas/DateTimeRange'
-          description: Array with startTime and endTime for the webinar sessions
-        description:
-          type: string
-          description: A short description of the webinar
-        subject:
-          type: string
-          description: The webinar subject
-        inSession:
-          type: boolean
-          description: Indicates whether there is a webinar session currently in progress
-        organizerKey:
-          type: integer
-          format: int64
-          description: The key of the webinar organizer
-        webinarKey:
-          type: integer
-          format: int64
-          description: The unique key of the webinar
-        webinarID:
-          type: string
-          description: The 9-digit webinar ID
-        timeZone:
-          type: string
-          description: The timezone where the webinar is taking place
-        registrationUrl:
-          type: string
-          description: The URL the webinar invitees can use to register
-        experienceType:
-          description: Specifies the experience type. The possible values are 'classic', 'broadcast' and 'simulive'.
-          type: string
-        coorganizers:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoorganizerDetails'
-          description: Array with email address and organizerKey of Coorganizers
-        organizerEmail:
-          type: string
-          description: The email address of the organizer
-        organizerName:
-          type: string
-          description: The name of the webinar organizer
-        impromptu:
-          type: boolean
-          description: A boolean flag indicating if the webinar type is impromptu
-        isOndemand:
-          type: boolean
-          default: false
-          description: A boolean flag indicating if the webinar should be ondemand
-    PrivateInfoUpdate:
-      description: Defines the audio data for an own conferencing system
-      required:
-      - attendee
-      properties:
-        attendee:
-          description: Attendee phone number for own conference call system
-          type: string
-        organizer:
-          description: Organizer phone number for own conference call system
-          type: string
-        panelist:
-          description: Panelist phone number for own conference call system
-          type: string
-    ReportingAttendeeResponse:
-      description: Describes a list of webinar attendees
-      required:
-      - _embedded
-      - page
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/ReportingAttendees'
-        page:
-          $ref: '#/components/schemas/page'
-    page:
-      required:
-      - size
-      - totalElements
-      - totalPages
-      - number
-      properties:
-        size:
-          type: integer
-          format: int32
-          description: The page size
-        totalElements:
-          type: integer
-          format: int32
-          description: The total elements
-        totalPages:
-          type: integer
-          format: int32
-          description: The pages count
-        number:
-          type: integer
-          format: int32
-          description: The current page number. The first page is 0
-    ReportingAttendee:
-      description: Describes the attendee of a webinar
-      required:
-      - registrantKey
-      - sessionKey
-      - email
-      - attendanceTimeInSeconds
-      - attendance
-      - firstName
-      - lastName
-      properties:
-        registrantKey:
-          type: integer
-          format: int64
-          description: The key of the webinar attendee
-        sessionKey:
-          type: integer
-          format: int64
-          description: The unique key of the webinar session
-        email:
-          type: string
-          description: The attendee's email address
-        attendanceTimeInSeconds:
-          type: integer
-          format: int64
-          description: The total attendance time in seconds
-        attendance:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attendance'
-          description: The list of times the attendee joined and left the webinar session
-        firstName:
-          type: string
-          description: The attendee's first name
-        lastName:
-          type: string
-          description: The attendee's last name
-    CoorganizerDetails:
-      description: Email address and the organizerKey of the coorganizer
-      required:
-      - email
-      - organizerKey
-      properties:
-        email:
-          type: string
-          description: The email address of the coorganizer
-        organizerKey:
-          type: integer
-          format: int64
-          description: The key of the webinar coorganizer
-    PrivateInfo:
-      description: Phone numbers for an own conference call service.
-      required:
-      - attendee
-      properties:
-        attendee:
-          type: string
-          description: Text for the panelist when using an own conference call service
-        organizer:
-          type: string
-          description: Text for the organizer when using an own conference call service
-        panelist:
-          type: string
-          description: Text for the panelist when using an own conference call service
-    TollFreeCountries:
-      description: Countries in which toll free PSTN numbers are available.
+    TollCountries:
+      description: Defines in which countries toll PSTN numbers are available.
       type: string
       enum:
-      - AE
-      - AR
       - AT
       - AU
       - BE
-      - BG
-      - BH
-      - BR
-      - BY
       - CA
       - CH
-      - CL
-      - CN
-      - CO
-      - CZ
       - DE
       - DK
       - ES
       - FI
       - FR
       - GB
-      - GR
-      - HK
-      - HU
-      - ID
       - IE
-      - IL
-      - IN
-      - IS
       - IT
-      - JP
-      - KR
-      - LU
-      - MX
-      - MY
       - NL
       - 'NO'
       - NZ
-      - PA
-      - PE
-      - PH
-      - PL
-      - PT
-      - RO
-      - RU
-      - SA
       - SE
-      - SG
-      - TH
-      - TR
-      - TW
-      - UA
       - US
-      - UY
-      - VN
-      - ZA
     PstnInfoUpdate:
       description: Defines the audio/conferencing settings for the specified webinar. It required to pass 'tollFreeCountries' or 'tollCountries' or both.
       properties:
@@ -1645,191 +1420,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TollCountries'
-    AudioUpdate:
-      description: Defines the audio/conferencing settings for the specified webinar
+    CoorganizerDetails:
+      description: Email address and the organizerKey of the coorganizer
       required:
-      - type
+      - email
+      - organizerKey
       properties:
-        type:
-          $ref: '#/components/schemas/AudioType'
-        pstnInfo:
-          $ref: '#/components/schemas/PstnInfoUpdate'
-        privateInfo:
-          $ref: '#/components/schemas/PrivateInfoUpdate'
-    ReportingAttendees:
-      description: ''
-      required:
-      - attendeeParticipationResponses
-      properties:
-        attendeeParticipationResponses:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportingAttendee'
-    AttendeeFollowUpEmailSetting:
-      description: Describes Attendee follow-up email settings.
-      allOf:
-      - $ref: '#/components/schemas/EmailSettings'
-      - type: object
-        properties:
-          includeCertificate:
-            type: boolean
-            description: Indicates whether to include certificates in attendee follow-up emails is enabled or disabled.
-    CallNumbers:
-      description: Conference call numbers per country.
-      required:
-      - accessCodes
-      - toll
-      properties:
-        accessCodes:
-          $ref: '#/components/schemas/AccessCodes'
-        toll:
+        email:
           type: string
-          description: Conference number for toll calls.
-        tollFree:
-          type: string
-          description: Conference number for toll-free calls.
-    Audio:
-      description: Describes the audio/conferencing information for a webinar.
-      required:
-      - type
-      properties:
-        type:
-          $ref: '#/components/schemas/AudioType'
-        confCallNumbers:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/CallNumbers'
-          description: 'The conference call numbers and access codes per country. This will be returned only, if ''type'' is not set to ''Private''.
-
-            '
-        privateInfo:
-          $ref: '#/components/schemas/PrivateInfo'
-    RecordingAssetsResponse:
-      description: Describes a list of completed assets
-      required:
-      - data
-      - total
-      - page
-      - pageSize
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-        total:
+          description: The email address of the coorganizer
+        organizerKey:
           type: integer
-          format: int32
-          description: The total elements
-        page:
-          type: integer
-          format: int32
-          description: The current page number. The first page is 0
-        pageSize:
-          type: integer
-          format: int32
-          description: The page size
-    WebinarEmailSettings:
-      description: Describes email settings of a webinar.
-      properties:
-        confirmationEmail:
-          $ref: '#/components/schemas/EmailSettings'
-        reminderEmail:
-          $ref: '#/components/schemas/EmailSettings'
-        absenteeFollowUpEmail:
-          $ref: '#/components/schemas/EmailSettings'
-        attendeeFollowUpEmail:
-          $ref: '#/components/schemas/AttendeeFollowUpEmailSetting'
-    SessionInfoStatistics:
-      description: Describes session details for webinar session
-      required:
-      - webinarName
-      - webinarId
-      - sessionKey
-      - timeZone
-      - experienceType
-      - recurrencePeriod
-      - startTime
-      - endTime
-      - registrationEmailOpenedCount
-      - registrationLinkClickedCount
-      properties:
-        webinarName:
-          type: string
-          description: Name of the webinar
-        webinarId:
-          type: string
-          description: The 9-digit webinar ID
-        sessionKey:
-          type: string
-          description: The key of the webinar session
-        timeZone:
-          type: string
-          description: The time zone where the webinar will take place
-        experienceType:
-          description: Specifies the webinar experience type.
-          type: string
-          enum:
-          - CLASSIC
-          - BROADCAST
-          - SIMULIVE
-        recurrencePeriod:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-          description: The starting time of an interval, e.g. 2020-03-13T10:00:00Z
-        endTime:
-          type: string
-          format: date-time
-          description: The ending time of an interval, e.g. 2020-03-13T22:00:00Z
-        registrationEmailOpenedCount:
-          type: string
-          description: The count of opened registration emails
-        registrationLinkClickedCount:
-          type: string
-          description: The count of registration links clicked
-    CreatedWebinar:
-      description: Describes a newly created webinar.
-      required:
-      - webinarKey
-      properties:
-        webinarKey:
-          type: string
-          description: The unique key of the webinar.
-        recurrenceKey:
-          type: string
-          description: The recurrence key of the webinar which is received only for Series Webinars.
-    WebinarReqUpdate:
-      description: Describes the details of the webinar
-      properties:
-        subject:
-          type: string
-          description: The name/subject of the webinar (128 characters maximum)
-        description:
-          type: string
-          description: A description of the webinar (2048 characters maximum)
-        times:
-          description: Array with start and end time(s) for webinar
-          type: array
-          items:
-            $ref: '#/components/schemas/DateTimeRange'
-        timeZone:
-          type: string
-          description: 'The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer''s profile will be used
-
-            '
-        locale:
-          type: string
-          enum:
-          - en_US
-          - de_DE
-          - es_ES
-          - fr_FR
-          - it_IT
-          - zh_CN
-          description: The webinar language
-        emailSettings:
-          $ref: '#/components/schemas/WebinarEmailSettings'
+          format: int64
+          description: The key of the webinar coorganizer
     Webinar:
       description: Describes a webinar
       required:
@@ -1917,20 +1520,256 @@ components:
           $ref: '#/components/schemas/AttendanceStatistics'
         pollsAndSurveys:
           $ref: '#/components/schemas/PollsAndSurveysStatistics'
-    Attendance:
-      description: Describes the times the attendee joined and left a webinar session.
+    AudioType:
+      description: How to connect to the webinar's audio conference
+      type: string
+      enum:
+      - PSTN
+      - VOIP
+      - Hybrid
+      - Private
+    PrivateInfo:
+      description: Phone numbers for an own conference call service.
       required:
-      - joinTime
-      - leaveTime
+      - attendee
       properties:
-        joinTime:
+        attendee:
           type: string
-          format: date-time
-          description: The time the attendee joined a webinar session
-        leaveTime:
+          description: Text for the panelist when using an own conference call service
+        organizer:
           type: string
-          format: date-time
-          description: The time the attendee left a webinar session
+          description: Text for the organizer when using an own conference call service
+        panelist:
+          type: string
+          description: Text for the panelist when using an own conference call service
+    Audio:
+      description: Describes the audio/conferencing information for a webinar.
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/AudioType'
+        confCallNumbers:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CallNumbers'
+          description: 'The conference call numbers and access codes per country. This will be returned only, if ''type'' is not set to ''Private''.
+
+            '
+        privateInfo:
+          $ref: '#/components/schemas/PrivateInfo'
+    ReportingAttendee:
+      description: Describes the attendee of a webinar
+      required:
+      - registrantKey
+      - sessionKey
+      - email
+      - attendanceTimeInSeconds
+      - attendance
+      - firstName
+      - lastName
+      properties:
+        registrantKey:
+          type: integer
+          format: int64
+          description: The key of the webinar attendee
+        sessionKey:
+          type: integer
+          format: int64
+          description: The unique key of the webinar session
+        email:
+          type: string
+          description: The attendee's email address
+        attendanceTimeInSeconds:
+          type: integer
+          format: int64
+          description: The total attendance time in seconds
+        attendance:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attendance'
+          description: The list of times the attendee joined and left the webinar session
+        firstName:
+          type: string
+          description: The attendee's first name
+        lastName:
+          type: string
+          description: The attendee's last name
+    ReportingAttendees:
+      description: ''
+      required:
+      - attendeeParticipationResponses
+      properties:
+        attendeeParticipationResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportingAttendee'
+    TollFreeCountries:
+      description: Countries in which toll free PSTN numbers are available.
+      type: string
+      enum:
+      - AE
+      - AR
+      - AT
+      - AU
+      - BE
+      - BG
+      - BH
+      - BR
+      - BY
+      - CA
+      - CH
+      - CL
+      - CN
+      - CO
+      - CZ
+      - DE
+      - DK
+      - ES
+      - FI
+      - FR
+      - GB
+      - GR
+      - HK
+      - HU
+      - ID
+      - IE
+      - IL
+      - IN
+      - IS
+      - IT
+      - JP
+      - KR
+      - LU
+      - MX
+      - MY
+      - NL
+      - 'NO'
+      - NZ
+      - PA
+      - PE
+      - PH
+      - PL
+      - PT
+      - RO
+      - RU
+      - SA
+      - SE
+      - SG
+      - TH
+      - TR
+      - TW
+      - UA
+      - US
+      - UY
+      - VN
+      - ZA
+    CopiedWebinar:
+      description: Describes a newly copied webinar.
+      required:
+      - webinarKey
+      properties:
+        webinarKey:
+          type: string
+          description: The unique key of the webinar.
+    PrivateInfoUpdate:
+      description: Defines the audio data for an own conferencing system
+      required:
+      - attendee
+      properties:
+        attendee:
+          description: Attendee phone number for own conference call system
+          type: string
+        organizer:
+          description: Organizer phone number for own conference call system
+          type: string
+        panelist:
+          description: Panelist phone number for own conference call system
+          type: string
+    page:
+      required:
+      - size
+      - totalElements
+      - totalPages
+      - number
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: The page size
+        totalElements:
+          type: integer
+          format: int32
+          description: The total elements
+        totalPages:
+          type: integer
+          format: int32
+          description: The pages count
+        number:
+          type: integer
+          format: int32
+          description: The current page number. The first page is 0
+    ReportingAttendeeResponse:
+      description: Describes a list of webinar attendees
+      required:
+      - _embedded
+      - page
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/ReportingAttendees'
+        page:
+          $ref: '#/components/schemas/page'
+    AudioUpdate:
+      description: Defines the audio/conferencing settings for the specified webinar
+      required:
+      - type
+      properties:
+        type:
+          $ref: '#/components/schemas/AudioType'
+        pstnInfo:
+          $ref: '#/components/schemas/PstnInfoUpdate'
+        privateInfo:
+          $ref: '#/components/schemas/PrivateInfoUpdate'
+    CopyWebinar:
+      description: Describes the details of the webinar to be copied
+      properties:
+        subject:
+          type: string
+          description: The name/subject of the webinar (128 characters maximum)
+        description:
+          type: string
+          description: A description of the webinar (2048 characters maximum)
+        type:
+          description: "Specifies the webinar type. The default type value is 'single_session', which is used to create a single webinar session. The possible values are 'single_session', 'series' and 'sequence'. If type is set to 'single_session', a single webinar session is created. If type is set to 'series', a webinar series is created. In this case 2 or more timeframes must be specified for each webinar. Example: 'times': [{'startTime': '...', 'endTime':'...'}, {'startTime': '...', 'endTime': '...'},{'startTime': '...','endTime': '...'}]. If type is set to 'sequence', a sequence of webinars is created. In this case 2 or more timeframes must be specified for each webinar. If given webinar is 'single_session', we can create 'sequence' or 'series'\n webinar, in this case 2 or more timeframes must be specified for each webinar\n(same example as above). If given webinar is 'series', we can create 'single_session' or 'sequence' webinar with 2 or more timeframes must be specified. If given webinar is simulive webinar 'sequence' type is not supported.\n"
+          type: string
+          default: single_session
+        recordingAssetKey:
+          type: string
+          description: The recording asset with from the simulive webinar should be created from. In case the recordingasset was created as an online recording the simulive webinar settings, poll and surveys would be copied from the webinar whose session was recorded. We can get recordingasset from [RecordingAssets](GoToWebinarV2#operation/searchAssets)
+        isOndemand:
+          type: boolean
+          default: false
+          description: A boolean flag indicating if the webinar should be ondemand
+        locale:
+          type: string
+          enum:
+          - en_US
+          - de_DE
+          - es_ES
+          - fr_FR
+          - it_IT
+          - zh_CN
+          description: The webinar language
+        emailSettings:
+          $ref: '#/components/schemas/WebinarEmailSettings'
+        times:
+          description: Array with start and end time(s) for webinar
+          type: array
+          items:
+            $ref: '#/components/schemas/DateTimeRange'
+        timeZone:
+          type: string
+          description: The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer's profile will be used
     DateTimeRange:
       description: A pair of DateTime values, the first of which serves as a start time and the second as an end time of an interval.
       required:
@@ -1945,6 +1784,238 @@ components:
           type: string
           format: date-time
           description: The ending time of an interval, e.g. 2020-03-13T22:00:00Z
+    CreatedWebinar:
+      description: Describes a newly created webinar.
+      required:
+      - webinarKey
+      properties:
+        webinarKey:
+          type: string
+          description: The unique key of the webinar.
+        recurrenceKey:
+          type: string
+          description: The recurrence key of the webinar which is received only for Series Webinars.
+    WebinarReqCreate:
+      description: Describes the details used to create a new single session webinar.
+      required:
+      - subject
+      - times
+      properties:
+        subject:
+          type: string
+          description: The name/subject of the webinar (128 characters maximum)
+        description:
+          type: string
+          description: A short description of the webinar (2048 characters maximum)
+        times:
+          description: 'Array with startTime and endTime for webinar. Since this call creates single session webinars, the array can only contain a single pair of startTime and endTime
+
+            '
+          type: array
+          items:
+            $ref: '#/components/schemas/DateTimeRange'
+        timeZone:
+          type: string
+          description: 'The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer''s profile will be used
+
+            '
+        type:
+          description: 'Specifies the webinar type. The default type value is ''single_session'', which is used to create a single webinar session. The possible values are ''single_session'', ''series'', ''sequence''. If type is set to ''single_session'', a single webinar session is created. If type is set to ''series'', a webinar series is created. In this case 2 or more timeframes must be specified for each webinar. Example: ''times'': [{''startTime'': ''...'', ''endTime'': ''...''},{''startTime'': ''...'', ''endTime'': ''...''},{''startTime'': ''...'', ''endTime'': ''...''}. If type is set to ''sequence'' a sequence of webinars is created. The times object in the body must be replaced by the ''recurrenceStart'' object. Example: ''recurrenceStart'': {''startTime'':''2012-06-12T16:00:00Z'', ''endTime'': ''2012-06-12T17:00:00Z'' }.  The ''recurrenceEnd'' and ''recurrencePattern'' body parameter must be specified. Example: , ''recurrenceEnd'': ''2012-07-10'', ''recurrencePattern'': ''daily''.
+
+            '
+          type: string
+          default: single_session
+        locale:
+          type: string
+          enum:
+          - en_US
+          - de_DE
+          - es_ES
+          - fr_FR
+          - it_IT
+          - zh_CN
+          description: The webinar language
+        isPasswordProtected:
+          type: boolean
+          default: false
+          description: A boolean flag indicating if the webinar is password protected or not.
+        recordingAssetKey:
+          type: string
+          description: The recording asset with which the simulive webinar should be created from. In case the recordingasset was created as an online recording the simulive webinar settings, poll and surveys would be copied from the webinar whose session was recorded.
+        isOndemand:
+          type: boolean
+          default: false
+          description: A boolean flag indicating if the webinar should be ondemand
+        isBreakout:
+          type: boolean
+          default: false
+          description: A boolean flag indicating if the webinar should be breakout
+        experienceType:
+          description: Specifies the experience type. The possible values are 'CLASSIC', 'BROADCAST' and 'SIMULIVE'.
+          default: CLASSIC
+          type: string
+        emailSettings:
+          $ref: '#/components/schemas/WebinarEmailSettings'
+    AttendanceStatistics:
+      description: Describes attendance metrics for a webinar session.
+      required:
+      - registrantCount
+      - percentageAttendance
+      - averageInterestRating
+      - averageAttentiveness
+      - averageAttendanceTimeSeconds
+      properties:
+        registrantCount:
+          type: integer
+          format: int32
+          description: The number of registrations for the webinar
+        percentageAttendance:
+          type: number
+          format: float
+          description: The percentage of registrants that actually attended the webinar session
+        averageInterestRating:
+          type: number
+          format: float
+          description: Numerical value 1-100 (100 being most interested) indicating the average interest rating of the webinar attendees
+        averageAttentiveness:
+          type: number
+          format: float
+          description: Average based on the focus of the attendees Viewer during the webinar session
+        averageAttendanceTimeSeconds:
+          type: number
+          format: float
+          description: Average attendance time in seconds
+    WebinarReqUpdate:
+      description: Describes the details of the webinar
+      properties:
+        subject:
+          type: string
+          description: The name/subject of the webinar (128 characters maximum)
+        description:
+          type: string
+          description: A description of the webinar (2048 characters maximum)
+        times:
+          description: Array with start and end time(s) for webinar
+          type: array
+          items:
+            $ref: '#/components/schemas/DateTimeRange'
+        timeZone:
+          type: string
+          description: 'The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer''s profile will be used
+
+            '
+        locale:
+          type: string
+          enum:
+          - en_US
+          - de_DE
+          - es_ES
+          - fr_FR
+          - it_IT
+          - zh_CN
+          description: The webinar language
+        emailSettings:
+          $ref: '#/components/schemas/WebinarEmailSettings'
+    RecordingAssetsResponse:
+      description: Describes a list of completed assets
+      required:
+      - data
+      - total
+      - page
+      - pageSize
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        total:
+          type: integer
+          format: int32
+          description: The total elements
+        page:
+          type: integer
+          format: int32
+          description: The current page number. The first page is 0
+        pageSize:
+          type: integer
+          format: int32
+          description: The page size
+    BrokerWebinar:
+      description: Describes a scheduled webinar
+      required:
+      - numberOfRegistrants
+      - times
+      - description
+      - subject
+      - inSession
+      - organizerKey
+      - webinarKey
+      - webinarID
+      - timeZone
+      - registrationUrl
+      - experienceType
+      - organizerEmail
+      - organizerName
+      - impromptu
+      - coorganizers
+      - isOndemand
+      properties:
+        numberOfRegistrants:
+          type: integer
+          format: int32
+          description: The number of registrants at the webinar
+        times:
+          type: array
+          items:
+            $ref: '#/components/schemas/DateTimeRange'
+          description: Array with startTime and endTime for the webinar sessions
+        description:
+          type: string
+          description: A short description of the webinar
+        subject:
+          type: string
+          description: The webinar subject
+        inSession:
+          type: boolean
+          description: Indicates whether there is a webinar session currently in progress
+        organizerKey:
+          type: integer
+          format: int64
+          description: The key of the webinar organizer
+        webinarKey:
+          type: integer
+          format: int64
+          description: The unique key of the webinar
+        webinarID:
+          type: string
+          description: The 9-digit webinar ID
+        timeZone:
+          type: string
+          description: The timezone where the webinar is taking place
+        registrationUrl:
+          type: string
+          description: The URL the webinar invitees can use to register
+        experienceType:
+          description: Specifies the experience type. The possible values are 'classic', 'broadcast' and 'simulive'.
+          type: string
+        coorganizers:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoorganizerDetails'
+          description: Array with email address and organizerKey of Coorganizers
+        organizerEmail:
+          type: string
+          description: The email address of the organizer
+        organizerName:
+          type: string
+          description: The name of the webinar organizer
+        impromptu:
+          type: boolean
+          description: A boolean flag indicating if the webinar type is impromptu
+        isOndemand:
+          type: boolean
+          default: false
+          description: A boolean flag indicating if the webinar should be ondemand
     ReportingWebinarsResponse:
       description: Describes a list of webinars for an account within a given date range
       required:
@@ -1955,14 +2026,53 @@ components:
           $ref: '#/components/schemas/ReportingWebinars'
         page:
           $ref: '#/components/schemas/page'
-    WebinarStartUrlResponse:
-      description: Describes a webinar start url
+    Asset:
+      description: Describes a completed recordingasset.
       required:
-      - startUrl
+      - name
+      - recordingAssetKey
+      - productName
+      - createTime
+      - creatorKey
+      - accountKey
+      - totalReferenceCount
+      - mp4DownloadUrl
       properties:
-        startUrl:
+        name:
           type: string
-          description: The URL that can be used to start a webinar
+          description: The name of the asset
+        recordingAssetKey:
+          type: string
+          description: The unique identifier for the recording asset
+        productName:
+          type: string
+          description: The product with which the asset was originally created
+        createTime:
+          type: string
+          format: date-time
+          description: The create time of the asset
+        creatorKey:
+          type: string
+          description: The key of the creator
+        accountKey:
+          type: string
+          description: The key of the account
+        totalReferenceCount:
+          type: integer
+          format: int32
+          description: The total number of references of the asset across products
+        mp4DownloadUrl:
+          type: string
+          description: The url to download recording assets video
+        transcriptDownloadUrl:
+          type: string
+          description: The url to download the transcript for the given recording video, available only if the transcript was generated
+        recordingShareUrl:
+          type: string
+          description: The share link for recording
+        webinarKey:
+          type: string
+          description: The webinarKey of parent webinar for which this online recordings was created, not available for uploaded recordings
     WebinarByKey:
       description: Describes a webinar
       required:
@@ -2060,46 +2170,127 @@ components:
         isPasswordProtected:
           type: boolean
           description: A boolean flag indicating if the webinar is password protected
-    CopyWebinar:
-      description: Describes the details of the webinar to be copied
+    AccessCodes:
+      description: Describes the access codes for organizer, panelists and attendees
+      required:
+      - organizer
+      - panelist
+      - attendee
       properties:
-        subject:
+        organizer:
           type: string
-          description: The name/subject of the webinar (128 characters maximum)
-        description:
+          description: Access code for the organizer
+        panelist:
           type: string
-          description: A description of the webinar (2048 characters maximum)
-        type:
-          description: "Specifies the webinar type. The default type value is 'single_session', which is used to create a single webinar session. The possible values are 'single_session', 'series' and 'sequence'. If type is set to 'single_session', a single webinar session is created. If type is set to 'series', a webinar series is created. In this case 2 or more timeframes must be specified for each webinar. Example: 'times': [{'startTime': '...', 'endTime':'...'}, {'startTime': '...', 'endTime': '...'},{'startTime': '...','endTime': '...'}]. If type is set to 'sequence', a sequence of webinars is created. In this case 2 or more timeframes must be specified for each webinar. If given webinar is 'single_session', we can create 'sequence' or 'series'\n webinar, in this case 2 or more timeframes must be specified for each webinar\n(same example as above). If given webinar is 'series', we can create 'single_session' or 'sequence' webinar with 2 or more timeframes must be specified. If given webinar is simulive webinar 'sequence' type is not supported.\n"
+          description: Access code for panelists
+        attendee:
           type: string
-          default: single_session
-        recordingAssetKey:
+          description: Access code for attendees
+    SessionInfoStatistics:
+      description: Describes session details for webinar session
+      required:
+      - webinarName
+      - webinarId
+      - sessionKey
+      - timeZone
+      - experienceType
+      - recurrencePeriod
+      - startTime
+      - endTime
+      - registrationEmailOpenedCount
+      - registrationLinkClickedCount
+      properties:
+        webinarName:
           type: string
-          description: The recording asset with from the simulive webinar should be created from. In case the recordingasset was created as an online recording the simulive webinar settings, poll and surveys would be copied from the webinar whose session was recorded. We can get recordingasset from [RecordingAssets](GoToWebinarV2#operation/searchAssets)
-        isOndemand:
-          type: boolean
-          default: false
-          description: A boolean flag indicating if the webinar should be ondemand
-        locale:
+          description: Name of the webinar
+        webinarId:
           type: string
-          enum:
-          - en_US
-          - de_DE
-          - es_ES
-          - fr_FR
-          - it_IT
-          - zh_CN
-          description: The webinar language
-        emailSettings:
-          $ref: '#/components/schemas/WebinarEmailSettings'
-        times:
-          description: Array with start and end time(s) for webinar
-          type: array
-          items:
-            $ref: '#/components/schemas/DateTimeRange'
+          description: The 9-digit webinar ID
+        sessionKey:
+          type: string
+          description: The key of the webinar session
         timeZone:
           type: string
-          description: The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer's profile will be used
+          description: The time zone where the webinar will take place
+        experienceType:
+          description: Specifies the webinar experience type.
+          type: string
+          enum:
+          - CLASSIC
+          - BROADCAST
+          - SIMULIVE
+        recurrencePeriod:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+          description: The starting time of an interval, e.g. 2020-03-13T10:00:00Z
+        endTime:
+          type: string
+          format: date-time
+          description: The ending time of an interval, e.g. 2020-03-13T22:00:00Z
+        registrationEmailOpenedCount:
+          type: string
+          description: The count of opened registration emails
+        registrationLinkClickedCount:
+          type: string
+          description: The count of registration links clicked
+    AttendeeFollowUpEmailSetting:
+      description: Describes Attendee follow-up email settings.
+      allOf:
+      - $ref: '#/components/schemas/EmailSettings'
+      - type: object
+        properties:
+          includeCertificate:
+            type: boolean
+            description: Indicates whether to include certificates in attendee follow-up emails is enabled or disabled.
+    Attendance:
+      description: Describes the times the attendee joined and left a webinar session.
+      required:
+      - joinTime
+      - leaveTime
+      properties:
+        joinTime:
+          type: string
+          format: date-time
+          description: The time the attendee joined a webinar session
+        leaveTime:
+          type: string
+          format: date-time
+          description: The time the attendee left a webinar session
+    CallNumbers:
+      description: Conference call numbers per country.
+      required:
+      - accessCodes
+      - toll
+      properties:
+        accessCodes:
+          $ref: '#/components/schemas/AccessCodes'
+        toll:
+          type: string
+          description: Conference number for toll calls.
+        tollFree:
+          type: string
+          description: Conference number for toll-free calls.
+    WebinarStartUrlResponse:
+      description: Describes a webinar start url
+      required:
+      - startUrl
+      properties:
+        startUrl:
+          type: string
+          description: The URL that can be used to start a webinar
+    WebinarEmailSettings:
+      description: Describes email settings of a webinar.
+      properties:
+        confirmationEmail:
+          $ref: '#/components/schemas/EmailSettings'
+        reminderEmail:
+          $ref: '#/components/schemas/EmailSettings'
+        absenteeFollowUpEmail:
+          $ref: '#/components/schemas/EmailSettings'
+        attendeeFollowUpEmail:
+          $ref: '#/components/schemas/AttendeeFollowUpEmailSetting'
     PollsAndSurveysStatistics:
       description: Details on the polls and surveys for a webinar session.
       required:
@@ -2129,53 +2320,6 @@ components:
           type: number
           format: float
           description: The percentage of surveys completed by the attendees
-    Asset:
-      description: Describes a completed recordingasset.
-      required:
-      - name
-      - recordingAssetKey
-      - productName
-      - createTime
-      - creatorKey
-      - accountKey
-      - totalReferenceCount
-      - mp4DownloadUrl
-      properties:
-        name:
-          type: string
-          description: The name of the asset
-        recordingAssetKey:
-          type: string
-          description: The unique identifier for the recording asset
-        productName:
-          type: string
-          description: The product with which the asset was originally created
-        createTime:
-          type: string
-          format: date-time
-          description: The create time of the asset
-        creatorKey:
-          type: string
-          description: The key of the creator
-        accountKey:
-          type: string
-          description: The key of the account
-        totalReferenceCount:
-          type: integer
-          format: int32
-          description: The total number of references of the asset across products
-        mp4DownloadUrl:
-          type: string
-          description: The url to download recording assets video
-        transcriptDownloadUrl:
-          type: string
-          description: The url to download the transcript for the given recording video, available only if the transcript was generated
-        recordingShareUrl:
-          type: string
-          description: The share link for recording
-        webinarKey:
-          type: string
-          description: The webinarKey of parent webinar for which this online recordings was created, not available for uploaded recordings
     ReportingWebinars:
       description: ''
       required:
@@ -2185,150 +2329,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Webinar'
-    WebinarReqCreate:
-      description: Describes the details used to create a new single session webinar.
-      required:
-      - subject
-      - times
+    WebinarUpdate:
+      type: object
       properties:
         subject:
           type: string
-          description: The name/subject of the webinar (128 characters maximum)
         description:
           type: string
-          description: A short description of the webinar (2048 characters maximum)
         times:
-          description: 'Array with startTime and endTime for webinar. Since this call creates single session webinars, the array can only contain a single pair of startTime and endTime
-
-            '
           type: array
           items:
-            $ref: '#/components/schemas/DateTimeRange'
+            type: object
+            properties:
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
         timeZone:
           type: string
-          description: 'The time zone where the webinar is taking place (must be a valid time zone ID). If this parameter is not passed, the timezone of the organizer''s profile will be used
-
-            '
-        type:
-          description: 'Specifies the webinar type. The default type value is ''single_session'', which is used to create a single webinar session. The possible values are ''single_session'', ''series'', ''sequence''. If type is set to ''single_session'', a single webinar session is created. If type is set to ''series'', a webinar series is created. In this case 2 or more timeframes must be specified for each webinar. Example: ''times'': [{''startTime'': ''...'', ''endTime'': ''...''},{''startTime'': ''...'', ''endTime'': ''...''},{''startTime'': ''...'', ''endTime'': ''...''}. If type is set to ''sequence'' a sequence of webinars is created. The times object in the body must be replaced by the ''recurrenceStart'' object. Example: ''recurrenceStart'': {''startTime'':''2012-06-12T16:00:00Z'', ''endTime'': ''2012-06-12T17:00:00Z'' }.  The ''recurrenceEnd'' and ''recurrencePattern'' body parameter must be specified. Example: , ''recurrenceEnd'': ''2012-07-10'', ''recurrencePattern'': ''daily''.
-
-            '
-          type: string
-          default: single_session
-        locale:
-          type: string
-          enum:
-          - en_US
-          - de_DE
-          - es_ES
-          - fr_FR
-          - it_IT
-          - zh_CN
-          description: The webinar language
-        isPasswordProtected:
-          type: boolean
-          default: false
-          description: A boolean flag indicating if the webinar is password protected or not.
-        recordingAssetKey:
-          type: string
-          description: The recording asset with which the simulive webinar should be created from. In case the recordingasset was created as an online recording the simulive webinar settings, poll and surveys would be copied from the webinar whose session was recorded.
-        isOndemand:
-          type: boolean
-          default: false
-          description: A boolean flag indicating if the webinar should be ondemand
-        isBreakout:
-          type: boolean
-          default: false
-          description: A boolean flag indicating if the webinar should be breakout
-        experienceType:
-          description: Specifies the experience type. The possible values are 'CLASSIC', 'BROADCAST' and 'SIMULIVE'.
-          default: CLASSIC
-          type: string
-        emailSettings:
-          $ref: '#/components/schemas/WebinarEmailSettings'
-    CopiedWebinar:
-      description: Describes a newly copied webinar.
-      required:
-      - webinarKey
+    WebinarKeyResponse:
+      type: object
       properties:
         webinarKey:
           type: string
-          description: The unique key of the webinar.
-    AttendanceStatistics:
-      description: Describes attendance metrics for a webinar session.
-      required:
-      - registrantCount
-      - percentageAttendance
-      - averageInterestRating
-      - averageAttentiveness
-      - averageAttendanceTimeSeconds
-      properties:
-        registrantCount:
-          type: integer
-          format: int32
-          description: The number of registrations for the webinar
-        percentageAttendance:
-          type: number
-          format: float
-          description: The percentage of registrants that actually attended the webinar session
-        averageInterestRating:
-          type: number
-          format: float
-          description: Numerical value 1-100 (100 being most interested) indicating the average interest rating of the webinar attendees
-        averageAttentiveness:
-          type: number
-          format: float
-          description: Average based on the focus of the attendees Viewer during the webinar session
-        averageAttendanceTimeSeconds:
-          type: number
-          format: float
-          description: Average attendance time in seconds
-    AudioType:
-      description: How to connect to the webinar's audio conference
-      type: string
-      enum:
-      - PSTN
-      - VOIP
-      - Hybrid
-      - Private
-    AccessCodes:
-      description: Describes the access codes for organizer, panelists and attendees
-      required:
-      - organizer
-      - panelist
-      - attendee
-      properties:
-        organizer:
-          type: string
-          description: Access code for the organizer
-        panelist:
-          type: string
-          description: Access code for panelists
-        attendee:
-          type: string
-          description: Access code for attendees
-    TollCountries:
-      description: Defines in which countries toll PSTN numbers are available.
-      type: string
-      enum:
-      - AT
-      - AU
-      - BE
-      - CA
-      - CH
-      - DE
-      - DK
-      - ES
-      - FI
-      - FR
-      - GB
-      - IE
-      - IT
-      - NL
-      - 'NO'
-      - NZ
-      - SE
-      - US
     WebinarCreate:
       type: object
       required:
@@ -2412,40 +2437,27 @@ components:
           - NEW
           - UPDATED
           - DELETED
-    WebinarKeyResponse:
-      type: object
-      properties:
-        webinarKey:
-          type: string
-    WebinarUpdate:
-      type: object
-      properties:
-        subject:
-          type: string
-        description:
-          type: string
-        times:
-          type: array
-          items:
-            type: object
-            properties:
-              startTime:
-                type: string
-                format: date-time
-              endTime:
-                type: string
-                format: date-time
-        timeZone:
-          type: string
   parameters:
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
+    requiredFromTime:
+      name: fromTime
+      in: query
+      description: 'Start of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
+
+        '
       required: true
+      example: '2020-03-13T10:00:00Z'
+      schema:
+        type: string
+        format: date-time
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The size of the page.
       schema:
         type: integer
         format: int64
+        maximum: 200
     optionalToTime:
       name: toTime
       in: query
@@ -2468,34 +2480,22 @@ components:
       schema:
         type: string
         format: date-time
-    webinarKey:
+    sourceWebinarKey:
       name: webinarKey
       in: path
-      description: The key of the webinar
+      description: The key of source webinar
       required: true
       schema:
         type: integer
         format: int64
-    requiredFromTime:
-      name: fromTime
-      in: query
-      description: 'Start of the datetime range in ISO8601 UTC format. The reserved characters like ''+'' have to be encoded while being passed as query parameter.
-
-        '
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
       required: true
-      example: '2020-03-13T10:00:00Z'
-      schema:
-        type: string
-        format: date-time
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The size of the page.
       schema:
         type: integer
         format: int64
-        maximum: 200
     page:
       name: page
       in: query
@@ -2504,6 +2504,15 @@ components:
       schema:
         type: integer
         format: int64
+    size:
+      name: size
+      in: query
+      required: false
+      description: The size of the page.
+      schema:
+        type: integer
+        format: int64
+        maximum: 200
     requiredToTime:
       name: toTime
       in: query
@@ -2515,15 +2524,6 @@ components:
       schema:
         type: string
         format: date-time
-    size:
-      name: size
-      in: query
-      required: false
-      description: The size of the page.
-      schema:
-        type: integer
-        format: int64
-        maximum: 200
     accountKey:
       name: accountKey
       in: path
@@ -2532,21 +2532,14 @@ components:
       schema:
         type: integer
         format: int64
-    sourceWebinarKey:
+    webinarKey:
       name: webinarKey
       in: path
-      description: The key of source webinar
+      description: The key of the webinar
       required: true
       schema:
         type: integer
         format: int64
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
     OrganizerKey:
       name: organizerKey
       in: path
@@ -2554,6 +2547,13 @@ components:
       schema:
         type: string
       description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
   securitySchemes:
     OAuth2:
       type: oauth2

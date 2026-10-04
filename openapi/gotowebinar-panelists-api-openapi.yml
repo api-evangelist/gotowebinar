@@ -318,18 +318,18 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
     panelistKey:
       name: panelistKey
       in: path
       description: The key of the webinar panelist
+      required: true
+      schema:
+        type: integer
+        format: int64
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
       required: true
       schema:
         type: integer
@@ -357,37 +357,6 @@ components:
         type: string
       description: Authenticated organizer's key.
   schemas:
-    Panelist:
-      description: Describes a webinar session panelist
-      required:
-      - joinLink
-      - lastName
-      - email
-      - name
-      - panelistId
-      - firstName
-      properties:
-        joinLink:
-          type: string
-          description: The co-organizer's join link
-        lastName:
-          deprecated: true
-          type: string
-          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
-        email:
-          type: string
-          description: The panelist's email address
-        name:
-          type: string
-          description: The panelist's name
-        panelistId:
-          type: integer
-          format: int64
-          description: The panelist's ID
-        firstName:
-          deprecated: true
-          type: string
-          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
     CreatedPanelist:
       description: Describes a created panelist
       required:
@@ -420,6 +389,37 @@ components:
         name:
           type: string
           description: The panelist's name
+    Panelist:
+      description: Describes a webinar session panelist
+      required:
+      - joinLink
+      - lastName
+      - email
+      - name
+      - panelistId
+      - firstName
+      properties:
+        joinLink:
+          type: string
+          description: The co-organizer's join link
+        lastName:
+          deprecated: true
+          type: string
+          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
+        email:
+          type: string
+          description: The panelist's email address
+        name:
+          type: string
+          description: The panelist's name
+        panelistId:
+          type: integer
+          format: int64
+          description: The panelist's ID
+        firstName:
+          deprecated: true
+          type: string
+          description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
     Panelist_2:
       type: object
       required:

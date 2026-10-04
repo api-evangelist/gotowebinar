@@ -445,68 +445,86 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
       description: GoToWebinar V2 production base URL
 components:
-  parameters:
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
-    sessionKey:
-      name: sessionKey
-      in: path
-      description: The key of the webinar session
-      required: true
-      schema:
-        type: integer
-        format: int64
-    webinarKey:
-      name: webinarKey
-      in: path
-      description: The key of the webinar
-      required: true
-      schema:
-        type: integer
-        format: int64
-    registrantKey:
-      name: registrantKey
-      in: path
-      description: The key of the registrant
-      required: true
-      schema:
-        type: integer
-        format: int64
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
-    SessionKey:
-      name: sessionKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a past session.
-    RegistrantKey:
-      name: registrantKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a registrant.
-    OrganizerKey:
-      name: organizerKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Authenticated organizer's key.
   schemas:
+    Attendance:
+      description: Describes the times the attendee joined and left a webinar session.
+      required:
+      - joinTime
+      - leaveTime
+      properties:
+        joinTime:
+          type: string
+          format: date-time
+          description: The time the attendee joined a webinar session
+        leaveTime:
+          type: string
+          format: date-time
+          description: The time the attendee left a webinar session
+    PollAnswer:
+      description: Describes the answer given by a webinar attendee to a poll or survey launched by an organizer.
+      required:
+      - answers
+      - question
+      properties:
+        answer:
+          type: string
+          description: The answer given to the poll or survey question. Use `answers` array instead.
+          example: Great
+          deprecated: true
+        answers:
+          type: array
+          description: The answer given to the poll or survey question
+          items:
+            type: string
+            example:
+            - Great
+            - Super
+        question:
+          type: string
+          description: The poll or survey question
+          example: How was the experience?
+    Registrant:
+      description: Describes a webinar registrant
+      required:
+      - lastName
+      - email
+      - firstName
+      - registrantKey
+      - registrationDate
+      - status
+      - joinUrl
+      - timeZone
+      properties:
+        lastName:
+          type: string
+          description: The registrant's last name
+        email:
+          type: string
+          description: The registrant's email address
+        firstName:
+          type: string
+          description: The registrant's first name
+        registrantKey:
+          type: integer
+          format: int64
+          description: The registrant's key
+        registrationDate:
+          type: string
+          format: date-time
+          description: The registration date and time
+        status:
+          type: string
+          enum:
+          - APPROVED
+          - DENIED
+          - WAITING
+          description: The registration status
+        joinUrl:
+          type: string
+          description: The URL the registrant will use to join the webinar
+        timeZone:
+          type: string
+          description: The time zone where the webinar will take place
     Attendee:
       description: Describes the attendee of a webinar
       required:
@@ -595,85 +613,6 @@ components:
         answererEmail:
           type: string
           description: The answerer's email address
-    Registrant:
-      description: Describes a webinar registrant
-      required:
-      - lastName
-      - email
-      - firstName
-      - registrantKey
-      - registrationDate
-      - status
-      - joinUrl
-      - timeZone
-      properties:
-        lastName:
-          type: string
-          description: The registrant's last name
-        email:
-          type: string
-          description: The registrant's email address
-        firstName:
-          type: string
-          description: The registrant's first name
-        registrantKey:
-          type: integer
-          format: int64
-          description: The registrant's key
-        registrationDate:
-          type: string
-          format: date-time
-          description: The registration date and time
-        status:
-          type: string
-          enum:
-          - APPROVED
-          - DENIED
-          - WAITING
-          description: The registration status
-        joinUrl:
-          type: string
-          description: The URL the registrant will use to join the webinar
-        timeZone:
-          type: string
-          description: The time zone where the webinar will take place
-    Attendance:
-      description: Describes the times the attendee joined and left a webinar session.
-      required:
-      - joinTime
-      - leaveTime
-      properties:
-        joinTime:
-          type: string
-          format: date-time
-          description: The time the attendee joined a webinar session
-        leaveTime:
-          type: string
-          format: date-time
-          description: The time the attendee left a webinar session
-    PollAnswer:
-      description: Describes the answer given by a webinar attendee to a poll or survey launched by an organizer.
-      required:
-      - answers
-      - question
-      properties:
-        answer:
-          type: string
-          description: The answer given to the poll or survey question. Use `answers` array instead.
-          example: Great
-          deprecated: true
-        answers:
-          type: array
-          description: The answer given to the poll or survey question
-          items:
-            type: string
-            example:
-            - Great
-            - Super
-        question:
-          type: string
-          description: The poll or survey question
-          example: How was the experience?
     Attendee_2:
       type: object
       properties:
@@ -696,6 +635,67 @@ components:
         leaveTime:
           type: string
           format: date-time
+  parameters:
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
+      required: true
+      schema:
+        type: integer
+        format: int64
+    registrantKey:
+      name: registrantKey
+      in: path
+      description: The key of the registrant
+      required: true
+      schema:
+        type: integer
+        format: int64
+    sessionKey:
+      name: sessionKey
+      in: path
+      description: The key of the webinar session
+      required: true
+      schema:
+        type: integer
+        format: int64
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
+      required: true
+      schema:
+        type: integer
+        format: int64
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    SessionKey:
+      name: sessionKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a past session.
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
   securitySchemes:
     OAuth2:
       type: oauth2

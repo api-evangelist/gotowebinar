@@ -413,70 +413,40 @@ paths:
     servers:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
-  parameters:
-    page:
-      name: page
-      in: query
-      required: false
-      description: The page number to be displayed. The first page is 0.
-      schema:
-        type: integer
-        format: int64
-    organizerKey:
-      name: organizerKey
-      in: path
-      description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
-    limit:
-      name: limit
-      in: query
-      required: false
-      description: The size of the page.
-      schema:
-        type: integer
-        format: int64
-        maximum: 200
-    webinarKey:
-      name: webinarKey
-      in: path
-      description: The key of the webinar
-      required: true
-      schema:
-        type: integer
-        format: int64
-    registrantKey:
-      name: registrantKey
-      in: path
-      description: The key of the registrant
-      required: true
-      schema:
-        type: integer
-        format: int64
-    WebinarKey:
-      name: webinarKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a webinar.
-    RegistrantKey:
-      name: registrantKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique key identifying a registrant.
-    OrganizerKey:
-      name: organizerKey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Authenticated organizer's key.
   schemas:
+    RegistrantArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Registrant'
+    RegistrationFields:
+      description: The fields to be completed on the webinar registration form.
+      required:
+      - questions
+      - fields
+      properties:
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationQuestion'
+          description: Custom fields created by the organizer for the webinar registration form
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationField'
+          description: The default fields the organizer has selected for the webinar registration form
+    RegistrationAnswer:
+      description: Describes an answer to a multiple choice custom registration field.
+      required:
+      - answer
+      - answerKey
+      properties:
+        answer:
+          type: string
+          description: The answer value
+        answerKey:
+          type: integer
+          format: int64
+          description: The answer key
     RegistrantFields:
       description: Detailed description of a all fields to register a registrant for a webinar.
       required:
@@ -540,6 +510,82 @@ components:
           items:
             $ref: '#/components/schemas/RegistrantQAResponse'
           description: Set the answers of all questions
+    RegistrationQuestion:
+      description: Describes a custom field for a webinar registration.
+      required:
+      - questionKey
+      - question
+      - required
+      - type
+      - maxSize
+      properties:
+        questionKey:
+          type: integer
+          format: int64
+          description: The unique key of the custom registration field
+        question:
+          type: string
+          description: The value (text) of the custom registration field
+        required:
+          type: boolean
+          description: Indicates whether the custom registration field is compulsory
+        type:
+          type: string
+          enum:
+          - multipleChoice
+          - shortAnswer
+          description: Indicates whether the custom registration field requires a single short answer or whether it is a multiple choice question
+        maxSize:
+          type: integer
+          format: int32
+          description: The character size of the custom registration field (max 1000)
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegistrationAnswer'
+          description: The answers to a multiple choice custom registration field
+    Registrant:
+      description: Describes a webinar registrant
+      required:
+      - lastName
+      - email
+      - firstName
+      - registrantKey
+      - registrationDate
+      - status
+      - joinUrl
+      - timeZone
+      properties:
+        lastName:
+          type: string
+          description: The registrant's last name
+        email:
+          type: string
+          description: The registrant's email address
+        firstName:
+          type: string
+          description: The registrant's first name
+        registrantKey:
+          type: integer
+          format: int64
+          description: The registrant's key
+        registrationDate:
+          type: string
+          format: date-time
+          description: The registration date and time
+        status:
+          type: string
+          enum:
+          - APPROVED
+          - DENIED
+          - WAITING
+          description: The registration status
+        joinUrl:
+          type: string
+          description: The URL the registrant will use to join the webinar
+        timeZone:
+          type: string
+          description: The time zone where the webinar will take place
     RegistrantDetailed:
       description: Detailed description of a webinar registrant with all registration fields.
       required:
@@ -644,19 +690,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomAnswers'
-    RegistrationAnswer:
-      description: Describes an answer to a multiple choice custom registration field.
+    CustomAnswers:
+      description: Answers to custom questions of the registrant
       required:
       - answer
-      - answerKey
+      - question
       properties:
         answer:
           type: string
-          description: The answer value
+          description: Answer to a custom question when registering
+        question:
+          type: string
+          description: Custom question for registering
+    RegistrantQAResponse:
+      description: 'Describes a completed registration question for a webinar registrant. If you use "Multiple choice" questions the response contains the numeric answerKey, otherwise the answer text.
+
+        '
+      required:
+      - questionKey
+      properties:
+        questionKey:
+          type: integer
+          format: int64
+          description: The unique key of the question
+        responseText:
+          type: string
+          description: Answer of the question.
         answerKey:
           type: integer
           format: int64
-          description: The answer key
+          description: The numeric key of the answer to a multiple-choice question.
     RegistrantPaginatedResponse:
       description: Describes a list of webinar sessions
       required:
@@ -686,57 +749,6 @@ components:
           type: integer
           format: int32
           description: The actual number of items in the current page
-    RegistrationQuestion:
-      description: Describes a custom field for a webinar registration.
-      required:
-      - questionKey
-      - question
-      - required
-      - type
-      - maxSize
-      properties:
-        questionKey:
-          type: integer
-          format: int64
-          description: The unique key of the custom registration field
-        question:
-          type: string
-          description: The value (text) of the custom registration field
-        required:
-          type: boolean
-          description: Indicates whether the custom registration field is compulsory
-        type:
-          type: string
-          enum:
-          - multipleChoice
-          - shortAnswer
-          description: Indicates whether the custom registration field requires a single short answer or whether it is a multiple choice question
-        maxSize:
-          type: integer
-          format: int32
-          description: The character size of the custom registration field (max 1000)
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegistrationAnswer'
-          description: The answers to a multiple choice custom registration field
-    RegistrantArray:
-      type: array
-      items:
-        $ref: '#/components/schemas/Registrant'
-    RegistrantCreated:
-      description: Describes a newly created webinar registrant.
-      required:
-      - registrantKey
-      - joinUrl
-      properties:
-        registrantKey:
-          type: integer
-          format: int64
-          description: The registrant's key
-        joinUrl:
-          type: string
-          description: The URL the registrant will use to join the webinar.
     RegistrationField:
       description: Describes a field for a webinar registration.
       required:
@@ -759,94 +771,58 @@ components:
           type: integer
           format: int32
           description: The character size of the custom registration field (max 128)
-    Registrant:
-      description: Describes a webinar registrant
+    RegistrantCreated:
+      description: Describes a newly created webinar registrant.
       required:
-      - lastName
-      - email
-      - firstName
       - registrantKey
-      - registrationDate
-      - status
       - joinUrl
-      - timeZone
       properties:
-        lastName:
-          type: string
-          description: The registrant's last name
-        email:
-          type: string
-          description: The registrant's email address
-        firstName:
-          type: string
-          description: The registrant's first name
         registrantKey:
           type: integer
           format: int64
           description: The registrant's key
+        joinUrl:
+          type: string
+          description: The URL the registrant will use to join the webinar.
+    Registrant_2:
+      type: object
+      properties:
+        registrantKey:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        organization:
+          type: string
+        jobTitle:
+          type: string
         registrationDate:
           type: string
           format: date-time
-          description: The registration date and time
         status:
           type: string
           enum:
           - APPROVED
           - DENIED
           - WAITING
-          description: The registration status
         joinUrl:
           type: string
-          description: The URL the registrant will use to join the webinar
-        timeZone:
-          type: string
-          description: The time zone where the webinar will take place
-    RegistrantQAResponse:
-      description: 'Describes a completed registration question for a webinar registrant. If you use "Multiple choice" questions the response contains the numeric answerKey, otherwise the answer text.
-
-        '
-      required:
-      - questionKey
-      properties:
-        questionKey:
-          type: integer
-          format: int64
-          description: The unique key of the question
-        responseText:
-          type: string
-          description: Answer of the question.
-        answerKey:
-          type: integer
-          format: int64
-          description: The numeric key of the answer to a multiple-choice question.
-    RegistrationFields:
-      description: The fields to be completed on the webinar registration form.
-      required:
-      - questions
-      - fields
-      properties:
-        questions:
+          format: uri
+        responses:
           type: array
           items:
-            $ref: '#/components/schemas/RegistrationQuestion'
-          description: Custom fields created by the organizer for the webinar registration form
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegistrationField'
-          description: The default fields the organizer has selected for the webinar registration form
-    CustomAnswers:
-      description: Answers to custom questions of the registrant
-      required:
-      - answer
-      - question
-      properties:
-        answer:
-          type: string
-          description: Answer to a custom question when registering
-        question:
-          type: string
-          description: Custom question for registering
+            type: object
+            properties:
+              question:
+                type: string
+              answer:
+                type: string
     RegistrantCreated_2:
       type: object
       properties:
@@ -888,45 +864,69 @@ components:
                 type: string
               responseText:
                 type: string
-    Registrant_2:
-      type: object
-      properties:
-        registrantKey:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        organization:
-          type: string
-        jobTitle:
-          type: string
-        registrationDate:
-          type: string
-          format: date-time
-        status:
-          type: string
-          enum:
-          - APPROVED
-          - DENIED
-          - WAITING
-        joinUrl:
-          type: string
-          format: uri
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              question:
-                type: string
-              answer:
-                type: string
+  parameters:
+    page:
+      name: page
+      in: query
+      required: false
+      description: The page number to be displayed. The first page is 0.
+      schema:
+        type: integer
+        format: int64
+    organizerKey:
+      name: organizerKey
+      in: path
+      description: The key of the organizer
+      required: true
+      schema:
+        type: integer
+        format: int64
+    registrantKey:
+      name: registrantKey
+      in: path
+      description: The key of the registrant
+      required: true
+      schema:
+        type: integer
+        format: int64
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
+      required: true
+      schema:
+        type: integer
+        format: int64
+    limit:
+      name: limit
+      in: query
+      required: false
+      description: The size of the page.
+      schema:
+        type: integer
+        format: int64
+        maximum: 200
+    OrganizerKey:
+      name: organizerKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Authenticated organizer's key.
+    WebinarKey:
+      name: webinarKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a webinar.
+    RegistrantKey:
+      name: registrantKey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique key identifying a registrant.
   securitySchemes:
     OAuth2:
       type: oauth2
