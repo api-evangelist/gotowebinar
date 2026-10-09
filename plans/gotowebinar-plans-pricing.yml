@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 apiCommonsPlans: '0.1'
 name: GoToWebinar Plans And Pricing
 provider:
@@ -67,3 +71,33 @@ notes:
   - All plans include API access to the GoToWebinar V2 REST API and webhook subscriptions.
   - Pricing escalates with the number of organizers on the account.
   - The GoTo Developer Center does not charge separately for API usage above the seat license.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Lite
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Standard
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
