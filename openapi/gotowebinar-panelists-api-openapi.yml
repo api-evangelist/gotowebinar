@@ -318,6 +318,14 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
+    webinarKey:
+      name: webinarKey
+      in: path
+      description: The key of the webinar
+      required: true
+      schema:
+        type: integer
+        format: int64
     panelistKey:
       name: panelistKey
       in: path
@@ -330,14 +338,6 @@ components:
       name: organizerKey
       in: path
       description: The key of the organizer
-      required: true
-      schema:
-        type: integer
-        format: int64
-    webinarKey:
-      name: webinarKey
-      in: path
-      description: The key of the webinar
       required: true
       schema:
         type: integer
@@ -377,18 +377,6 @@ components:
         panelistKey:
           type: string
           description: The panelist's key
-    PanelistReqCreate:
-      description: Describes a single panelist
-      required:
-      - email
-      - name
-      properties:
-        email:
-          type: string
-          description: The panelist's email address
-        name:
-          type: string
-          description: The panelist's name
     Panelist:
       description: Describes a webinar session panelist
       required:
@@ -420,6 +408,18 @@ components:
           deprecated: true
           type: string
           description: DEPRECATED. The fields 'firstName' and 'lastName' are replaced by the field 'name'
+    PanelistReqCreate:
+      description: Describes a single panelist
+      required:
+      - email
+      - name
+      properties:
+        email:
+          type: string
+          description: The panelist's email address
+        name:
+          type: string
+          description: The panelist's name
     Panelist_2:
       type: object
       required:

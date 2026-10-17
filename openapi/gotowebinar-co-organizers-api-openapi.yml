@@ -334,10 +334,10 @@ paths:
     - url: https://api.getgo.com/G2W/rest/v2
 components:
   parameters:
-    coorganizerKey:
-      name: coorganizerKey
+    webinarKey:
+      name: webinarKey
       in: path
-      description: The key of the internal or external co-organizer (memberKey)
+      description: The key of the webinar
       required: true
       schema:
         type: integer
@@ -350,10 +350,10 @@ components:
       schema:
         type: integer
         format: int64
-    webinarKey:
-      name: webinarKey
+    coorganizerKey:
+      name: coorganizerKey
       in: path
-      description: The key of the webinar
+      description: The key of the internal or external co-organizer (memberKey)
       required: true
       schema:
         type: integer

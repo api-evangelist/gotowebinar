@@ -290,29 +290,6 @@ components:
           $ref: '#/components/schemas/Assets'
         page:
           $ref: '#/components/schemas/page'
-    page:
-      required:
-      - size
-      - totalElements
-      - totalPages
-      - number
-      properties:
-        size:
-          type: integer
-          format: int32
-          description: The page size
-        totalElements:
-          type: integer
-          format: int32
-          description: The total elements
-        totalPages:
-          type: integer
-          format: int32
-          description: The pages count
-        number:
-          type: integer
-          format: int32
-          description: The current page number. The first page is 0
     Assets:
       description: ''
       required:
@@ -369,6 +346,29 @@ components:
         webinarKey:
           type: string
           description: The webinarKey of parent webinar for which this online recordings was created, not available for uploaded recordings
+    page:
+      required:
+      - size
+      - totalElements
+      - totalPages
+      - number
+      properties:
+        size:
+          type: integer
+          format: int32
+          description: The page size
+        totalElements:
+          type: integer
+          format: int32
+          description: The total elements
+        totalPages:
+          type: integer
+          format: int32
+          description: The pages count
+        number:
+          type: integer
+          format: int32
+          description: The current page number. The first page is 0
     AssetsSearchRequestForAdmin:
       description: Describes the details used to search a completed recordingasset.
       required:
@@ -414,6 +414,23 @@ components:
           type: string
           default: DESC
   parameters:
+    accountKey:
+      name: accountKey
+      in: path
+      description: The key of the account
+      required: true
+      schema:
+        type: integer
+        format: int64
+    size:
+      name: size
+      in: query
+      required: false
+      description: The size of the page.
+      schema:
+        type: integer
+        format: int64
+        maximum: 200
     page:
       name: page
       in: query
@@ -435,23 +452,6 @@ components:
           enum:
           - recordingShareUrl
           - webinarKey
-    size:
-      name: size
-      in: query
-      required: false
-      description: The size of the page.
-      schema:
-        type: integer
-        format: int64
-        maximum: 200
-    accountKey:
-      name: accountKey
-      in: path
-      description: The key of the account
-      required: true
-      schema:
-        type: integer
-        format: int64
   securitySchemes:
     OAuth2:
       type: oauth2
