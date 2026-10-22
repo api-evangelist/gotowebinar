@@ -1,0 +1,24 @@
+edges:
+- partner_name: Miro (own)
+  partner: miro
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://miro.com/marketplace/goto/
+  mirror_of: miro/integrations/miro-integration-edges.yml
+  apps:
+  - GoTo
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Miro app
+generated: '2026-10-22'
+method: searched
+source:
+- miro/integrations/miro-integration-edges.yml
+checked:
+- miro/integrations/miro-integration-edges.yml
