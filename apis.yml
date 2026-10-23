@@ -394,6 +394,8 @@ apis:
   - type: OpenAPI
     url: openapi/gotowebinar-recording-assets-api-openapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/gotowebinar/overview
   - type: OpenAPI
     url: openapi/_original/gotowebinar-openapi.yml
   - type: Packages
