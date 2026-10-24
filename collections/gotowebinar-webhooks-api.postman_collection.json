@@ -1,411 +1,2756 @@
 {
+  "info": {
+    "_postman_id": "50f6b667-7339-439b-93d5-7d90c5aeb8f7",
+    "name": "Gotowebinar Webhooks API",
+    "description": "Operations tagged Webhooks across 2 of this provider's published API definitions: gotowebinar-openapi.yml, gotowebinar-webhooks-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:18:39.000Z",
+    "updatedAt": "2026-10-21T21:18:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-50f6b667-7339-439b-93d5-7d90c5aeb8f7"
+  },
   "item": [
     {
-      "id": "ef4b78ae-00de-4d42-87ec-93ea1e12cd5f",
-      "name": "Webhooks",
-      "description": {
-        "content": "Manage webhook definitions and secret keys.",
-        "type": "text/plain"
-      },
+      "name": "webhooks",
       "item": [
         {
-          "id": "fb838f32-17b2-46b4-8bb5-d68d5cd540f0",
-          "name": "Create A Webhook",
-          "request": {
-            "name": "Create A Webhook",
-            "description": {},
-            "url": {
-              "path": [
-                "webhooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"product\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"secretKey\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "secretkey",
+          "item": [
             {
-              "id": "c9d50945-86b6-4ca7-b381-42bb9e3c9488",
-              "name": "Webhook created in INACTIVE state.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhooks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+              "name": "Creates a new secret key",
+              "id": "ea8ad7f2-14b8-429a-900b-0f8086e1b2c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "password_credentials",
+                      "type": "string"
+                    }
+                  ]
                 },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"product\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"secretKey\": \"<string>\"\n}",
+                  "raw": "{\n  \"validFrom\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"webhookKey\": \"string\",\n  \"product\": \"g2w\",\n  \"eventName\": \"registrant.added\",\n  \"eventVersion\": \"1.0.0\",\n  \"callbackUrl\": \"http://ImaUDbysGcwrUMJTkopXTcwBgy.pavZIBX-GaSNSQPhSN2\",\n  \"webhookState\": \"ACTIVE\",\n  \"createTime\": \"2001-03-02T03:34:42.396Z\",\n  \"secretKey\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e0b94ae8-e9f5-471c-871b-c0c85e4ea183",
-          "name": "Activate Or Update Webhooks",
-          "request": {
-            "name": "Activate Or Update Webhooks",
-            "description": {},
-            "url": {
-              "path": [
-                "webhooks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "88fa11ee-65f3-4b88-8b2b-c41dbc4b63b6",
-              "name": "Webhooks updated.",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "webhooks"
-                  ],
+                  "raw": "{{baseUrl}}/webhooks/secretkey",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "webhooks",
+                    "secretkey"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"webhookState\": \"<string>\"\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "This creates a new secret key per application. It takes an optional validFrom value, a date time in ISO8601 format, e.g. 2019-07-01T22:00:00Z. The secret key will be activated at the given date. If validFrom is not passed, the secret key will be activated immediately. The secret key is used to generate a signature for events published to the callback url."
               },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "930ef2a8-0612-49da-835f-254d3346cef1",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"validFrom\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/secretkey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        "secretkey"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"value\": \"<string>\",\n  \"validFrom\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-930ef2a8-0612-49da-835f-254d3346cef1"
+                },
+                {
+                  "id": "cd500db9-bf30-4613-bd86-ed7f1b659fa5",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"validFrom\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/secretkey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        "secretkey"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-cd500db9-bf30-4613-bd86-ed7f1b659fa5"
+                },
+                {
+                  "id": "ae0cf651-95fd-4098-b499-21facc4d899e",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"validFrom\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/secretkey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        "secretkey"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-ae0cf651-95fd-4098-b499-21facc4d899e"
+                },
+                {
+                  "id": "79b8653d-0d60-49ed-9c17-8fcb9cf563f8",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"validFrom\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/secretkey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        "secretkey"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-79b8653d-0d60-49ed-9c17-8fcb9cf563f8"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:18:39.000Z",
+              "updatedAt": "2026-10-21T21:18:39.000Z",
+              "uid": "35240-ea8ad7f2-14b8-429a-900b-0f8086e1b2c8"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c97c4546-5bc2-4731-8fd9-38bd1acdafe2",
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-c97c4546-5bc2-4731-8fd9-38bd1acdafe2"
         },
         {
-          "id": "ad4208a3-ae91-42fa-8191-74ea21367b1e",
-          "name": "Get Webhook Status",
-          "request": {
-            "name": "Get Webhook Status",
-            "description": {},
-            "url": {
-              "path": [
-                "webhooks",
-                ":webhookKey"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webhookKey",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{webhookKey}",
+          "item": [
             {
-              "id": "de29ce5b-fa35-4b8b-932d-ef1925b6dd12",
-              "name": "Webhook record.",
-              "originalRequest": {
+              "name": "Get webhook",
+              "id": "35a375d5-e231-47d3-899d-a3412883ee9f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "password_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/webhooks/:webhookKey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "webhooks",
                     ":webhookKey"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "502d3cc9-cb4f-4279-b31d-220c2838531a",
                       "key": "webhookKey",
-                      "description": "(Required) "
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier for a webhook."
                     }
                   ]
                 },
+                "description": "Get a webhook by webhookKey for the requesting user."
+              },
+              "response": [
+                {
+                  "id": "5bf268a3-30d6-4ee0-9ec6-0bb89fbbff97",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhookKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhookKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhookKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"callbackUrl\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"product\": \"g2w\",\n  \"webhookKey\": \"<string>\",\n  \"state\": \"INACTIVE\",\n  \"createTime\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-5bf268a3-30d6-4ee0-9ec6-0bb89fbbff97"
+                },
+                {
+                  "id": "d19eccfe-a1f7-4195-acad-016292ab38cf",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhookKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhookKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhookKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-d19eccfe-a1f7-4195-acad-016292ab38cf"
+                },
+                {
+                  "id": "72cb89b2-b03e-45a6-955a-aa737ef319c4",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhookKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhookKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhookKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-72cb89b2-b03e-45a6-955a-aa737ef319c4"
+                },
+                {
+                  "id": "43c529fd-c69f-41ea-8a62-6a6a9629d18d",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:webhookKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":webhookKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "webhookKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-43c529fd-c69f-41ea-8a62-6a6a9629d18d"
+                }
+              ],
+              "createdAt": "2026-10-21T21:18:39.000Z",
+              "updatedAt": "2026-10-21T21:18:39.000Z",
+              "uid": "35240-35a375d5-e231-47d3-899d-a3412883ee9f"
+            }
+          ],
+          "id": "85213584-7220-47c8-bfcf-e8d0a94d6e80",
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-85213584-7220-47c8-bfcf-e8d0a94d6e80"
+        },
+        {
+          "name": "Creates new webhooks",
+          "id": "a9ae82b9-9dbc-4f18-813e-754db6eb0382",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  },\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "A new webhook will be created with the provided callback url. Callback url should be a https url. Callback url will be validated by making a GET request. It should return 200 OK."
+          },
+          "response": [
+            {
+              "id": "bbe8cff2-3b45-4985-a9a4-fd0db0aad5c9",
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  },\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"webhookKey\": \"string\",\n  \"product\": \"g2w\",\n  \"eventName\": \"registrant.added\",\n  \"eventVersion\": \"1.0.0\",\n  \"callbackUrl\": \"http://ImaUDbysGcwrUMJTkopXTcwBgy.pavZIBX-GaSNSQPhSN2\",\n  \"webhookState\": \"ACTIVE\",\n  \"createTime\": \"2001-03-02T03:34:42.396Z\",\n  \"secretKey\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"_embedded\": {\n    \"webhooks\": [\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"state\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      },\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"state\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-bbe8cff2-3b45-4985-a9a4-fd0db0aad5c9"
+            },
+            {
+              "id": "5d626188-8dd3-4280-b055-a4c10d368700",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  },\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-5d626188-8dd3-4280-b055-a4c10d368700"
+            },
+            {
+              "id": "8211edf9-5d45-4576-a3d3-b719199d7192",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  },\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-8211edf9-5d45-4576-a3d3-b719199d7192"
+            },
+            {
+              "id": "c478642a-80de-4f9a-913a-a19db9c6651d",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  },\n  {\n    \"callbackUrl\": \"<string>\",\n    \"eventName\": \"<string>\",\n    \"eventVersion\": \"<string>\",\n    \"product\": \"g2w\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-c478642a-80de-4f9a-913a-a19db9c6651d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-a9ae82b9-9dbc-4f18-813e-754db6eb0382"
         },
         {
-          "id": "f644262b-c2f0-4113-9e0e-144b9b343286",
-          "name": "Create A Webhook Secret Key",
+          "name": "Updates webhooks",
+          "id": "b47d78d1-b4aa-44ec-adf1-c41764eaaed5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create A Webhook Secret Key",
-            "description": {},
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"INACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "path": [
-                "webhooks",
-                "secretkey"
-              ],
+              "raw": "{{baseUrl}}/webhooks",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "webhooks"
+              ]
             },
+            "description": "Callback url and state of webhooks can be updated using this API. Callback url should be a https url. Callback url will be validated by making a GET request. It should return 200 OK."
+          },
+          "response": [
+            {
+              "id": "53945c09-592e-4c3b-ba75-a124c7f1b1f3",
+              "name": "No Content",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"INACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-53945c09-592e-4c3b-ba75-a124c7f1b1f3"
+            },
+            {
+              "id": "e9cc8af5-ab38-4dd7-bb0d-7bc1ecb692d4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"INACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-e9cc8af5-ab38-4dd7-bb0d-7bc1ecb692d4"
+            },
+            {
+              "id": "f9f80740-62d2-4f7a-9ade-dff3029c3cde",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"INACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-f9f80740-62d2-4f7a-9ade-dff3029c3cde"
+            },
+            {
+              "id": "6aefd165-d747-4d85-bab9-a77018e49b6f",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"INACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-6aefd165-d747-4d85-bab9-a77018e49b6f"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-b47d78d1-b4aa-44ec-adf1-c41764eaaed5"
+        },
+        {
+          "name": "Get webhooks",
+          "id": "f749616e-e231-4e63-90ce-f0d1fe706014",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/webhooks?product=g2w",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Supported products",
+                  "key": "product",
+                  "value": "g2w"
+                }
+              ]
+            },
+            "description": "Get the list of webhooks by product for the requesting user. Product must be provided."
           },
           "response": [
             {
-              "id": "3c5e6092-ac0a-42af-bd67-e76a6d75a02c",
-              "name": "Secret key created.",
+              "id": "7726a29b-8194-4efe-97fc-86ff5de7a605",
+              "name": "OK",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhooks",
-                    "secretkey"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
                   }
                 ],
-                "method": "POST",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
               },
-              "status": "Created",
-              "code": 201,
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"secretKey\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"_embedded\": {\n    \"webhooks\": [\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"state\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      },\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"state\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-7726a29b-8194-4efe-97fc-86ff5de7a605"
+            },
+            {
+              "id": "858cea23-7529-427f-93a0-199657423de3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-858cea23-7529-427f-93a0-199657423de3"
+            },
+            {
+              "id": "30e71df2-fa03-4fb4-95a2-ccc3571e184f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-30e71df2-fa03-4fb4-95a2-ccc3571e184f"
+            },
+            {
+              "id": "da4e6759-3831-40c4-986f-8611a2e9447a",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-da4e6759-3831-40c4-986f-8611a2e9447a"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-f749616e-e231-4e63-90ce-f0d1fe706014"
+        },
+        {
+          "name": "Deletes webhooks",
+          "id": "691f94df-ecfa-4c45-9f9f-5ff187fb4348",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "Deletes webhooks by list of webhookKeys"
+          },
+          "response": [
+            {
+              "id": "9852cf7e-7c6f-4aa9-a436-25e56d0b9a04",
+              "name": "Accepted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-9852cf7e-7c6f-4aa9-a436-25e56d0b9a04"
+            },
+            {
+              "id": "a9a19612-cc08-4ea2-9394-1e248a080ff1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-a9a19612-cc08-4ea2-9394-1e248a080ff1"
+            },
+            {
+              "id": "da490f8b-6c82-4e64-b30c-b2bec6c6442b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-da490f8b-6c82-4e64-b30c-b2bec6c6442b"
+            },
+            {
+              "id": "528ba753-dfe5-4239-a03f-6d09062b7978",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-528ba753-dfe5-4239-a03f-6d09062b7978"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-691f94df-ecfa-4c45-9f9f-5ff187fb4348"
         }
       ],
-      "event": []
+      "id": "e39eee79-f9bf-45c2-94d4-325f3816f82a",
+      "createdAt": "2026-10-21T21:18:39.000Z",
+      "updatedAt": "2026-10-21T21:18:39.000Z",
+      "uid": "35240-e39eee79-f9bf-45c2-94d4-325f3816f82a"
+    },
+    {
+      "name": "userSubscriptions",
+      "item": [
+        {
+          "name": "{userSubscriptionsKey}",
+          "item": [
+            {
+              "name": "Get user subscription",
+              "id": "5e465970-7d5f-4d95-9e28-0584c5f07804",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "redirect_uri",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://authentication.logmeininc.com/oauth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "password_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions/:userSubscriptionsKey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions",
+                    ":userSubscriptionsKey"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1d2acfd4-259f-4ec8-87ac-b5d50bc8310f",
+                      "key": "userSubscriptionsKey",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier for a user subscription."
+                    }
+                  ]
+                },
+                "description": "Get a user subscription by userSubscriptionKey for the requesting user."
+              },
+              "response": [
+                {
+                  "id": "0054e1a3-8a1b-442d-9f32-d9fe0e8de444",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/userSubscriptions/:userSubscriptionsKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userSubscriptions",
+                        ":userSubscriptionsKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userSubscriptionsKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"callbackUrl\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"eventVersion\": \"<string>\",\n  \"product\": \"g2w\",\n  \"webhookKey\": \"<string>\",\n  \"userSubscriptionKey\": \"<string>\",\n  \"userSubscriptionState\": \"INACTIVE\",\n  \"activationState\": \"INACTIVE\",\n  \"createTime\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-0054e1a3-8a1b-442d-9f32-d9fe0e8de444"
+                },
+                {
+                  "id": "bec852f8-2243-4730-927e-4d068ac4a041",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/userSubscriptions/:userSubscriptionsKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userSubscriptions",
+                        ":userSubscriptionsKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userSubscriptionsKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-bec852f8-2243-4730-927e-4d068ac4a041"
+                },
+                {
+                  "id": "04a4697f-830b-45ab-a28b-6d6fdef3a4a6",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/userSubscriptions/:userSubscriptionsKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userSubscriptions",
+                        ":userSubscriptionsKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userSubscriptionsKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-04a4697f-830b-45ab-a28b-6d6fdef3a4a6"
+                },
+                {
+                  "id": "dc8a0449-cb2b-45b1-ab4d-b22b3c50e11e",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/userSubscriptions/:userSubscriptionsKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "userSubscriptions",
+                        ":userSubscriptionsKey"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userSubscriptionsKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:40.000Z",
+                  "updatedAt": "2026-10-21T21:18:40.000Z",
+                  "uid": "35240-dc8a0449-cb2b-45b1-ab4d-b22b3c50e11e"
+                }
+              ],
+              "createdAt": "2026-10-21T21:18:39.000Z",
+              "updatedAt": "2026-10-21T21:18:39.000Z",
+              "uid": "35240-5e465970-7d5f-4d95-9e28-0584c5f07804"
+            }
+          ],
+          "id": "6d2bb7ef-7919-41a7-bf81-0a2fe24681e0",
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-6d2bb7ef-7919-41a7-bf81-0a2fe24681e0"
+        },
+        {
+          "name": "Creates new user subscriptions",
+          "id": "fceb2295-0c69-4628-8780-afc5a6eeb95e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/userSubscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userSubscriptions"
+              ]
+            },
+            "description": "A user subscriptions will be created for the provided webhook. Callback url can be provided for user subscription. The callback url will be validated by making a GET request. It should return 200 OK."
+          },
+          "response": [
+            {
+              "id": "69712326-ffca-4fa0-b4fe-2f1797365226",
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"_embedded\": {\n    \"userSubscriptions\": [\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"userSubscriptionKey\": \"<string>\",\n        \"userSubscriptionState\": \"INACTIVE\",\n        \"activationState\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      },\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"userSubscriptionKey\": \"<string>\",\n        \"userSubscriptionState\": \"ACTIVE\",\n        \"activationState\": \"INACTIVE\",\n        \"createTime\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-69712326-ffca-4fa0-b4fe-2f1797365226"
+            },
+            {
+              "id": "614d3b02-e82f-4762-84ff-8fb6880ae732",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-614d3b02-e82f-4762-84ff-8fb6880ae732"
+            },
+            {
+              "id": "888234cb-ac65-4a12-8563-a3e8626bca9a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-888234cb-ac65-4a12-8563-a3e8626bca9a"
+            },
+            {
+              "id": "e426dcc7-4251-481f-9b11-f25c3308504c",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"INACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-e426dcc7-4251-481f-9b11-f25c3308504c"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-fceb2295-0c69-4628-8780-afc5a6eeb95e"
+        },
+        {
+          "name": "Updates user subscriptions",
+          "id": "b1f4f16f-8bb5-4843-8430-d3f637ef59d5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/userSubscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userSubscriptions"
+              ]
+            },
+            "description": "Callback url and state of user subscriptions can be updated using this API. The callback url will be validated by making a GET request. It should return 200 OK."
+          },
+          "response": [
+            {
+              "id": "c546fc28-5817-4265-aee3-624380a92a13",
+              "name": "No Content",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-c546fc28-5817-4265-aee3-624380a92a13"
+            },
+            {
+              "id": "7fe0f0c3-f92e-456d-81e0-415e83748f3f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-7fe0f0c3-f92e-456d-81e0-415e83748f3f"
+            },
+            {
+              "id": "1a1bad25-c11f-4d6a-91bd-a7bf1d6dc3f5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-1a1bad25-c11f-4d6a-91bd-a7bf1d6dc3f5"
+            },
+            {
+              "id": "c5e10e93-52d9-45fe-8689-159fdce5433d",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  },\n  {\n    \"webhookKey\": \"<string>\",\n    \"userSubscriptionKey\": \"<string>\",\n    \"callbackUrl\": \"<string>\",\n    \"userSubscriptionState\": \"ACTIVE\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-c5e10e93-52d9-45fe-8689-159fdce5433d"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-b1f4f16f-8bb5-4843-8430-d3f637ef59d5"
+        },
+        {
+          "name": "Get user subscriptions",
+          "id": "47fc404e-7967-4c18-8a9a-c45a94c77a18",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/userSubscriptions?product=g2w",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userSubscriptions"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Supported products",
+                  "key": "product",
+                  "value": "g2w"
+                }
+              ]
+            },
+            "description": "Get the list of user subscriptions by product for the requesting user. Product must be provided."
+          },
+          "response": [
+            {
+              "id": "b10cf72f-db17-4edd-9556-6318df32f59b",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"_embedded\": {\n    \"userSubscriptions\": [\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"userSubscriptionKey\": \"<string>\",\n        \"userSubscriptionState\": \"INACTIVE\",\n        \"activationState\": \"ACTIVE\",\n        \"createTime\": \"<string>\"\n      },\n      {\n        \"callbackUrl\": \"<string>\",\n        \"eventName\": \"<string>\",\n        \"eventVersion\": \"<string>\",\n        \"product\": \"g2w\",\n        \"webhookKey\": \"<string>\",\n        \"userSubscriptionKey\": \"<string>\",\n        \"userSubscriptionState\": \"ACTIVE\",\n        \"activationState\": \"INACTIVE\",\n        \"createTime\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-b10cf72f-db17-4edd-9556-6318df32f59b"
+            },
+            {
+              "id": "3099268f-49de-4d08-af2a-4f5b7d7fcbe6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-3099268f-49de-4d08-af2a-4f5b7d7fcbe6"
+            },
+            {
+              "id": "8671d09d-4f5d-4543-bae1-a9c031a16995",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-8671d09d-4f5d-4543-bae1-a9c031a16995"
+            },
+            {
+              "id": "88bdf051-c66a-4d65-aa70-30e36ac4ace9",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions?product=g2w",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Supported products",
+                      "key": "product",
+                      "value": "g2w"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-88bdf051-c66a-4d65-aa70-30e36ac4ace9"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-47fc404e-7967-4c18-8a9a-c45a94c77a18"
+        },
+        {
+          "name": "Deletes user subscriptions",
+          "id": "fec00207-abd1-4063-82b1-598c3a5f5d12",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "redirect_uri",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://authentication.logmeininc.com/oauth/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "password_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/userSubscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "userSubscriptions"
+              ]
+            },
+            "description": "Deletes user subscriptions by list of userSubscriptionKeys"
+          },
+          "response": [
+            {
+              "id": "a8b92806-257d-4f9b-b994-87f539f02ef2",
+              "name": "Accepted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-a8b92806-257d-4f9b-b994-87f539f02ef2"
+            },
+            {
+              "id": "040207bd-cdb1-42ee-bdb0-85074a3862b6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-040207bd-cdb1-42ee-bdb0-85074a3862b6"
+            },
+            {
+              "id": "be69a920-1d37-4156-a300-3488a2301f5f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-be69a920-1d37-4156-a300-3488a2301f5f"
+            },
+            {
+              "id": "22aabe64-3292-47a2-bc88-eafb166032bc",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/userSubscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "userSubscriptions"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T21:18:40.000Z",
+              "updatedAt": "2026-10-21T21:18:40.000Z",
+              "uid": "35240-22aabe64-3292-47a2-bc88-eafb166032bc"
+            }
+          ],
+          "createdAt": "2026-10-21T21:18:39.000Z",
+          "updatedAt": "2026-10-21T21:18:39.000Z",
+          "uid": "35240-fec00207-abd1-4063-82b1-598c3a5f5d12"
+        }
+      ],
+      "id": "f62dfeae-bd7f-4d18-b28a-af5708c664fb",
+      "createdAt": "2026-10-21T21:18:39.000Z",
+      "updatedAt": "2026-10-21T21:18:39.000Z",
+      "uid": "35240-f62dfeae-bd7f-4d18-b28a-af5708c664fb"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  ],
-  "auth": {
-    "type": "oauth2",
-    "oauth2": [
-      {
-        "key": "scope",
-        "value": "collab identity:scim.me"
-      },
-      {
-        "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
-      },
-      {
-        "key": "grant_type",
-        "value": "authorization_code"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "6143f391-d662-45a0-9771-64472b5460dc",
-    "name": "GoToWebinar REST Attendees Webhooks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

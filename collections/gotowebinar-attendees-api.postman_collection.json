@@ -1,448 +1,1797 @@
 {
+  "info": {
+    "_postman_id": "16c1febe-e1c8-4477-9f63-c1749ccbcb83",
+    "name": "Gotowebinar Attendees API",
+    "description": "Operations tagged Attendees across 2 of this provider's published API definitions: gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:17:39.000Z",
+    "updatedAt": "2026-10-21T21:17:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-16c1febe-e1c8-4477-9f63-c1749ccbcb83"
+  },
   "item": [
     {
-      "id": "f5ca1910-64ee-4d97-a5f1-dec688106a72",
-      "name": "Attendees",
-      "description": {
-        "content": "Read attendees for past webinar sessions.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "6594dfc1-2ad3-4259-9578-e7a21f1d61b0",
-          "name": "List All Attendees For A Webinar",
-          "request": {
-            "name": "List All Attendees For A Webinar",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "attendees"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "e2134817-2670-4c25-b884-148b5638cbab",
-              "name": "Attendees across all sessions.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "attendees"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "webinars",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{webinarKey}",
+                  "item": [
+                    {
+                      "name": "sessions",
+                      "item": [
+                        {
+                          "name": "{sessionKey}",
+                          "item": [
+                            {
+                              "name": "attendees",
+                              "item": [
+                                {
+                                  "name": "{registrantKey}",
+                                  "item": [
+                                    {
+                                      "name": "polls",
+                                      "item": [
+                                        {
+                                          "name": "Get attendee poll answers",
+                                          "id": "881956db-cfce-4c8f-bd68-d067a773dd36",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "auth": {
+                                              "type": "oauth2",
+                                              "oauth2": [
+                                                {
+                                                  "key": "redirect_uri",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "accessTokenUrl",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "grant_type",
+                                                  "value": "password_credentials",
+                                                  "type": "string"
+                                                }
+                                              ]
+                                            },
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/polls",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey",
+                                                "polls"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "17580623-d78d-404e-8f73-21c3671ca9bf",
+                                                  "key": "organizerKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the organizer"
+                                                },
+                                                {
+                                                  "id": "d6f3dbd9-b975-4da5-9a00-29912561956b",
+                                                  "key": "webinarKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar"
+                                                },
+                                                {
+                                                  "id": "75e44699-50fe-47c1-bab7-fe472943f0b5",
+                                                  "key": "sessionKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar session"
+                                                },
+                                                {
+                                                  "id": "60191c8e-3bcc-4e75-b76e-1cf8b1420de2",
+                                                  "key": "registrantKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the registrant"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Get poll answers from a particular attendee of a specific webinar session."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "d57050f0-7b2b-4383-b168-4dd395a77e48",
+                                              "name": "OK",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/polls",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "polls"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "[\n  {\n    \"answers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"question\": \"<string>\",\n    \"answer\": \"<string>\"\n  },\n  {\n    \"answers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"question\": \"<string>\",\n    \"answer\": \"<string>\"\n  }\n]",
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-d57050f0-7b2b-4383-b168-4dd395a77e48"
+                                            },
+                                            {
+                                              "id": "5b56cad0-a0eb-4488-aa0a-9377fdc16e39",
+                                              "name": "Bad Request",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/polls",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "polls"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Bad Request",
+                                              "code": 400,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-5b56cad0-a0eb-4488-aa0a-9377fdc16e39"
+                                            },
+                                            {
+                                              "id": "74ba04d8-112a-4484-a6e1-3c2b1bce3827",
+                                              "name": "Forbidden",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/polls",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "polls"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Forbidden",
+                                              "code": 403,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-74ba04d8-112a-4484-a6e1-3c2b1bce3827"
+                                            },
+                                            {
+                                              "id": "c91eae09-2c37-4fd0-b984-099ae9cfb5a4",
+                                              "name": "Not Found",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/polls",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "polls"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-c91eae09-2c37-4fd0-b984-099ae9cfb5a4"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-881956db-cfce-4c8f-bd68-d067a773dd36"
+                                        }
+                                      ],
+                                      "id": "05ec6814-b03e-4cc2-a28c-10a5d06c1c8a",
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-05ec6814-b03e-4cc2-a28c-10a5d06c1c8a"
+                                    },
+                                    {
+                                      "name": "questions",
+                                      "item": [
+                                        {
+                                          "name": "Get attendee questions",
+                                          "id": "28c1d895-59b4-40ca-b05a-b0f54ed68bd8",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "auth": {
+                                              "type": "oauth2",
+                                              "oauth2": [
+                                                {
+                                                  "key": "redirect_uri",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "accessTokenUrl",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "grant_type",
+                                                  "value": "password_credentials",
+                                                  "type": "string"
+                                                }
+                                              ]
+                                            },
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/questions",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey",
+                                                "questions"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "dd8e6fef-5f0c-44d8-af02-9655d18309aa",
+                                                  "key": "organizerKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the organizer"
+                                                },
+                                                {
+                                                  "id": "0bf261e3-9dc7-4137-937a-5a6aa66d8da5",
+                                                  "key": "webinarKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar"
+                                                },
+                                                {
+                                                  "id": "39abccf4-c131-4895-82c4-80abb5c6d203",
+                                                  "key": "sessionKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar session"
+                                                },
+                                                {
+                                                  "id": "0c3607df-5178-4bd5-be9a-abc40e1204b0",
+                                                  "key": "registrantKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the registrant"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Get questions asked by an attendee during a webinar session."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "8c6c065b-27cc-4392-a935-4b1cc5bb200d",
+                                              "name": "OK",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/questions",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "questions"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "[\n  {\n    \"answers\": [\n      {\n        \"answer\": \"<string>\",\n        \"answeredBy\": \"<string>\",\n        \"answererRole\": \"<string>\",\n        \"answerTime\": \"<string>\",\n        \"answererEmail\": \"<string>\"\n      },\n      {\n        \"answer\": \"<string>\",\n        \"answeredBy\": \"<string>\",\n        \"answererRole\": \"<string>\",\n        \"answerTime\": \"<string>\",\n        \"answererEmail\": \"<string>\"\n      }\n    ],\n    \"question\": \"<string>\",\n    \"askedBy\": \"<string>\",\n    \"askerKey\": \"<string>\",\n    \"dateAsked\": \"<dateTime>\"\n  },\n  {\n    \"answers\": [\n      {\n        \"answer\": \"<string>\",\n        \"answeredBy\": \"<string>\",\n        \"answererRole\": \"<string>\",\n        \"answerTime\": \"<string>\",\n        \"answererEmail\": \"<string>\"\n      },\n      {\n        \"answer\": \"<string>\",\n        \"answeredBy\": \"<string>\",\n        \"answererRole\": \"<string>\",\n        \"answerTime\": \"<string>\",\n        \"answererEmail\": \"<string>\"\n      }\n    ],\n    \"question\": \"<string>\",\n    \"askedBy\": \"<string>\",\n    \"askerKey\": \"<string>\",\n    \"dateAsked\": \"<dateTime>\"\n  }\n]",
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-8c6c065b-27cc-4392-a935-4b1cc5bb200d"
+                                            },
+                                            {
+                                              "id": "5be0c8d0-1249-4a84-a8f9-03d932b55758",
+                                              "name": "Bad Request",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/questions",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "questions"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Bad Request",
+                                              "code": 400,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-5be0c8d0-1249-4a84-a8f9-03d932b55758"
+                                            },
+                                            {
+                                              "id": "fc69b170-942a-4088-89d4-2c3eb5c1b014",
+                                              "name": "Forbidden",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/questions",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "questions"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Forbidden",
+                                              "code": 403,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-fc69b170-942a-4088-89d4-2c3eb5c1b014"
+                                            },
+                                            {
+                                              "id": "feb9f59c-3c9f-4460-b131-fc2916eaa1d5",
+                                              "name": "Not Found",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/questions",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "questions"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-feb9f59c-3c9f-4460-b131-fc2916eaa1d5"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-28c1d895-59b4-40ca-b05a-b0f54ed68bd8"
+                                        }
+                                      ],
+                                      "id": "a91f7096-aeff-4430-8027-079d7dd6941b",
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-a91f7096-aeff-4430-8027-079d7dd6941b"
+                                    },
+                                    {
+                                      "name": "surveys",
+                                      "item": [
+                                        {
+                                          "name": "Get attendee survey answers",
+                                          "id": "57060eeb-df69-4d77-9740-b56a860a7f7f",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "auth": {
+                                              "type": "oauth2",
+                                              "oauth2": [
+                                                {
+                                                  "key": "redirect_uri",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "accessTokenUrl",
+                                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                                  "type": "string"
+                                                },
+                                                {
+                                                  "key": "grant_type",
+                                                  "value": "password_credentials",
+                                                  "type": "string"
+                                                }
+                                              ]
+                                            },
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/surveys",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey",
+                                                "surveys"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "4aafb301-fd3c-4e23-a1ec-88d71306d582",
+                                                  "key": "organizerKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the organizer"
+                                                },
+                                                {
+                                                  "id": "e3228dd3-5242-4870-bb41-f21880bb7f7a",
+                                                  "key": "webinarKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar"
+                                                },
+                                                {
+                                                  "id": "b31dc55e-24db-4e1f-b719-c35aebd4a00e",
+                                                  "key": "sessionKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the webinar session"
+                                                },
+                                                {
+                                                  "id": "ad8b4c91-bbe8-4c18-94df-7556251ea5b4",
+                                                  "key": "registrantKey",
+                                                  "value": "<long>",
+                                                  "description": "(Required) The key of the registrant"
+                                                }
+                                              ]
+                                            },
+                                            "description": "Retrieve survey answers from a particular attendee during a webinar session."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "943881a6-be69-4c18-ae2a-56cdfb6e2429",
+                                              "name": "OK",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/surveys",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "surveys"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "[\n  {\n    \"answers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"question\": \"<string>\",\n    \"answer\": \"<string>\"\n  },\n  {\n    \"answers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"question\": \"<string>\",\n    \"answer\": \"<string>\"\n  }\n]",
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-943881a6-be69-4c18-ae2a-56cdfb6e2429"
+                                            },
+                                            {
+                                              "id": "6e0f46bf-5211-4bab-afe8-c431f8907add",
+                                              "name": "Bad Request",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/surveys",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "surveys"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Bad Request",
+                                              "code": 400,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-6e0f46bf-5211-4bab-afe8-c431f8907add"
+                                            },
+                                            {
+                                              "id": "05151535-9ff5-489b-b494-e7a3f6a75117",
+                                              "name": "Forbidden",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/surveys",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "surveys"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Forbidden",
+                                              "code": 403,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-05151535-9ff5-489b-b494-e7a3f6a75117"
+                                            },
+                                            {
+                                              "id": "e75e42fe-8c0d-4781-898f-abddcec5e682",
+                                              "name": "Not Found",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey/surveys",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "organizers",
+                                                    ":organizerKey",
+                                                    "webinars",
+                                                    ":webinarKey",
+                                                    "sessions",
+                                                    ":sessionKey",
+                                                    "attendees",
+                                                    ":registrantKey",
+                                                    "surveys"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "organizerKey"
+                                                    },
+                                                    {
+                                                      "key": "webinarKey"
+                                                    },
+                                                    {
+                                                      "key": "sessionKey"
+                                                    },
+                                                    {
+                                                      "key": "registrantKey"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-10-21T21:17:40.000Z",
+                                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                                              "uid": "35240-e75e42fe-8c0d-4781-898f-abddcec5e682"
+                                            }
+                                          ],
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-57060eeb-df69-4d77-9740-b56a860a7f7f"
+                                        }
+                                      ],
+                                      "id": "af207c4c-792a-4baa-9e6f-e172afc5c735",
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-af207c4c-792a-4baa-9e6f-e172afc5c735"
+                                    },
+                                    {
+                                      "name": "Get attendee",
+                                      "id": "4fba3d29-c15f-4953-b147-0aee4c8cfebd",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "auth": {
+                                          "type": "oauth2",
+                                          "oauth2": [
+                                            {
+                                              "key": "redirect_uri",
+                                              "value": "https://authentication.logmeininc.com/oauth/token",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "accessTokenUrl",
+                                              "value": "https://authentication.logmeininc.com/oauth/token",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "grant_type",
+                                              "value": "password_credentials",
+                                              "type": "string"
+                                            }
+                                          ]
+                                        },
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "attendees",
+                                            ":registrantKey"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "6c4bdb07-7d25-46e2-86fd-b4ba553485c0",
+                                              "key": "organizerKey",
+                                              "value": "<long>",
+                                              "description": "(Required) The key of the organizer"
+                                            },
+                                            {
+                                              "id": "5ee7f78c-4008-41ff-8db8-2c24866b07fc",
+                                              "key": "webinarKey",
+                                              "value": "<long>",
+                                              "description": "(Required) The key of the webinar"
+                                            },
+                                            {
+                                              "id": "745ea3fc-6053-425b-b507-5d16f9a1cc9b",
+                                              "key": "sessionKey",
+                                              "value": "<long>",
+                                              "description": "(Required) The key of the webinar session"
+                                            },
+                                            {
+                                              "id": "1cbaffcc-aed5-4dcd-8689-23ba2b538d61",
+                                              "key": "registrantKey",
+                                              "value": "<long>",
+                                              "description": "(Required) The key of the registrant"
+                                            }
+                                          ]
+                                        },
+                                        "description": "Retrieve registration details for a particular attendee of a specific webinar session."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "1c7cac1b-14ea-4d00-b57b-513f4f1a6a67",
+                                          "name": "OK",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizerKey"
+                                                },
+                                                {
+                                                  "key": "webinarKey"
+                                                },
+                                                {
+                                                  "key": "sessionKey"
+                                                },
+                                                {
+                                                  "key": "registrantKey"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"registrantKey\": \"<long>\",\n  \"registrationDate\": \"<dateTime>\",\n  \"status\": \"APPROVED\",\n  \"joinUrl\": \"<string>\",\n  \"timeZone\": \"<string>\"\n}",
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-1c7cac1b-14ea-4d00-b57b-513f4f1a6a67"
+                                        },
+                                        {
+                                          "id": "9c61d6c2-1f20-442d-9ede-e81ad0d9265d",
+                                          "name": "Bad Request",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizerKey"
+                                                },
+                                                {
+                                                  "key": "webinarKey"
+                                                },
+                                                {
+                                                  "key": "sessionKey"
+                                                },
+                                                {
+                                                  "key": "registrantKey"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Bad Request",
+                                          "code": 400,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-9c61d6c2-1f20-442d-9ede-e81ad0d9265d"
+                                        },
+                                        {
+                                          "id": "0b14703f-bcf1-44e6-8c90-32b6147f23a4",
+                                          "name": "Forbidden",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizerKey"
+                                                },
+                                                {
+                                                  "key": "webinarKey"
+                                                },
+                                                {
+                                                  "key": "sessionKey"
+                                                },
+                                                {
+                                                  "key": "registrantKey"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Forbidden",
+                                          "code": 403,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-0b14703f-bcf1-44e6-8c90-32b6147f23a4"
+                                        },
+                                        {
+                                          "id": "552a7f60-9cea-44c4-9212-1e3100746619",
+                                          "name": "Not Found",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees/:registrantKey",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "organizers",
+                                                ":organizerKey",
+                                                "webinars",
+                                                ":webinarKey",
+                                                "sessions",
+                                                ":sessionKey",
+                                                "attendees",
+                                                ":registrantKey"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "organizerKey"
+                                                },
+                                                {
+                                                  "key": "webinarKey"
+                                                },
+                                                {
+                                                  "key": "sessionKey"
+                                                },
+                                                {
+                                                  "key": "registrantKey"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-10-21T21:17:40.000Z",
+                                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                                          "uid": "35240-552a7f60-9cea-44c4-9212-1e3100746619"
+                                        }
+                                      ],
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-4fba3d29-c15f-4953-b147-0aee4c8cfebd"
+                                    }
+                                  ],
+                                  "id": "04b90acf-aa22-4d22-81ec-1fb65bb3a9d1",
+                                  "createdAt": "2026-10-21T21:17:40.000Z",
+                                  "updatedAt": "2026-10-21T21:17:40.000Z",
+                                  "uid": "35240-04b90acf-aa22-4d22-81ec-1fb65bb3a9d1"
+                                },
+                                {
+                                  "name": "Get session attendees",
+                                  "id": "bd37e1d3-a8aa-43b5-ae7b-11c14680cb50",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "oauth2",
+                                      "oauth2": [
+                                        {
+                                          "key": "redirect_uri",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "accessTokenUrl",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "grant_type",
+                                          "value": "password_credentials",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "sessions",
+                                        ":sessionKey",
+                                        "attendees"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "a661ddbd-e93f-4148-ac3f-1409d7ebfc6f",
+                                          "key": "organizerKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the organizer"
+                                        },
+                                        {
+                                          "id": "0808ecad-02c1-447b-af27-b3df9fe23547",
+                                          "key": "webinarKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the webinar"
+                                        },
+                                        {
+                                          "id": "a8787261-e981-45aa-a97a-0718426c9bc1",
+                                          "key": "sessionKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the webinar session"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieve details for all attendees of a specific webinar session."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "5f1ef41d-1fda-4905-93ff-e583b3105e43",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "attendees"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "sessionKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"registrantKey\": \"<long>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"attendanceTimeInSeconds\": \"<long>\",\n    \"attendance\": [\n      {\n        \"joinTime\": \"<dateTime>\",\n        \"leaveTime\": \"<dateTime>\"\n      },\n      {\n        \"joinTime\": \"<dateTime>\",\n        \"leaveTime\": \"<dateTime>\"\n      }\n    ],\n    \"sessionKey\": \"<long>\"\n  },\n  {\n    \"registrantKey\": \"<long>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"attendanceTimeInSeconds\": \"<long>\",\n    \"attendance\": [\n      {\n        \"joinTime\": \"<dateTime>\",\n        \"leaveTime\": \"<dateTime>\"\n      },\n      {\n        \"joinTime\": \"<dateTime>\",\n        \"leaveTime\": \"<dateTime>\"\n      }\n    ],\n    \"sessionKey\": \"<long>\"\n  }\n]",
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-5f1ef41d-1fda-4905-93ff-e583b3105e43"
+                                    },
+                                    {
+                                      "id": "7ddf50cb-7d87-47ca-a6e0-9d8f96f507cc",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "attendees"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "sessionKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-7ddf50cb-7d87-47ca-a6e0-9d8f96f507cc"
+                                    },
+                                    {
+                                      "id": "a86db210-60e7-4d13-83ac-475a5af7c79c",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "attendees"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "sessionKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-a86db210-60e7-4d13-83ac-475a5af7c79c"
+                                    },
+                                    {
+                                      "id": "d38ce483-3e9a-4c04-8e9b-bbc197fa8f16",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/attendees",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "attendees"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "sessionKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:40.000Z",
+                                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                                      "uid": "35240-d38ce483-3e9a-4c04-8e9b-bbc197fa8f16"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:17:40.000Z",
+                                  "updatedAt": "2026-10-21T21:17:40.000Z",
+                                  "uid": "35240-bd37e1d3-a8aa-43b5-ae7b-11c14680cb50"
+                                }
+                              ],
+                              "id": "c15cd419-a151-44bd-98a7-e9bc20cd3987",
+                              "createdAt": "2026-10-21T21:17:40.000Z",
+                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                              "uid": "35240-c15cd419-a151-44bd-98a7-e9bc20cd3987"
+                            }
+                          ],
+                          "id": "f089b67a-8652-42c9-bef0-4043d5ea9e71",
+                          "createdAt": "2026-10-21T21:17:40.000Z",
+                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                          "uid": "35240-f089b67a-8652-42c9-bef0-4043d5ea9e71"
+                        }
+                      ],
+                      "id": "628cdd02-b6d7-49f5-83eb-41081e20e8ed",
+                      "createdAt": "2026-10-21T21:17:40.000Z",
+                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                      "uid": "35240-628cdd02-b6d7-49f5-83eb-41081e20e8ed"
+                    },
+                    {
+                      "name": "attendees",
+                      "item": [
+                        {
+                          "name": "List All Attendees For A Webinar",
+                          "id": "a9719326-8e86-4a37-bf74-f49e813f26aa",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "collab identity:scim.me",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/attendees",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "attendees"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "cfa88378-6d46-4d11-a3a4-a6bf14f71cda",
+                                  "key": "organizerKey",
+                                  "value": "<string>",
+                                  "description": "(Required) Authenticated organizer's key."
+                                },
+                                {
+                                  "id": "025101b0-3f1f-48de-a317-9082a31dbf85",
+                                  "key": "webinarKey",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique key identifying a webinar."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "c037300d-ce56-4e25-877c-0be1b85452b6",
+                              "name": "Attendees across all sessions.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/attendees",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "attendees"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"registrantKey\": \"<string>\",\n    \"sessionKey\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<email>\",\n    \"attendanceTimeInSeconds\": \"<integer>\",\n    \"joinTime\": \"<dateTime>\",\n    \"leaveTime\": \"<dateTime>\"\n  },\n  {\n    \"registrantKey\": \"<string>\",\n    \"sessionKey\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<email>\",\n    \"attendanceTimeInSeconds\": \"<integer>\",\n    \"joinTime\": \"<dateTime>\",\n    \"leaveTime\": \"<dateTime>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:17:40.000Z",
+                              "updatedAt": "2026-10-21T21:17:40.000Z",
+                              "uid": "35240-c037300d-ce56-4e25-877c-0be1b85452b6"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:17:40.000Z",
+                          "updatedAt": "2026-10-21T21:17:40.000Z",
+                          "uid": "35240-a9719326-8e86-4a37-bf74-f49e813f26aa"
+                        }
+                      ],
+                      "id": "6db66487-5338-4b66-9529-97bd6865de33",
+                      "createdAt": "2026-10-21T21:17:40.000Z",
+                      "updatedAt": "2026-10-21T21:17:40.000Z",
+                      "uid": "35240-6db66487-5338-4b66-9529-97bd6865de33"
+                    }
+                  ],
+                  "id": "c5214a38-b1cd-40aa-99e2-a5d71429f9c5",
+                  "createdAt": "2026-10-21T21:17:40.000Z",
+                  "updatedAt": "2026-10-21T21:17:40.000Z",
+                  "uid": "35240-c5214a38-b1cd-40aa-99e2-a5d71429f9c5"
                 }
               ],
-              "body": "[\n  {\n    \"registrantKey\": \"string\",\n    \"sessionKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"l0dIfRiUnrl-AoM@MDcvTUeTkXmmFnFZJWwsG.lvu\",\n    \"attendanceTimeInSeconds\": 8891,\n    \"joinTime\": \"1988-12-16T06:45:26.722Z\",\n    \"leaveTime\": \"1984-10-22T01:25:27.414Z\"\n  },\n  {\n    \"registrantKey\": \"string\",\n    \"sessionKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"9D27ErrwiC@qZkNXMZDHZuOhYENWf.jkoq\",\n    \"attendanceTimeInSeconds\": 1317,\n    \"joinTime\": \"1988-01-26T18:08:21.569Z\",\n    \"leaveTime\": \"1979-10-28T07:35:09.145Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "55eefc59-32ec-430a-ae8e-327a94aed39c",
+              "createdAt": "2026-10-21T21:17:40.000Z",
+              "updatedAt": "2026-10-21T21:17:40.000Z",
+              "uid": "35240-55eefc59-32ec-430a-ae8e-327a94aed39c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "49baf662-7898-4db8-92ec-7e316d165fe8",
-          "name": "List Session Attendees",
-          "request": {
-            "name": "List Session Attendees",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "sessions",
-                ":sessionKey",
-                "attendees"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "sessionKey",
-                  "description": "(Required) Unique key identifying a past session."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0513ad22-2fa1-4d49-b2b0-15d5288e189c",
-              "name": "Attendees for the session.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "sessions",
-                    ":sessionKey",
-                    "attendees"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "sessionKey",
-                      "description": "(Required) Unique key identifying a past session."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"registrantKey\": \"string\",\n    \"sessionKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"l0dIfRiUnrl-AoM@MDcvTUeTkXmmFnFZJWwsG.lvu\",\n    \"attendanceTimeInSeconds\": 8891,\n    \"joinTime\": \"1988-12-16T06:45:26.722Z\",\n    \"leaveTime\": \"1984-10-22T01:25:27.414Z\"\n  },\n  {\n    \"registrantKey\": \"string\",\n    \"sessionKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"9D27ErrwiC@qZkNXMZDHZuOhYENWf.jkoq\",\n    \"attendanceTimeInSeconds\": 1317,\n    \"joinTime\": \"1988-01-26T18:08:21.569Z\",\n    \"leaveTime\": \"1979-10-28T07:35:09.145Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "33b2260d-3a13-405d-9267-3418adf53603",
-          "name": "Get A Session Attendee",
-          "request": {
-            "name": "Get A Session Attendee",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "sessions",
-                ":sessionKey",
-                "attendees",
-                ":registrantKey"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "sessionKey",
-                  "description": "(Required) Unique key identifying a past session."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "registrantKey",
-                  "description": "(Required) Unique key identifying a registrant."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e1d57f85-b2dd-4ac4-8f5b-2dba5e590cae",
-              "name": "Attendee.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "sessions",
-                    ":sessionKey",
-                    "attendees",
-                    ":registrantKey"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "sessionKey",
-                      "description": "(Required) Unique key identifying a past session."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "registrantKey",
-                      "description": "(Required) Unique key identifying a registrant."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"registrantKey\": \"string\",\n  \"sessionKey\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"R-PtdP@NrvBwcuugLyzwTwUbVQJYehXulbXMIYpL.zzl\",\n  \"attendanceTimeInSeconds\": 2206,\n  \"joinTime\": \"1974-01-08T02:32:29.942Z\",\n  \"leaveTime\": \"1967-07-31T00:28:02.655Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "bf647ab0-3892-486e-aab9-67dd91228a08",
+          "createdAt": "2026-10-21T21:17:40.000Z",
+          "updatedAt": "2026-10-21T21:17:40.000Z",
+          "uid": "35240-bf647ab0-3892-486e-aab9-67dd91228a08"
         }
       ],
-      "event": []
+      "id": "e3b2f419-ba21-42a9-9fa0-6fec150ab7de",
+      "createdAt": "2026-10-21T21:17:40.000Z",
+      "updatedAt": "2026-10-21T21:17:40.000Z",
+      "uid": "35240-e3b2f419-ba21-42a9-9fa0-6fec150ab7de"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  ],
-  "auth": {
-    "type": "oauth2",
-    "oauth2": [
-      {
-        "key": "scope",
-        "value": "collab identity:scim.me"
-      },
-      {
-        "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
-      },
-      {
-        "key": "grant_type",
-        "value": "authorization_code"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "93f46915-8913-4208-a177-5143a5b61cd9",
-    "name": "GoToWebinar REST Attendees API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

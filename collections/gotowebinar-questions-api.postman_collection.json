@@ -1,144 +1,178 @@
 {
+  "info": {
+    "_postman_id": "e903a2ce-4c24-453b-95b8-5019e34c9db9",
+    "name": "GoToWebinar REST Questions API",
+    "description": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:18:03.000Z",
+    "updatedAt": "2026-10-21T21:18:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e903a2ce-4c24-453b-95b8-5019e34c9db9"
+  },
   "item": [
     {
-      "id": "07707908-ea34-441d-b986-f227e94a200e",
-      "name": "Questions",
-      "description": {
-        "content": "Retrieve Q&A from past sessions.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "bfe4703d-d102-45e4-b662-19f6b7e021ee",
-          "name": "Get Questions And Answers For A Session",
-          "request": {
-            "name": "Get Questions And Answers For A Session",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "sessions",
-                ":sessionKey",
-                "questions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "sessionKey",
-                  "description": "(Required) Unique key identifying a past session."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "730a02f1-0e2e-4c89-a17f-d5c33db90042",
-              "name": "Q&A.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "sessions",
-                    ":sessionKey",
-                    "questions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "sessionKey",
-                      "description": "(Required) Unique key identifying a past session."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "webinars",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "{webinarKey}",
+                  "item": [
+                    {
+                      "name": "sessions",
+                      "item": [
+                        {
+                          "name": "{sessionKey}",
+                          "item": [
+                            {
+                              "name": "questions",
+                              "item": [
+                                {
+                                  "name": "Get Questions And Answers For A Session",
+                                  "id": "cad2256a-ddc3-4dd6-9c03-84191721fb39",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/questions",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "sessions",
+                                        ":sessionKey",
+                                        "questions"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "1c78b717-8771-407f-9b61-0f8c8efc4376",
+                                          "key": "organizerKey",
+                                          "value": "<string>",
+                                          "description": "(Required) Authenticated organizer's key."
+                                        },
+                                        {
+                                          "id": "ffa278b0-85f4-473b-975f-2d64f25d4de6",
+                                          "key": "webinarKey",
+                                          "value": "<string>",
+                                          "description": "(Required) Unique key identifying a webinar."
+                                        },
+                                        {
+                                          "id": "7df32299-ac48-4806-a8d9-f65f6c6fac56",
+                                          "key": "sessionKey",
+                                          "value": "<string>",
+                                          "description": "(Required) Unique key identifying a past session."
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "415d5bc7-a3ba-4547-9e7a-8f3f882b3971",
+                                      "name": "Q&A.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/sessions/:sessionKey/questions",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "sessions",
+                                            ":sessionKey",
+                                            "questions"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "sessionKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:18:04.000Z",
+                                      "updatedAt": "2026-10-21T21:18:04.000Z",
+                                      "uid": "35240-415d5bc7-a3ba-4547-9e7a-8f3f882b3971"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:18:04.000Z",
+                                  "updatedAt": "2026-10-21T21:18:04.000Z",
+                                  "uid": "35240-cad2256a-ddc3-4dd6-9c03-84191721fb39"
+                                }
+                              ],
+                              "id": "27662b23-8512-41a8-b079-d175c024eb9f",
+                              "createdAt": "2026-10-21T21:18:04.000Z",
+                              "updatedAt": "2026-10-21T21:18:04.000Z",
+                              "uid": "35240-27662b23-8512-41a8-b079-d175c024eb9f"
+                            }
+                          ],
+                          "id": "28724916-1add-45c5-afec-9709854535e1",
+                          "createdAt": "2026-10-21T21:18:04.000Z",
+                          "updatedAt": "2026-10-21T21:18:04.000Z",
+                          "uid": "35240-28724916-1add-45c5-afec-9709854535e1"
+                        }
+                      ],
+                      "id": "8d4f2284-df80-486f-9e7b-25f6b99749b4",
+                      "createdAt": "2026-10-21T21:18:04.000Z",
+                      "updatedAt": "2026-10-21T21:18:04.000Z",
+                      "uid": "35240-8d4f2284-df80-486f-9e7b-25f6b99749b4"
+                    }
+                  ],
+                  "id": "3c70715b-769b-49e2-82c1-cd40e4395586",
+                  "createdAt": "2026-10-21T21:18:04.000Z",
+                  "updatedAt": "2026-10-21T21:18:04.000Z",
+                  "uid": "35240-3c70715b-769b-49e2-82c1-cd40e4395586"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "7650b514-c659-4e7d-9b23-f6dea4bc705e",
+              "createdAt": "2026-10-21T21:18:04.000Z",
+              "updatedAt": "2026-10-21T21:18:04.000Z",
+              "uid": "35240-7650b514-c659-4e7d-9b23-f6dea4bc705e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9260aaa9-4c5a-4580-b98e-1ffd108dfac3",
+          "createdAt": "2026-10-21T21:18:04.000Z",
+          "updatedAt": "2026-10-21T21:18:04.000Z",
+          "uid": "35240-9260aaa9-4c5a-4580-b98e-1ffd108dfac3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "id": "f50997a5-206a-48cf-abcf-1c73ce595af8",
+      "createdAt": "2026-10-21T21:18:04.000Z",
+      "updatedAt": "2026-10-21T21:18:04.000Z",
+      "uid": "35240-f50997a5-206a-48cf-abcf-1c73ce595af8"
     }
   ],
   "auth": {
@@ -146,33 +180,35 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "collab identity:scim.me"
+        "value": "collab identity:scim.me",
+        "type": "string"
       },
       {
         "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
+        "value": "https://authentication.logmeininc.com/oauth/authorize",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "2fc54cdd-4da0-4e35-be37-ac9988b73b6b",
-    "name": "GoToWebinar REST Attendees Questions API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  }
+  ]
 }

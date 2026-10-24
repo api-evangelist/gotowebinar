@@ -1,286 +1,1278 @@
 {
+  "info": {
+    "_postman_id": "3124ad56-a523-4696-9843-b74945ea499b",
+    "name": "Gotowebinar Co Organizers API",
+    "description": "Operations tagged Co-organizers across 2 of this provider's published API definitions: gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:17:45.000Z",
+    "updatedAt": "2026-10-21T21:17:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3124ad56-a523-4696-9843-b74945ea499b"
+  },
   "item": [
     {
-      "id": "6f8d7df7-ca40-47fb-8dab-db6660b2698c",
-      "name": "Co-Organizers",
-      "description": {
-        "content": "Manage co-organizers on a webinar.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "d2cd6872-89ca-4d3b-b802-6ef8fc84e182",
-          "name": "List Co-Organizers",
-          "request": {
-            "name": "List Co-Organizers",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "coorganizers"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "f300899b-889e-42cf-821a-4971a35e16c4",
-              "name": "Co-organizers for the webinar.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "coorganizers"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "webinars",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "{webinarKey}",
+                  "item": [
+                    {
+                      "name": "coorganizers",
+                      "item": [
+                        {
+                          "name": "{coorganizerKey}",
+                          "item": [
+                            {
+                              "name": "resendInvitation",
+                              "item": [
+                                {
+                                  "name": "Resend invitation",
+                                  "id": "75940176-1e8c-49a5-9d5a-e81716e4993a",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "oauth2",
+                                      "oauth2": [
+                                        {
+                                          "key": "redirect_uri",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "accessTokenUrl",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "grant_type",
+                                          "value": "password_credentials",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "POST",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey/resendInvitation?external=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "coorganizers",
+                                        ":coorganizerKey",
+                                        "resendInvitation"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "By default only internal co-organizers (with a GoTo Webinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                          "key": "external",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "3d30d032-1a7f-4196-9c86-f913570da406",
+                                          "key": "organizerKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the organizer"
+                                        },
+                                        {
+                                          "id": "1353a374-4dc8-4c48-9b8c-f859fde1a4b4",
+                                          "key": "webinarKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the webinar"
+                                        },
+                                        {
+                                          "id": "0c3191a8-edcb-421c-9e9b-9b617e3fb760",
+                                          "key": "coorganizerKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the internal or external co-organizer (memberKey)"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Resends an invitation email to the specified co-organizer"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "5c8b7058-bef7-4269-ad9e-ebcf258002ef",
+                                      "name": "No Content (Invitation email was sent)",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey/resendInvitation?external=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "coorganizers",
+                                            ":coorganizerKey",
+                                            "resendInvitation"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "By default only internal co-organizers (with a GoTo Webinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                              "key": "external",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "coorganizerKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:46.000Z",
+                                      "updatedAt": "2026-10-21T21:17:46.000Z",
+                                      "uid": "35240-5c8b7058-bef7-4269-ad9e-ebcf258002ef"
+                                    },
+                                    {
+                                      "id": "df3b9db1-7288-458a-8c7c-e836fb09347b",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey/resendInvitation?external=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "coorganizers",
+                                            ":coorganizerKey",
+                                            "resendInvitation"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "By default only internal co-organizers (with a GoTo Webinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                              "key": "external",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "coorganizerKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:46.000Z",
+                                      "updatedAt": "2026-10-21T21:17:46.000Z",
+                                      "uid": "35240-df3b9db1-7288-458a-8c7c-e836fb09347b"
+                                    },
+                                    {
+                                      "id": "0f6915fc-0c53-4100-b11e-d7c94ff5742a",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey/resendInvitation?external=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "coorganizers",
+                                            ":coorganizerKey",
+                                            "resendInvitation"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "By default only internal co-organizers (with a GoTo Webinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                              "key": "external",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "coorganizerKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:46.000Z",
+                                      "updatedAt": "2026-10-21T21:17:46.000Z",
+                                      "uid": "35240-0f6915fc-0c53-4100-b11e-d7c94ff5742a"
+                                    },
+                                    {
+                                      "id": "8aa8dbee-6d63-4ed6-8e5f-595a3ffb0e2c",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey/resendInvitation?external=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "coorganizers",
+                                            ":coorganizerKey",
+                                            "resendInvitation"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "By default only internal co-organizers (with a GoTo Webinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                              "key": "external",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "coorganizerKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:46.000Z",
+                                      "updatedAt": "2026-10-21T21:17:46.000Z",
+                                      "uid": "35240-8aa8dbee-6d63-4ed6-8e5f-595a3ffb0e2c"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:17:46.000Z",
+                                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                                  "uid": "35240-75940176-1e8c-49a5-9d5a-e81716e4993a"
+                                }
+                              ],
+                              "id": "97568d3c-d1af-4591-b9ad-a4ded0efffee",
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-97568d3c-d1af-4591-b9ad-a4ded0efffee"
+                            },
+                            {
+                              "name": "Delete co-organizer",
+                              "id": "52444401-e2e0-43e5-9a1b-a08ac588cf68",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "redirect_uri",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "password_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey?external=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers",
+                                    ":coorganizerKey"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "By default only internal co-organizers (with a GoTo Webinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                      "key": "external",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "35413a58-7c88-40c4-af74-52a5cb428444",
+                                      "key": "organizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the organizer"
+                                    },
+                                    {
+                                      "id": "d4ca7214-b5cb-4516-a59b-b942dbc11605",
+                                      "key": "webinarKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar"
+                                    },
+                                    {
+                                      "id": "59180c27-3df9-46fd-becf-efded120e2b4",
+                                      "key": "coorganizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the internal or external co-organizer (memberKey)"
+                                    }
+                                  ]
+                                },
+                                "description": "Deletes an internal co-organizer specified by the coorganizerKey (memberKey)."
+                              },
+                              "response": [
+                                {
+                                  "id": "743b601e-6e1c-499a-829f-28e315013baa",
+                                  "name": "No Content (Co-organizer was deleted)",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey?external=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "coorganizers",
+                                        ":coorganizerKey"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "By default only internal co-organizers (with a GoTo Webinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                          "key": "external",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "coorganizerKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:46.000Z",
+                                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                                  "uid": "35240-743b601e-6e1c-499a-829f-28e315013baa"
+                                },
+                                {
+                                  "id": "ad322a58-b6d5-454c-b3a2-9ef4f023bebf",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey?external=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "coorganizers",
+                                        ":coorganizerKey"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "By default only internal co-organizers (with a GoTo Webinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                          "key": "external",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "coorganizerKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:46.000Z",
+                                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                                  "uid": "35240-ad322a58-b6d5-454c-b3a2-9ef4f023bebf"
+                                },
+                                {
+                                  "id": "afc7de65-82eb-4716-8a4e-ac593301216c",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey?external=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "coorganizers",
+                                        ":coorganizerKey"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "By default only internal co-organizers (with a GoTo Webinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                          "key": "external",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "coorganizerKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:46.000Z",
+                                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                                  "uid": "35240-afc7de65-82eb-4716-8a4e-ac593301216c"
+                                },
+                                {
+                                  "id": "b36128e9-fbba-45e7-ac14-54e0a937cc8f",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers/:coorganizerKey?external=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "coorganizers",
+                                        ":coorganizerKey"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "By default only internal co-organizers (with a GoTo Webinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'.\n",
+                                          "key": "external",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "coorganizerKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:46.000Z",
+                                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                                  "uid": "35240-b36128e9-fbba-45e7-ac14-54e0a937cc8f"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-52444401-e2e0-43e5-9a1b-a08ac588cf68"
+                            }
+                          ],
+                          "id": "6fcb7dbe-c0f6-4869-9f2b-8168de118116",
+                          "createdAt": "2026-10-21T21:17:46.000Z",
+                          "updatedAt": "2026-10-21T21:17:46.000Z",
+                          "uid": "35240-6fcb7dbe-c0f6-4869-9f2b-8168de118116"
+                        },
+                        {
+                          "name": "Get co-organizers",
+                          "id": "d856585d-ed37-4a12-8c24-0de925e11a2b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "coorganizers"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "be3e267c-dca6-46f9-af2e-67b70032dc81",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "4f81af31-9814-4e04-b426-70b2837c8194",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Returns the co-organizers for the specified webinar. The original organizer who created the webinar is filtered out of the list. If the webinar has no co-organizers, an empty array is returned. Co-organizers that do not have a GoTo Webinar account are returned as external co-organizers. For those organizers no surname is returned."
+                          },
+                          "response": [
+                            {
+                              "id": "2307bb62-6c28-4c93-a285-668740a441ef",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"joinLink\": \"<string>\",\n    \"email\": \"<string>\",\n    \"memberKey\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"surname\": \"<string>\",\n    \"givenName\": \"<string>\"\n  },\n  {\n    \"joinLink\": \"<string>\",\n    \"email\": \"<string>\",\n    \"memberKey\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"surname\": \"<string>\",\n    \"givenName\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-2307bb62-6c28-4c93-a285-668740a441ef"
+                            },
+                            {
+                              "id": "3987e83a-a5fc-48ad-94ce-149fe8cc03db",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-3987e83a-a5fc-48ad-94ce-149fe8cc03db"
+                            },
+                            {
+                              "id": "c96e9983-38bf-447c-9529-9cefba304b7f",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-c96e9983-38bf-447c-9529-9cefba304b7f"
+                            },
+                            {
+                              "id": "2080663b-24d6-4ccf-855d-d084ff534810",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-2080663b-24d6-4ccf-855d-d084ff534810"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:17:46.000Z",
+                          "updatedAt": "2026-10-21T21:17:46.000Z",
+                          "uid": "35240-d856585d-ed37-4a12-8c24-0de925e11a2b"
+                        },
+                        {
+                          "name": "Create co-organizers",
+                          "id": "36adca7d-4a6a-4de4-b6b5-47ec4be24723",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "coorganizers"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2902b38f-e6d1-44c5-82d2-568158420e94",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "787e5097-f818-48d9-ae3e-96456fa55a66",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Creates co-organizers for the specified webinar. For co-organizers that have a GoTo Webinar account you have to set the parameter 'external' to 'false'. In this case you have to pass the parameter 'organizerKey' only. For co-organizers that have no GoTo Webinar account you have to set the parameter 'external' to 'true'. In this case you have to pass the parameters 'givenName' and 'email'. Since there is no parameter for 'surname' you should pass first and last name to the parameter 'givenName'."
+                          },
+                          "response": [
+                            {
+                              "id": "2cb1d4a7-31c6-475e-aed9-1a7a55737711",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"joinLink\": \"<string>\",\n    \"email\": \"<string>\",\n    \"memberKey\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"surname\": \"<string>\",\n    \"givenName\": \"<string>\"\n  },\n  {\n    \"joinLink\": \"<string>\",\n    \"email\": \"<string>\",\n    \"memberKey\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"surname\": \"<string>\",\n    \"givenName\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-2cb1d4a7-31c6-475e-aed9-1a7a55737711"
+                            },
+                            {
+                              "id": "3ca6ab8e-0c5c-49ba-85c9-ad296ac9bcb6",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-3ca6ab8e-0c5c-49ba-85c9-ad296ac9bcb6"
+                            },
+                            {
+                              "id": "2d046934-9f51-4bcc-855c-123db529f004",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-2d046934-9f51-4bcc-855c-123db529f004"
+                            },
+                            {
+                              "id": "f5712132-9068-4a70-bcd3-c18b35f6072b",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  {\n    \"external\": \"<boolean>\",\n    \"organizerKey\": \"<string>\",\n    \"givenName\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/coorganizers",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "coorganizers"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:46.000Z",
+                              "updatedAt": "2026-10-21T21:17:46.000Z",
+                              "uid": "35240-f5712132-9068-4a70-bcd3-c18b35f6072b"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:17:46.000Z",
+                          "updatedAt": "2026-10-21T21:17:46.000Z",
+                          "uid": "35240-36adca7d-4a6a-4de4-b6b5-47ec4be24723"
+                        }
+                      ],
+                      "id": "8d739fb4-e93b-483d-abc0-a2e65b3b6dbe",
+                      "createdAt": "2026-10-21T21:17:46.000Z",
+                      "updatedAt": "2026-10-21T21:17:46.000Z",
+                      "uid": "35240-8d739fb4-e93b-483d-abc0-a2e65b3b6dbe"
+                    }
+                  ],
+                  "id": "2a44f85c-ac97-4dba-906c-aa882c900cb0",
+                  "createdAt": "2026-10-21T21:17:46.000Z",
+                  "updatedAt": "2026-10-21T21:17:46.000Z",
+                  "uid": "35240-2a44f85c-ac97-4dba-906c-aa882c900cb0"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "b5f373f8-8e51-4214-be02-c6891c7a2828",
+              "createdAt": "2026-10-21T21:17:46.000Z",
+              "updatedAt": "2026-10-21T21:17:46.000Z",
+              "uid": "35240-b5f373f8-8e51-4214-be02-c6891c7a2828"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "538ad47a-8a27-46d4-9142-641db5cafbc3",
-          "name": "Create Co-Organizers",
-          "request": {
-            "name": "Create Co-Organizers",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "coorganizers"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"givenName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"external\": \"<boolean>\"\n  },\n  {\n    \"email\": \"<email>\",\n    \"givenName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"external\": \"<boolean>\"\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "49785b6d-a956-45e7-a7b2-8d4c5aa7c263",
-              "name": "Co-organizers added.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "coorganizers"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"email\": \"<email>\",\n    \"givenName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"external\": \"<boolean>\"\n  },\n  {\n    \"email\": \"<email>\",\n    \"givenName\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"external\": \"<boolean>\"\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "90b97000-41c8-49ea-82a3-61310a5de8c4",
+          "createdAt": "2026-10-21T21:17:46.000Z",
+          "updatedAt": "2026-10-21T21:17:46.000Z",
+          "uid": "35240-90b97000-41c8-49ea-82a3-61310a5de8c4"
         }
       ],
-      "event": []
+      "id": "ae0793ed-7300-4261-888f-c64802fe029c",
+      "createdAt": "2026-10-21T21:17:46.000Z",
+      "updatedAt": "2026-10-21T21:17:46.000Z",
+      "uid": "35240-ae0793ed-7300-4261-888f-c64802fe029c"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  ],
-  "auth": {
-    "type": "oauth2",
-    "oauth2": [
-      {
-        "key": "scope",
-        "value": "collab identity:scim.me"
-      },
-      {
-        "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
-      },
-      {
-        "key": "grant_type",
-        "value": "authorization_code"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "5ac587e9-4a27-420a-a73c-07b6d8c9400a",
-    "name": "GoToWebinar REST Attendees Co-Organizers API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

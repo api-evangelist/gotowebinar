@@ -1,563 +1,1641 @@
 {
+  "info": {
+    "_postman_id": "e036945c-0658-42cb-882e-4f9d8605e291",
+    "name": "Gotowebinar Registrants API",
+    "description": "Operations tagged Registrants across 2 of this provider's published API definitions: gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:18:14.000Z",
+    "updatedAt": "2026-10-21T21:18:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e036945c-0658-42cb-882e-4f9d8605e291"
+  },
   "item": [
     {
-      "id": "7e27e9b5-403e-469b-9e15-29a9a4e6d391",
-      "name": "Registrants",
-      "description": {
-        "content": "Manage registrants for upcoming webinars.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "fec1ebf1-4cdc-4f61-ad83-4948edeafa93",
-          "name": "List Registrants",
-          "request": {
-            "name": "List Registrants",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "registrants"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "4c7c5280-c448-423c-a857-9be572967880",
-              "name": "Registrants.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "registrants"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "webinars",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{webinarKey}",
+                  "item": [
+                    {
+                      "name": "registrants",
+                      "item": [
+                        {
+                          "name": "{registrantKey}",
+                          "item": [
+                            {
+                              "name": "Delete registrant",
+                              "id": "811f8696-0ff4-4cef-9cec-295dba540389",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "redirect_uri",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "password_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants",
+                                    ":registrantKey"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "43b36e89-a2e0-49f9-9a0c-73bfed5fb45d",
+                                      "key": "organizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the organizer"
+                                    },
+                                    {
+                                      "id": "f2eb10b4-dee0-4e08-97b7-4ba9dcd3e320",
+                                      "key": "webinarKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar"
+                                    },
+                                    {
+                                      "id": "f317c34c-6385-4dad-97a0-e44ff66a979d",
+                                      "key": "registrantKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the registrant"
+                                    }
+                                  ]
+                                },
+                                "description": "Removes a webinar registrant from current registrations for the specified webinar. The webinar must be a scheduled, future webinar."
+                              },
+                              "response": [
+                                {
+                                  "id": "6055b3aa-b3d5-4ef1-a2c0-79236ed7d018",
+                                  "name": "No content",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-6055b3aa-b3d5-4ef1-a2c0-79236ed7d018"
+                                },
+                                {
+                                  "id": "f4497c3e-099e-45b6-8bd8-2eb44c7b7a91",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-f4497c3e-099e-45b6-8bd8-2eb44c7b7a91"
+                                },
+                                {
+                                  "id": "a8d5e7ca-9aa9-401f-9da2-987cc4d8425e",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-a8d5e7ca-9aa9-401f-9da2-987cc4d8425e"
+                                },
+                                {
+                                  "id": "499d5096-e872-4ae2-b29f-35636a166d15",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-499d5096-e872-4ae2-b29f-35636a166d15"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-811f8696-0ff4-4cef-9cec-295dba540389"
+                            },
+                            {
+                              "name": "Get registrant",
+                              "id": "bdb4807d-7924-4de5-ad89-5abe11d70358",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "redirect_uri",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "password_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants",
+                                    ":registrantKey"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "34abad34-0f81-427f-a2d8-641854abe7d8",
+                                      "key": "organizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the organizer"
+                                    },
+                                    {
+                                      "id": "34dc6d1a-2f79-4a3c-a4b2-ef3b94d46c20",
+                                      "key": "webinarKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar"
+                                    },
+                                    {
+                                      "id": "a4215504-41c1-4b9f-8ac2-292f20cfd454",
+                                      "key": "registrantKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the registrant"
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve registration details for a specific registrant."
+                              },
+                              "response": [
+                                {
+                                  "id": "1dea2316-a5ed-4cb0-9e06-e77b15b42cc3",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"registrantKey\": \"<long>\",\n  \"registrationDate\": \"<dateTime>\",\n  \"status\": \"DENIED\",\n  \"joinUrl\": \"<string>\",\n  \"timeZone\": \"<string>\",\n  \"source\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"state\": \"<string>\",\n  \"city\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"implementationTimeFrame\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"employeeCount\": \"<string>\",\n  \"country\": \"<string>\",\n  \"address\": \"<string>\",\n  \"type\": \"LATE\",\n  \"unsubscribed\": \"<boolean>\",\n  \"responses\": [\n    {\n      \"answer\": \"<string>\",\n      \"question\": \"<string>\"\n    },\n    {\n      \"answer\": \"<string>\",\n      \"question\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-1dea2316-a5ed-4cb0-9e06-e77b15b42cc3"
+                                },
+                                {
+                                  "id": "428e6b85-dce7-463e-b2b9-9a979dce1140",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-428e6b85-dce7-463e-b2b9-9a979dce1140"
+                                },
+                                {
+                                  "id": "b4785cb8-edae-4853-984a-633761d66245",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-b4785cb8-edae-4853-984a-633761d66245"
+                                },
+                                {
+                                  "id": "e921386a-c12b-466c-8364-60c1d629468d",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/:registrantKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        ":registrantKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "registrantKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-e921386a-c12b-466c-8364-60c1d629468d"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-bdb4807d-7924-4de5-ad89-5abe11d70358"
+                            }
+                          ],
+                          "id": "23cee425-ef8f-45c6-ba77-78a440dd6f5c",
+                          "createdAt": "2026-10-21T21:18:15.000Z",
+                          "updatedAt": "2026-10-21T21:18:15.000Z",
+                          "uid": "35240-23cee425-ef8f-45c6-ba77-78a440dd6f5c"
+                        },
+                        {
+                          "name": "fields",
+                          "item": [
+                            {
+                              "name": "Get registration fields",
+                              "id": "5bbffd7b-6b51-4a76-962d-773173c24c2c",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "redirect_uri",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "password_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/fields",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants",
+                                    "fields"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f3ac0c06-1852-447a-b869-9c978fcd444d",
+                                      "key": "organizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the organizer"
+                                    },
+                                    {
+                                      "id": "0d4c2adc-d8ef-40db-8863-b639eec8d6ba",
+                                      "key": "webinarKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar"
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve required, optional registration, and custom questions for a specified webinar."
+                              },
+                              "response": [
+                                {
+                                  "id": "a25e610a-9b5f-4ecb-b201-31755ebe8f98",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/fields",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        "fields"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"questions\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"question\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"shortAnswer\",\n      \"maxSize\": \"<integer>\",\n      \"answers\": [\n        {\n          \"answer\": \"<string>\",\n          \"answerKey\": \"<long>\"\n        },\n        {\n          \"answer\": \"<string>\",\n          \"answerKey\": \"<long>\"\n        }\n      ]\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"question\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"type\": \"multipleChoice\",\n      \"maxSize\": \"<integer>\",\n      \"answers\": [\n        {\n          \"answer\": \"<string>\",\n          \"answerKey\": \"<long>\"\n        },\n        {\n          \"answer\": \"<string>\",\n          \"answerKey\": \"<long>\"\n        }\n      ]\n    }\n  ],\n  \"fields\": [\n    {\n      \"field\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"maxSize\": \"<integer>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"field\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"maxSize\": \"<integer>\",\n      \"answers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-a25e610a-9b5f-4ecb-b201-31755ebe8f98"
+                                },
+                                {
+                                  "id": "855261d1-c961-4a11-a461-b0e737a83b53",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/fields",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        "fields"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-855261d1-c961-4a11-a461-b0e737a83b53"
+                                },
+                                {
+                                  "id": "b25c8713-5a33-4d54-9cc5-0eed71234afa",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/fields",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        "fields"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-b25c8713-5a33-4d54-9cc5-0eed71234afa"
+                                },
+                                {
+                                  "id": "35f53453-76ac-4f42-84bb-16555b2e872e",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants/fields",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "registrants",
+                                        "fields"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:18:15.000Z",
+                                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                                  "uid": "35240-35f53453-76ac-4f42-84bb-16555b2e872e"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-5bbffd7b-6b51-4a76-962d-773173c24c2c"
+                            }
+                          ],
+                          "id": "fb2df02d-2f18-46e7-ad7e-c10d38fc201c",
+                          "createdAt": "2026-10-21T21:18:15.000Z",
+                          "updatedAt": "2026-10-21T21:18:15.000Z",
+                          "uid": "35240-fb2df02d-2f18-46e7-ad7e-c10d38fc201c"
+                        },
+                        {
+                          "name": "Create registrant",
+                          "id": "78b81efb-0349-45e3-90bf-21fb51def506",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "registrants"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                  "key": "resendConfirmation",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e0b4405a-69d6-47d9-9842-6332c1addd38",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "41c525c7-cf69-4edb-a06e-6de247793e0b",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Register an attendee for a scheduled webinar. The response contains the registrantKey and join URL for the registrant. An email will be sent to the registrant unless the organizer turns off the confirmation email setting from the GoTo Webinar website. Please note that you must provide all required fields including custom fields defined during the webinar creation. Use the API call 'Get registration fields' to get a list of all fields, if they are required, and their possible values. At this time there are two versions of the 'Create Registrant' call. The first version only accepts firstName, lastName, and email and ignores all other fields. If you have custom fields or want to capture additional information this version won't work for you. The second version allows you to pass all required and optional fields, including custom fields defined when creating the webinar. To use the second version you must pass the Accept header value as 'application/json' instead of 'application/vnd.citrix.g2wapi-v1.1+json."
+                          },
+                          "response": [
+                            {
+                              "id": "172409eb-8aa5-417c-a7ec-760d491f90d8",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                      "key": "resendConfirmation",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"registrantKey\": \"<long>\",\n  \"joinUrl\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-172409eb-8aa5-417c-a7ec-760d491f90d8"
+                            },
+                            {
+                              "id": "eb3be2b0-647b-4dcb-ba80-1f1468eb027d",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                      "key": "resendConfirmation",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-eb3be2b0-647b-4dcb-ba80-1f1468eb027d"
+                            },
+                            {
+                              "id": "87598ad1-c681-453a-aad0-ab01bbe0727a",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                      "key": "resendConfirmation",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-87598ad1-c681-453a-aad0-ab01bbe0727a"
+                            },
+                            {
+                              "id": "1ac2fe1e-ee07-4011-a3d9-01d9282caa84",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                      "key": "resendConfirmation",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-1ac2fe1e-ee07-4011-a3d9-01d9282caa84"
+                            },
+                            {
+                              "id": "abb366ee-2093-4999-8531-6e990417b1e0",
+                              "name": "The user is already registered",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"source\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"questionsAndComments\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<string>\",\n  \"purchasingTimeFrame\": \"<string>\",\n  \"purchasingRole\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    },\n    {\n      \"questionKey\": \"<long>\",\n      \"responseText\": \"<string>\",\n      \"answerKey\": \"<long>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?resendConfirmation=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false.",
+                                      "key": "resendConfirmation",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-abb366ee-2093-4999-8531-6e990417b1e0"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:18:15.000Z",
+                          "updatedAt": "2026-10-21T21:18:15.000Z",
+                          "uid": "35240-78b81efb-0349-45e3-90bf-21fb51def506"
+                        },
+                        {
+                          "name": "Get registrants",
+                          "id": "27ccd8d4-eab9-48d3-841b-fc7a6b1d9250",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?page=<long>&limit=<long>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "registrants"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The page number to be displayed. The first page is 0.",
+                                  "key": "page",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The size of the page.",
+                                  "key": "limit",
+                                  "value": "<long>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8f7d70fe-20b7-49d3-b47c-afcd34d2ab1f",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "3972b671-86d8-4cad-9fd7-5ce529088074",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve registration details for all registrants of a specific webinar. Registrant details will not include all fields captured when creating the registrant. To see all data, use the API call 'Get Registrant'. Registrants can have one of the following states; WAITING - registrant registered and is awaiting approval (where organizer has required approval), APPROVED - registrant registered and is approved, and DENIED - registrant registered and was denied. We have pagination support for this API now. When you pass the page or limit parameter the response will follow RegistrantPaginatedResponse schema but without these params response will be in RegistrantArray schema as before"
+                          },
+                          "response": [
+                            {
+                              "id": "fd5a9ffe-5edf-45e0-838b-e2be9c48b946",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?page=<long>&limit=<long>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The page number to be displayed. The first page is 0.",
+                                      "key": "page",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The size of the page.",
+                                      "key": "limit",
+                                      "value": "<long>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"registrantKey\": \"<long>\",\n    \"registrationDate\": \"<dateTime>\",\n    \"status\": \"WAITING\",\n    \"joinUrl\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  },\n  {\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"registrantKey\": \"<long>\",\n    \"registrationDate\": \"<dateTime>\",\n    \"status\": \"APPROVED\",\n    \"joinUrl\": \"<string>\",\n    \"timeZone\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-fd5a9ffe-5edf-45e0-838b-e2be9c48b946"
+                            },
+                            {
+                              "id": "7ae413e0-6fb6-4acb-a619-39430fd33f14",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?page=<long>&limit=<long>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The page number to be displayed. The first page is 0.",
+                                      "key": "page",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The size of the page.",
+                                      "key": "limit",
+                                      "value": "<long>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-7ae413e0-6fb6-4acb-a619-39430fd33f14"
+                            },
+                            {
+                              "id": "dc3588f9-d9e5-4019-960e-409ee1727003",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?page=<long>&limit=<long>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The page number to be displayed. The first page is 0.",
+                                      "key": "page",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The size of the page.",
+                                      "key": "limit",
+                                      "value": "<long>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-dc3588f9-d9e5-4019-960e-409ee1727003"
+                            },
+                            {
+                              "id": "04ac4c5a-13ef-4f40-9885-dcf54d966d3f",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/registrants?page=<long>&limit=<long>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "registrants"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The page number to be displayed. The first page is 0.",
+                                      "key": "page",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The size of the page.",
+                                      "key": "limit",
+                                      "value": "<long>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:18:15.000Z",
+                              "updatedAt": "2026-10-21T21:18:15.000Z",
+                              "uid": "35240-04ac4c5a-13ef-4f40-9885-dcf54d966d3f"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:18:15.000Z",
+                          "updatedAt": "2026-10-21T21:18:15.000Z",
+                          "uid": "35240-27ccd8d4-eab9-48d3-841b-fc7a6b1d9250"
+                        }
+                      ],
+                      "id": "8b011456-3f97-4b88-aedc-bef77a1145eb",
+                      "createdAt": "2026-10-21T21:18:15.000Z",
+                      "updatedAt": "2026-10-21T21:18:15.000Z",
+                      "uid": "35240-8b011456-3f97-4b88-aedc-bef77a1145eb"
+                    }
+                  ],
+                  "id": "d9b4507e-052d-4006-b146-94d67043df2d",
+                  "createdAt": "2026-10-21T21:18:15.000Z",
+                  "updatedAt": "2026-10-21T21:18:15.000Z",
+                  "uid": "35240-d9b4507e-052d-4006-b146-94d67043df2d"
                 }
               ],
-              "body": "[\n  {\n    \"registrantKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"iRpIGHTudA1I7@lpSRFKEyEVL.me\",\n    \"phone\": \"string\",\n    \"organization\": \"string\",\n    \"jobTitle\": \"string\",\n    \"registrationDate\": \"2024-03-01T18:00:40.851Z\",\n    \"status\": \"APPROVED\",\n    \"joinUrl\": \"http://OwbBvvVYWfcNHNnREMCHZ.hrelMpxKqgYheDuWICraXNG+sWonEv.+8.xMUTOsS7ozuCgtSA\",\n    \"responses\": [\n      {\n        \"question\": \"string\",\n        \"answer\": \"string\"\n      },\n      {\n        \"question\": \"string\",\n        \"answer\": \"string\"\n      }\n    ]\n  },\n  {\n    \"registrantKey\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"6996peix4Ap@NZQvgoDxtLnXZEHFzSMMO.gyzp\",\n    \"phone\": \"string\",\n    \"organization\": \"string\",\n    \"jobTitle\": \"string\",\n    \"registrationDate\": \"2000-12-16T10:58:18.676Z\",\n    \"status\": \"WAITING\",\n    \"joinUrl\": \"http://XwhHPLg.mqNIXsV\",\n    \"responses\": [\n      {\n        \"question\": \"string\",\n        \"answer\": \"string\"\n      },\n      {\n        \"question\": \"string\",\n        \"answer\": \"string\"\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "34df6069-f664-4cd6-9524-cd2710b2b1e6",
+              "createdAt": "2026-10-21T21:18:15.000Z",
+              "updatedAt": "2026-10-21T21:18:15.000Z",
+              "uid": "35240-34df6069-f664-4cd6-9524-cd2710b2b1e6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4e8f0781-0478-4804-a580-971cc6f05261",
-          "name": "Create A Registrant",
-          "request": {
-            "name": "Create A Registrant",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "registrants"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "resendConfirmation",
-                  "value": "false"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<string>\",\n      \"responseText\": \"<string>\"\n    },\n    {\n      \"questionKey\": \"<string>\",\n      \"responseText\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "53d884ca-d6fb-48ca-87d3-18b192f7dae9",
-              "name": "Registrant created.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "registrants"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "resendConfirmation",
-                      "value": "false"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"jobTitle\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"responses\": [\n    {\n      \"questionKey\": \"<string>\",\n      \"responseText\": \"<string>\"\n    },\n    {\n      \"questionKey\": \"<string>\",\n      \"responseText\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"registrantKey\": \"string\",\n  \"joinUrl\": \"https://ObFWdpXmH.rhgiOIUBFB8LH7fLjMJueliJt5s.WjUgX+c8gijWUbbLQLRg58dW\",\n  \"status\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0ad540b6-51c8-4d47-bd4a-1f7d11eca934",
-          "name": "Get A Single Registrant",
-          "request": {
-            "name": "Get A Single Registrant",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "registrants",
-                ":registrantKey"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "registrantKey",
-                  "description": "(Required) Unique key identifying a registrant."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b58a25fc-7850-447c-a2b1-f30e46147105",
-              "name": "Registrant.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "registrants",
-                    ":registrantKey"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "registrantKey",
-                      "description": "(Required) Unique key identifying a registrant."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"registrantKey\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"Kfwx3C@dBmGfkMUcnAgLXaHcq.lncb\",\n  \"phone\": \"string\",\n  \"organization\": \"string\",\n  \"jobTitle\": \"string\",\n  \"registrationDate\": \"1993-06-30T21:19:40.952Z\",\n  \"status\": \"DENIED\",\n  \"joinUrl\": \"http://byyppdHYPRMMpUsOFiijtxO.gjbvdSdMFIjrRhDsOkFY,4pK+A4mlEmozHnBy+\",\n  \"responses\": [\n    {\n      \"question\": \"string\",\n      \"answer\": \"string\"\n    },\n    {\n      \"question\": \"string\",\n      \"answer\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fd5511d7-216d-437a-ab21-7e5774b4cb3d",
-          "name": "Delete A Registrant",
-          "request": {
-            "name": "Delete A Registrant",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "registrants",
-                ":registrantKey"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "registrantKey",
-                  "description": "(Required) Unique key identifying a registrant."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "642c2a9f-914d-4cca-928b-6c538bf7e2b1",
-              "name": "Registrant deleted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "registrants",
-                    ":registrantKey"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "registrantKey",
-                      "description": "(Required) Unique key identifying a registrant."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "06a6e482-b2a8-428e-b513-bfb45f5dd040",
+          "createdAt": "2026-10-21T21:18:15.000Z",
+          "updatedAt": "2026-10-21T21:18:15.000Z",
+          "uid": "35240-06a6e482-b2a8-428e-b513-bfb45f5dd040"
         }
       ],
-      "event": []
+      "id": "bc799bb0-c1d5-485c-869c-0796e8d468be",
+      "createdAt": "2026-10-21T21:18:15.000Z",
+      "updatedAt": "2026-10-21T21:18:15.000Z",
+      "uid": "35240-bc799bb0-c1d5-485c-869c-0796e8d468be"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  ],
-  "auth": {
-    "type": "oauth2",
-    "oauth2": [
-      {
-        "key": "scope",
-        "value": "collab identity:scim.me"
-      },
-      {
-        "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
-      },
-      {
-        "key": "grant_type",
-        "value": "authorization_code"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "fa7ce0b3-f902-47af-8fde-a56f064215a0",
-    "name": "GoToWebinar REST Attendees Registrants API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,0 +1,806 @@
+{
+  "info": {
+    "_postman_id": "8d24699a-a133-4d0c-a49b-504663296a9e",
+    "name": "GoTo Webinar 2.0 REST Recording Assets API",
+    "description": "We recommend you use the v2 of this API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:18:51.000Z",
+    "updatedAt": "2026-10-21T21:18:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8d24699a-a133-4d0c-a49b-504663296a9e"
+  },
+  "item": [
+    {
+      "name": "recordingassets",
+      "item": [
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Search for completed recording assets",
+              "id": "c6e41bb6-36fd-416f-9c0c-5f8b0ad54f9b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/recordingassets/search?page=<long>&size=<long>&includes=webinarKey&includes=webinarKey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "recordingassets",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page number to be displayed. The first page is 0.",
+                      "key": "page",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "The size of the page.",
+                      "key": "size",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Add the response variables.",
+                      "key": "includes",
+                      "value": "webinarKey"
+                    },
+                    {
+                      "description": "Add the response variables.",
+                      "key": "includes",
+                      "value": "webinarKey"
+                    }
+                  ]
+                },
+                "description": "Allows search for a completed recording asset.\n\n### Example Interaction with curl\n\nThe default request is represented below, that excludes the `includes` query parameter.\nYou will get the `mp4DownloadUrl` and `transcriptUrl` by default in the response if they exist.\nThe `recordingShareUrl` and `webinarKey` fields will not be included.\n\n```\ncurl --request PUT 'https://api.getgo.com/G2W/rest/v2/recordingassets/search?page={page}&size={size}' \\\n--header 'Authorization: Bearer {ACCESS_TOKEN}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\"accountKey\": \"123456\",\n\"sortField\": \"CREATETIME\",\n\"sortOrder\": \"DESC\"\n}'\n\n```\nBy adding the `includes` query parameter has shown below, you'll get\nthe `recordingShareUrl` and `webinarKey` fields in the response.\n\n```\ncurl --request PUT 'https://api.getgo.com/G2W/rest/v2/recordingassets/search?page={page}&size={size}&includes=recordingShareUrl%2CwebinarKey' \\\n--header 'Authorization: Bearer {ACCESS_TOKEN}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\"accountKey\": \"123456\",\n\"sortField\": \"CREATETIME\",\n\"sortOrder\": \"DESC\"\n}'\n```"
+              },
+              "response": [
+                {
+                  "id": "eabc1226-44ef-491e-86a9-74d04fc2d3a0",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recordingassets",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page number to be displayed. The first page is 0.",
+                          "key": "page",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "The size of the page.",
+                          "key": "size",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Add the response variables.",
+                          "key": "includes",
+                          "value": "webinarKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_embedded\": {\n    \"recordingAssets\": [\n      {\n        \"name\": \"<string>\",\n        \"recordingAssetKey\": \"<string>\",\n        \"productName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"creatorKey\": \"<string>\",\n        \"accountKey\": \"<string>\",\n        \"totalReferenceCount\": \"<integer>\",\n        \"mp4DownloadUrl\": \"<string>\",\n        \"transcriptDownloadUrl\": \"<string>\",\n        \"recordingShareUrl\": \"<string>\",\n        \"webinarKey\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"recordingAssetKey\": \"<string>\",\n        \"productName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"creatorKey\": \"<string>\",\n        \"accountKey\": \"<string>\",\n        \"totalReferenceCount\": \"<integer>\",\n        \"mp4DownloadUrl\": \"<string>\",\n        \"transcriptDownloadUrl\": \"<string>\",\n        \"recordingShareUrl\": \"<string>\",\n        \"webinarKey\": \"<string>\"\n      }\n    ]\n  },\n  \"page\": {\n    \"size\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"number\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T21:18:51.000Z",
+                  "updatedAt": "2026-10-21T21:18:51.000Z",
+                  "uid": "35240-eabc1226-44ef-491e-86a9-74d04fc2d3a0"
+                },
+                {
+                  "id": "7de2ec1b-e785-4d63-9b03-70f6b7219cf3",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recordingassets",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page number to be displayed. The first page is 0.",
+                          "key": "page",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "The size of the page.",
+                          "key": "size",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Add the response variables.",
+                          "key": "includes",
+                          "value": "webinarKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:51.000Z",
+                  "updatedAt": "2026-10-21T21:18:51.000Z",
+                  "uid": "35240-7de2ec1b-e785-4d63-9b03-70f6b7219cf3"
+                },
+                {
+                  "id": "36452d7f-1ca7-4eb8-be5a-af9e27ae027f",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recordingassets",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page number to be displayed. The first page is 0.",
+                          "key": "page",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "The size of the page.",
+                          "key": "size",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Add the response variables.",
+                          "key": "includes",
+                          "value": "webinarKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:51.000Z",
+                  "updatedAt": "2026-10-21T21:18:51.000Z",
+                  "uid": "35240-36452d7f-1ca7-4eb8-be5a-af9e27ae027f"
+                },
+                {
+                  "id": "fd17cad8-34b2-4adb-ac1d-c09da015892f",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "recordingassets",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page number to be displayed. The first page is 0.",
+                          "key": "page",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "The size of the page.",
+                          "key": "size",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Add the response variables.",
+                          "key": "includes",
+                          "value": "webinarKey"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:18:51.000Z",
+                  "updatedAt": "2026-10-21T21:18:51.000Z",
+                  "uid": "35240-fd17cad8-34b2-4adb-ac1d-c09da015892f"
+                }
+              ],
+              "createdAt": "2026-10-21T21:18:51.000Z",
+              "updatedAt": "2026-10-21T21:18:51.000Z",
+              "uid": "35240-c6e41bb6-36fd-416f-9c0c-5f8b0ad54f9b"
+            }
+          ],
+          "id": "4a95b126-e9dc-46e6-ab05-cca94e15cdd3",
+          "createdAt": "2026-10-21T21:18:51.000Z",
+          "updatedAt": "2026-10-21T21:18:51.000Z",
+          "uid": "35240-4a95b126-e9dc-46e6-ab05-cca94e15cdd3"
+        }
+      ],
+      "id": "e6f3b065-4c43-47d1-bafb-ae1a68d1fa54",
+      "createdAt": "2026-10-21T21:18:51.000Z",
+      "updatedAt": "2026-10-21T21:18:51.000Z",
+      "uid": "35240-e6f3b065-4c43-47d1-bafb-ae1a68d1fa54"
+    },
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{accountKey}",
+          "item": [
+            {
+              "name": "recordingassets",
+              "item": [
+                {
+                  "name": "search",
+                  "item": [
+                    {
+                      "name": "Search for completed recording assets of an admin user",
+                      "id": "64df7111-211d-4daf-98a6-ca2a277f5a73",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizerKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\",\n  \"fromTime\": \"<string>\",\n  \"toTime\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:accountKey/recordingassets/search?page=<long>&size=<long>&includes=webinarKey&includes=webinarKey",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":accountKey",
+                            "recordingassets",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page number to be displayed. The first page is 0.",
+                              "key": "page",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "The size of the page.",
+                              "key": "size",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Add the response variables.",
+                              "key": "includes",
+                              "value": "webinarKey"
+                            },
+                            {
+                              "description": "Add the response variables.",
+                              "key": "includes",
+                              "value": "webinarKey"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "64594aad-8081-40ec-88fd-f12794ca9a12",
+                              "key": "accountKey",
+                              "value": "<long>",
+                              "description": "(Required) The key of the account"
+                            }
+                          ]
+                        },
+                        "description": "Allows search for a completed recording asset for an admin user. The authorization token must represent an admin.\n\n### Example Interaction with curl\n\nThe default request is represented below, that excludes the `includes` query parameter.\nYou will get the `mp4DownloadUrl` and `transcriptUrl` by default in the response if they exist.\nThe `recordingShareUrl` and `webinarKey` fields will not be included.\n\n```\ncurl --request POST 'https://api.getgo.com/G2W/rest/v2/accounts/{accountKey}/recordingassets/search?page={page}&size={size}' \\\n--header 'Authorization: Bearer {ACCESS_TOKEN}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\"name\": \"Test\"\n\"organizerKey\": \"123456\",\n\"sortField\": \"CREATETIME\",\n\"sortOrder\": \"DESC\",\n\"fromTime\":\"2021-01-01T00:00:00Z\",\n\"toTime\":\"2022-02-02T06:36:02.352Z\"\n}'\n\n```\nBy adding the `includes` query parameter has shown below, you'll get\nthe `recordingShareUrl` and `webinarKey` fields in the response.\n\n```\ncurl --request POST 'https://api.getgo.com/G2W/rest/v2/accounts/{accountKey}/recordingassets/search?page={page}&size={size}&includes=recordingShareUrl%2CwebinarKey' \\\n--header 'Authorization: Bearer {ACCESS_TOKEN}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n\"name\": \"Test\"\n\"organizerKey\": \"123456\",\n\"sortField\": \"CREATETIME\",\n\"sortOrder\": \"DESC\",\n\"fromTime\":\"2021-01-01T00:00:00Z\",\n\"toTime\":\"2022-02-02T06:36:02.352Z\"\n}'\n```"
+                      },
+                      "response": [
+                        {
+                          "id": "fb67b248-145c-4e25-8017-260e1c6795f3",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizerKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\",\n  \"fromTime\": \"<string>\",\n  \"toTime\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountKey/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountKey",
+                                "recordingassets",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The page number to be displayed. The first page is 0.",
+                                  "key": "page",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The size of the page.",
+                                  "key": "size",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Add the response variables.",
+                                  "key": "includes",
+                                  "value": "webinarKey"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountKey"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_embedded\": {\n    \"recordingAssets\": [\n      {\n        \"name\": \"<string>\",\n        \"recordingAssetKey\": \"<string>\",\n        \"productName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"creatorKey\": \"<string>\",\n        \"accountKey\": \"<string>\",\n        \"totalReferenceCount\": \"<integer>\",\n        \"mp4DownloadUrl\": \"<string>\",\n        \"transcriptDownloadUrl\": \"<string>\",\n        \"recordingShareUrl\": \"<string>\",\n        \"webinarKey\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"recordingAssetKey\": \"<string>\",\n        \"productName\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"creatorKey\": \"<string>\",\n        \"accountKey\": \"<string>\",\n        \"totalReferenceCount\": \"<integer>\",\n        \"mp4DownloadUrl\": \"<string>\",\n        \"transcriptDownloadUrl\": \"<string>\",\n        \"recordingShareUrl\": \"<string>\",\n        \"webinarKey\": \"<string>\"\n      }\n    ]\n  },\n  \"page\": {\n    \"size\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"number\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-21T21:18:51.000Z",
+                          "updatedAt": "2026-10-21T21:18:51.000Z",
+                          "uid": "35240-fb67b248-145c-4e25-8017-260e1c6795f3"
+                        },
+                        {
+                          "id": "c66da549-7dad-41b4-be58-276065fb7486",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizerKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\",\n  \"fromTime\": \"<string>\",\n  \"toTime\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountKey/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountKey",
+                                "recordingassets",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The page number to be displayed. The first page is 0.",
+                                  "key": "page",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The size of the page.",
+                                  "key": "size",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Add the response variables.",
+                                  "key": "includes",
+                                  "value": "webinarKey"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountKey"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:18:51.000Z",
+                          "updatedAt": "2026-10-21T21:18:51.000Z",
+                          "uid": "35240-c66da549-7dad-41b4-be58-276065fb7486"
+                        },
+                        {
+                          "id": "6e98508f-103b-4032-9176-17e5c5a569d9",
+                          "name": "Forbidden or oauth scope is invalid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizerKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\",\n  \"fromTime\": \"<string>\",\n  \"toTime\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountKey/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountKey",
+                                "recordingassets",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The page number to be displayed. The first page is 0.",
+                                  "key": "page",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The size of the page.",
+                                  "key": "size",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Add the response variables.",
+                                  "key": "includes",
+                                  "value": "webinarKey"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountKey"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:18:51.000Z",
+                          "updatedAt": "2026-10-21T21:18:51.000Z",
+                          "uid": "35240-6e98508f-103b-4032-9176-17e5c5a569d9"
+                        },
+                        {
+                          "id": "6102063a-a534-4ff0-a5c8-679aa2f2f655",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"organizerKey\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortField\": \"CREATETIME\",\n  \"sortOrder\": \"DESC\",\n  \"fromTime\": \"<string>\",\n  \"toTime\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountKey/recordingassets/search?page=<long>&size=<long>&includes=webinarKey",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountKey",
+                                "recordingassets",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The page number to be displayed. The first page is 0.",
+                                  "key": "page",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The size of the page.",
+                                  "key": "size",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Add the response variables.",
+                                  "key": "includes",
+                                  "value": "webinarKey"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountKey"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:18:51.000Z",
+                          "updatedAt": "2026-10-21T21:18:51.000Z",
+                          "uid": "35240-6102063a-a534-4ff0-a5c8-679aa2f2f655"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:18:51.000Z",
+                      "updatedAt": "2026-10-21T21:18:51.000Z",
+                      "uid": "35240-64df7111-211d-4daf-98a6-ca2a277f5a73"
+                    }
+                  ],
+                  "id": "5f0b5aa0-d1ef-4c31-bd05-3e97d3bd5cd1",
+                  "createdAt": "2026-10-21T21:18:51.000Z",
+                  "updatedAt": "2026-10-21T21:18:51.000Z",
+                  "uid": "35240-5f0b5aa0-d1ef-4c31-bd05-3e97d3bd5cd1"
+                }
+              ],
+              "id": "bdcbe824-c998-4381-8d73-754b41418e98",
+              "createdAt": "2026-10-21T21:18:51.000Z",
+              "updatedAt": "2026-10-21T21:18:51.000Z",
+              "uid": "35240-bdcbe824-c998-4381-8d73-754b41418e98"
+            }
+          ],
+          "id": "768b63e7-8ddc-4443-b33c-71b479e78bf7",
+          "createdAt": "2026-10-21T21:18:51.000Z",
+          "updatedAt": "2026-10-21T21:18:51.000Z",
+          "uid": "35240-768b63e7-8ddc-4443-b33c-71b479e78bf7"
+        }
+      ],
+      "id": "3c6f9969-78f4-4584-839b-642bdbea1ed8",
+      "createdAt": "2026-10-21T21:18:51.000Z",
+      "updatedAt": "2026-10-21T21:18:51.000Z",
+      "uid": "35240-3c6f9969-78f4-4584-839b-642bdbea1ed8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "redirect_uri",
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
+    }
+  ]
+}

@@ -1,286 +1,1208 @@
 {
+  "info": {
+    "_postman_id": "1c30dddf-1201-4334-bf93-1e85697e407d",
+    "name": "Gotowebinar Panelists API",
+    "description": "Operations tagged Panelists across 2 of this provider's published API definitions: gotowebinar-openapi.yml, gotowebinar-rest-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:17:52.000Z",
+    "updatedAt": "2026-10-21T21:17:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c30dddf-1201-4334-bf93-1e85697e407d"
+  },
   "item": [
     {
-      "id": "f604e914-e238-48b4-925d-4afc275a52be",
-      "name": "Panelists",
-      "description": {
-        "content": "Manage panelists on a webinar.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "c2b67ad7-f18b-4964-9412-ec96304c69c5",
-          "name": "List Panelists",
-          "request": {
-            "name": "List Panelists",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "panelists"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "23e7bbe0-1035-4ae8-bf65-57cc44dff502",
-              "name": "Panelists for the webinar.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "panelists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "webinars",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "{webinarKey}",
+                  "item": [
+                    {
+                      "name": "panelists",
+                      "item": [
+                        {
+                          "name": "{panelistKey}",
+                          "item": [
+                            {
+                              "name": "resendInvitation",
+                              "item": [
+                                {
+                                  "name": "Resend panelist invitation",
+                                  "id": "0124cf74-b4ab-45f7-89f6-dff1e059dc77",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "oauth2",
+                                      "oauth2": [
+                                        {
+                                          "key": "redirect_uri",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "accessTokenUrl",
+                                          "value": "https://authentication.logmeininc.com/oauth/token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "grant_type",
+                                          "value": "password_credentials",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "POST",
+                                    "header": [],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey/resendInvitation",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "panelists",
+                                        ":panelistKey",
+                                        "resendInvitation"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "32f51314-430b-4dc7-87eb-e507a11e0bd0",
+                                          "key": "organizerKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the organizer"
+                                        },
+                                        {
+                                          "id": "292ab79e-f1ff-46e7-a7a3-6d8c02e4d4bd",
+                                          "key": "webinarKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the webinar"
+                                        },
+                                        {
+                                          "id": "c42119f4-2427-40e5-8901-36ef94320822",
+                                          "key": "panelistKey",
+                                          "value": "<long>",
+                                          "description": "(Required) The key of the webinar panelist"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Resend the panelist invitation email."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "2c8b4fc6-10f8-4a2b-9da5-012557278a1b",
+                                      "name": "No Content",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey/resendInvitation",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "panelists",
+                                            ":panelistKey",
+                                            "resendInvitation"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "panelistKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:52.000Z",
+                                      "updatedAt": "2026-10-21T21:17:52.000Z",
+                                      "uid": "35240-2c8b4fc6-10f8-4a2b-9da5-012557278a1b"
+                                    },
+                                    {
+                                      "id": "6d64e8ee-78c0-499d-bdac-deffea5a375c",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey/resendInvitation",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "panelists",
+                                            ":panelistKey",
+                                            "resendInvitation"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "panelistKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:52.000Z",
+                                      "updatedAt": "2026-10-21T21:17:52.000Z",
+                                      "uid": "35240-6d64e8ee-78c0-499d-bdac-deffea5a375c"
+                                    },
+                                    {
+                                      "id": "f4546d06-7346-41f2-a7bf-097dfd1da9dc",
+                                      "name": "Forbidden",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey/resendInvitation",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "panelists",
+                                            ":panelistKey",
+                                            "resendInvitation"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "panelistKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Forbidden",
+                                      "code": 403,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:52.000Z",
+                                      "updatedAt": "2026-10-21T21:17:52.000Z",
+                                      "uid": "35240-f4546d06-7346-41f2-a7bf-097dfd1da9dc"
+                                    },
+                                    {
+                                      "id": "735f4357-9086-4428-8cf4-280d2404524b",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey/resendInvitation",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizers",
+                                            ":organizerKey",
+                                            "webinars",
+                                            ":webinarKey",
+                                            "panelists",
+                                            ":panelistKey",
+                                            "resendInvitation"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "organizerKey"
+                                            },
+                                            {
+                                              "key": "webinarKey"
+                                            },
+                                            {
+                                              "key": "panelistKey"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-21T21:17:52.000Z",
+                                      "updatedAt": "2026-10-21T21:17:52.000Z",
+                                      "uid": "35240-735f4357-9086-4428-8cf4-280d2404524b"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-21T21:17:52.000Z",
+                                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                                  "uid": "35240-0124cf74-b4ab-45f7-89f6-dff1e059dc77"
+                                }
+                              ],
+                              "id": "9c8dcfba-5bb4-4282-912a-0963d7b45df8",
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-9c8dcfba-5bb4-4282-912a-0963d7b45df8"
+                            },
+                            {
+                              "name": "Delete webinar panelist",
+                              "id": "36081f92-97d4-4ec8-a924-f774b7fe6991",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "oauth2",
+                                  "oauth2": [
+                                    {
+                                      "key": "redirect_uri",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "accessTokenUrl",
+                                      "value": "https://authentication.logmeininc.com/oauth/token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "grant_type",
+                                      "value": "password_credentials",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists",
+                                    ":panelistKey"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "91c87bbf-1b02-4469-9148-e21601f509ab",
+                                      "key": "organizerKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the organizer"
+                                    },
+                                    {
+                                      "id": "bbddb40f-15d4-4cdb-85fb-1a12d237b1ff",
+                                      "key": "webinarKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar"
+                                    },
+                                    {
+                                      "id": "5655d0a1-ccfe-471f-bca6-59c53358e382",
+                                      "key": "panelistKey",
+                                      "value": "<long>",
+                                      "description": "(Required) The key of the webinar panelist"
+                                    }
+                                  ]
+                                },
+                                "description": "Removes a webinar panelist."
+                              },
+                              "response": [
+                                {
+                                  "id": "6a577606-8910-4b0b-b51c-0491af47acc4",
+                                  "name": "No content",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "panelists",
+                                        ":panelistKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "panelistKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:52.000Z",
+                                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                                  "uid": "35240-6a577606-8910-4b0b-b51c-0491af47acc4"
+                                },
+                                {
+                                  "id": "86276e70-5c93-4cff-8896-d214113c2c6f",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "panelists",
+                                        ":panelistKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "panelistKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:52.000Z",
+                                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                                  "uid": "35240-86276e70-5c93-4cff-8896-d214113c2c6f"
+                                },
+                                {
+                                  "id": "07af96fb-0c2e-4672-90e2-ace4423b4e23",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "panelists",
+                                        ":panelistKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "panelistKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:52.000Z",
+                                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                                  "uid": "35240-07af96fb-0c2e-4672-90e2-ace4423b4e23"
+                                },
+                                {
+                                  "id": "0c07d009-f7cb-41fd-9afc-91b8f1e26432",
+                                  "name": "Not Found",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists/:panelistKey",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizers",
+                                        ":organizerKey",
+                                        "webinars",
+                                        ":webinarKey",
+                                        "panelists",
+                                        ":panelistKey"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "organizerKey"
+                                        },
+                                        {
+                                          "key": "webinarKey"
+                                        },
+                                        {
+                                          "key": "panelistKey"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-21T21:17:52.000Z",
+                                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                                  "uid": "35240-0c07d009-f7cb-41fd-9afc-91b8f1e26432"
+                                }
+                              ],
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-36081f92-97d4-4ec8-a924-f774b7fe6991"
+                            }
+                          ],
+                          "id": "e1e9542f-1ab7-4ba0-8d65-2cc1f5955c73",
+                          "createdAt": "2026-10-21T21:17:52.000Z",
+                          "updatedAt": "2026-10-21T21:17:52.000Z",
+                          "uid": "35240-e1e9542f-1ab7-4ba0-8d65-2cc1f5955c73"
+                        },
+                        {
+                          "name": "Get webinar panelists",
+                          "id": "c61c68ad-0dba-4dd9-94e8-cb751c007d1f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "panelists"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "959cd606-b376-4b54-a49b-ad3c24c25509",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "ee97dfee-3672-490a-90d4-a57768a1ad54",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves all the panelists for a specific webinar."
+                          },
+                          "response": [
+                            {
+                              "id": "49352be7-086a-4b76-b332-c7dfa0164eb3",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"joinLink\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"panelistId\": \"<long>\",\n    \"firstName\": \"<string>\"\n  },\n  {\n    \"joinLink\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"panelistId\": \"<long>\",\n    \"firstName\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-49352be7-086a-4b76-b332-c7dfa0164eb3"
+                            },
+                            {
+                              "id": "d02acb8f-6114-45da-bdd7-177340f5f62f",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-d02acb8f-6114-45da-bdd7-177340f5f62f"
+                            },
+                            {
+                              "id": "28d6b5d6-7907-4dc7-b0c9-153e6a352c9a",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-28d6b5d6-7907-4dc7-b0c9-153e6a352c9a"
+                            },
+                            {
+                              "id": "f7db78af-2e9a-4b05-9ef1-68289e605284",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-f7db78af-2e9a-4b05-9ef1-68289e605284"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:17:52.000Z",
+                          "updatedAt": "2026-10-21T21:17:52.000Z",
+                          "uid": "35240-c61c68ad-0dba-4dd9-94e8-cb751c007d1f"
+                        },
+                        {
+                          "name": "Create Panelists",
+                          "id": "11f4cedb-afba-4bf3-8e6c-d9e5d5d12e8a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "redirect_uri",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://authentication.logmeininc.com/oauth/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "password_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizers",
+                                ":organizerKey",
+                                "webinars",
+                                ":webinarKey",
+                                "panelists"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e98d01fe-49de-4b16-9001-4940b2bf34f7",
+                                  "key": "organizerKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the organizer"
+                                },
+                                {
+                                  "id": "a3dd1f93-9eab-4d4c-935a-8a94288d1cf4",
+                                  "key": "webinarKey",
+                                  "value": "<long>",
+                                  "description": "(Required) The key of the webinar"
+                                }
+                              ]
+                            },
+                            "description": "Create panelists for a specified webinar"
+                          },
+                          "response": [
+                            {
+                              "id": "b5815230-5f27-4712-ad30-b20241f1fe41",
+                              "name": "Created",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"joinLink\": \"<string>\",\n    \"panelistKey\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"joinLink\": \"<string>\",\n    \"panelistKey\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-b5815230-5f27-4712-ad30-b20241f1fe41"
+                            },
+                            {
+                              "id": "6fd89024-a866-4633-8943-0d86fad7d586",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-6fd89024-a866-4633-8943-0d86fad7d586"
+                            },
+                            {
+                              "id": "7999c63a-91c7-437f-8656-01bf268567e9",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-7999c63a-91c7-437f-8656-01bf268567e9"
+                            },
+                            {
+                              "id": "160909e7-2a56-4672-ae19-3e1247910555",
+                              "name": "Not Found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizers/:organizerKey/webinars/:webinarKey/panelists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizers",
+                                    ":organizerKey",
+                                    "webinars",
+                                    ":webinarKey",
+                                    "panelists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "organizerKey"
+                                    },
+                                    {
+                                      "key": "webinarKey"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T21:17:52.000Z",
+                              "updatedAt": "2026-10-21T21:17:52.000Z",
+                              "uid": "35240-160909e7-2a56-4672-ae19-3e1247910555"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:17:52.000Z",
+                          "updatedAt": "2026-10-21T21:17:52.000Z",
+                          "uid": "35240-11f4cedb-afba-4bf3-8e6c-d9e5d5d12e8a"
+                        }
+                      ],
+                      "id": "b463e870-7149-4e41-bdeb-ae8218ab47c0",
+                      "createdAt": "2026-10-21T21:17:52.000Z",
+                      "updatedAt": "2026-10-21T21:17:52.000Z",
+                      "uid": "35240-b463e870-7149-4e41-bdeb-ae8218ab47c0"
+                    }
+                  ],
+                  "id": "9e159d07-aa27-487c-a4bf-67143ef857cc",
+                  "createdAt": "2026-10-21T21:17:52.000Z",
+                  "updatedAt": "2026-10-21T21:17:52.000Z",
+                  "uid": "35240-9e159d07-aa27-487c-a4bf-67143ef857cc"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "a3e39784-bd20-437d-8760-977b531cbc89",
+              "createdAt": "2026-10-21T21:17:52.000Z",
+              "updatedAt": "2026-10-21T21:17:52.000Z",
+              "uid": "35240-a3e39784-bd20-437d-8760-977b531cbc89"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ff04b3af-eed8-449c-b3b1-2570db2c73ec",
-          "name": "Create Panelists",
-          "request": {
-            "name": "Create Panelists",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "webinars",
-                ":webinarKey",
-                "panelists"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "webinarKey",
-                  "description": "(Required) Unique key identifying a webinar."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "6e4b9255-3193-42da-a1e7-8cbe21a43a25",
-              "name": "Panelists added.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "webinars",
-                    ":webinarKey",
-                    "panelists"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "webinarKey",
-                      "description": "(Required) Unique key identifying a webinar."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "15c0d5c5-4600-4651-9fd5-ae00edc70335",
+          "createdAt": "2026-10-21T21:17:52.000Z",
+          "updatedAt": "2026-10-21T21:17:52.000Z",
+          "uid": "35240-15c0d5c5-4600-4651-9fd5-ae00edc70335"
         }
       ],
-      "event": []
+      "id": "1490775b-2fc1-4c7d-8ffb-02b435e55634",
+      "createdAt": "2026-10-21T21:17:52.000Z",
+      "updatedAt": "2026-10-21T21:17:52.000Z",
+      "uid": "35240-1490775b-2fc1-4c7d-8ffb-02b435e55634"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  ],
-  "auth": {
-    "type": "oauth2",
-    "oauth2": [
-      {
-        "key": "scope",
-        "value": "collab identity:scim.me"
-      },
-      {
-        "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
-      },
-      {
-        "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
-      },
-      {
-        "key": "grant_type",
-        "value": "authorization_code"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "98fb3b01-b46c-414d-a25c-3ae03f1cac05",
-    "name": "GoToWebinar REST Attendees Panelists API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

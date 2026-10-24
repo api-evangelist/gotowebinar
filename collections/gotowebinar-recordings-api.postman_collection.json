@@ -1,128 +1,136 @@
 {
+  "info": {
+    "_postman_id": "1b5912f9-01f5-4dde-a796-89788437e23d",
+    "name": "GoToWebinar REST Recordings API",
+    "description": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:18:09.000Z",
+    "updatedAt": "2026-10-21T21:18:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1b5912f9-01f5-4dde-a796-89788437e23d"
+  },
   "item": [
     {
-      "id": "3d85b4e5-281e-4219-b2e3-ab199a058f98",
-      "name": "Recordings",
-      "description": {
-        "content": "Retrieve webinar recording assets.",
-        "type": "text/plain"
-      },
+      "name": "organizers",
       "item": [
         {
-          "id": "f6308006-4aa9-4aa6-9b46-8d93efdfc485",
-          "name": "List Recording Assets For An Organizer",
-          "request": {
-            "name": "List Recording Assets For An Organizer",
-            "description": {},
-            "url": {
-              "path": [
-                "organizers",
-                ":organizerKey",
-                "recordingassets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fromTime",
-                  "value": "<dateTime>"
-                },
-                {
-                  "disabled": false,
-                  "key": "toTime",
-                  "value": "<dateTime>"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organizerKey",
-                  "description": "(Required) Authenticated organizer's key."
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{organizerKey}",
+          "item": [
             {
-              "id": "34be8bb9-67d6-4ec5-89a5-a1e5c332981e",
-              "name": "Recording assets.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizers",
-                    ":organizerKey",
-                    "recordingassets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fromTime",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "toTime",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organizerKey",
-                      "description": "(Required) Authenticated organizer's key."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "recordingassets",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "List Recording Assets For An Organizer",
+                  "id": "f94cd414-bc56-47e7-95c5-01aa76aad3a7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizers/:organizerKey/recordingassets?fromTime=<dateTime>&toTime=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizers",
+                        ":organizerKey",
+                        "recordingassets"
+                      ],
+                      "query": [
+                        {
+                          "key": "fromTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "toTime",
+                          "value": "<dateTime>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "fc1e97c1-9f7d-4088-9e19-ceb43b270264",
+                          "key": "organizerKey",
+                          "value": "<string>",
+                          "description": "(Required) Authenticated organizer's key."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f652c71a-9921-4d9b-9204-b729cbb19fc4",
+                      "name": "Recording assets.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizers/:organizerKey/recordingassets?fromTime=<dateTime>&toTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizers",
+                            ":organizerKey",
+                            "recordingassets"
+                          ],
+                          "query": [
+                            {
+                              "key": "fromTime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "toTime",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "organizerKey"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:18:10.000Z",
+                      "updatedAt": "2026-10-21T21:18:10.000Z",
+                      "uid": "35240-f652c71a-9921-4d9b-9204-b729cbb19fc4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:18:10.000Z",
+                  "updatedAt": "2026-10-21T21:18:10.000Z",
+                  "uid": "35240-f94cd414-bc56-47e7-95c5-01aa76aad3a7"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "a019ebac-295a-4a90-93c0-41798e196e7a",
+              "createdAt": "2026-10-21T21:18:10.000Z",
+              "updatedAt": "2026-10-21T21:18:10.000Z",
+              "uid": "35240-a019ebac-295a-4a90-93c0-41798e196e7a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fe10ef37-3426-4a7d-b150-d9ea091a5865",
+          "createdAt": "2026-10-21T21:18:10.000Z",
+          "updatedAt": "2026-10-21T21:18:10.000Z",
+          "uid": "35240-fe10ef37-3426-4a7d-b150-d9ea091a5865"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.getgo.com/G2W/rest/v2",
-      "key": "baseUrl"
+      "id": "869df0ea-acec-40c9-9aac-b80d6a1042c9",
+      "createdAt": "2026-10-21T21:18:10.000Z",
+      "updatedAt": "2026-10-21T21:18:10.000Z",
+      "uid": "35240-869df0ea-acec-40c9-9aac-b80d6a1042c9"
     }
   ],
   "auth": {
@@ -130,33 +138,35 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "collab identity:scim.me"
+        "value": "collab identity:scim.me",
+        "type": "string"
       },
       {
         "key": "redirect_uri",
-        "value": "https://authentication.logmeininc.com/oauth/token"
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://authentication.logmeininc.com/oauth/token"
+        "value": "https://authentication.logmeininc.com/oauth/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://authentication.logmeininc.com/oauth/authorize"
+        "value": "https://authentication.logmeininc.com/oauth/authorize",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "f161e9a8-560e-435a-8ab2-79c33d4e2366",
-    "name": "GoToWebinar REST Attendees Recordings API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "REST API for the GoTo (formerly Citrix / LogMeIn) GoToWebinar virtual event platform.\nOperations cover webinars, organizers, registrants, attendees, sessions, co-organizers,\npanelists, polls, questions, surveys, and recordings.\n\nSource documentation: https://developer.goto.com/GoToWebinarV2\n\n\nContact Support:\n Name: GoTo Developer Support\n Email: developer-support@goto.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.getgo.com/G2W/rest/v2"
     }
-  }
+  ]
 }
